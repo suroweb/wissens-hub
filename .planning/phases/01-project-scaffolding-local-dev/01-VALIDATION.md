@@ -21,7 +21,7 @@ created: 2026-03-14
 | **Config file** | SPFx: auto-configured via Heft rig; API: WissensHub.Tests.csproj |
 | **Quick run command** | `cd spfx && heft test --clean` / `cd api && dotnet test` |
 | **Full suite command** | `cd spfx && heft test --clean && cd ../api && dotnet test` |
-| **Estimated runtime** | ~15 seconds |
+| **Estimated runtime** | ~90 seconds (SPFx cold build dominates) |
 
 ---
 
@@ -30,7 +30,7 @@ created: 2026-03-14
 - **After every task commit:** Run `cd spfx && heft build --clean` + `cd api && dotnet build`
 - **After every plan wave:** Run `cd spfx && heft test --clean && cd ../api && dotnet test`
 - **Before `/gsd:verify-work`:** Full suite must be green
-- **Max feedback latency:** 15 seconds
+- **Max feedback latency:** 90 seconds
 
 ---
 
@@ -41,7 +41,7 @@ created: 2026-03-14
 | 01-01-01 | 01 | 1 | INFRA-01 | smoke | `cd spfx && heft build --clean` | N/A (build) | ⬜ pending |
 | 01-01-02 | 01 | 1 | INFRA-01 | manual-only | `cd spfx && heft start --clean` → visit localhost:4321 | Manual | ⬜ pending |
 | 01-01-03 | 01 | 1 | INFRA-02 | smoke | `grep -r "extends React.Component" spfx/src/**/*.tsx` → 0 matches | ❌ W0 | ⬜ pending |
-| 01-02-01 | 02 | 1 | INFRA-03 | smoke | `cd api/src/WissensHub.Functions && func start & sleep 5 && curl http://localhost:7071/api/health` | ❌ W0 | ⬜ pending |
+| 01-02-01 | 02 | 1 | INFRA-03 | smoke | `cd api/src/WissensHub.Functions && func start & for i in {1..12}; do curl -sf http://localhost:7071/api/health && break || sleep 5; done` | ❌ W0 | ⬜ pending |
 | 01-02-02 | 02 | 1 | INFRA-04 | smoke | `npm run db:migrate` | N/A (command) | ⬜ pending |
 | 01-02-03 | 02 | 1 | INFRA-04 | unit | `cd api && dotnet test --filter "DatabaseSchema"` | ❌ W0 | ⬜ pending |
 | 01-02-04 | 02 | 1 | INFRA-05 | smoke | `docker compose -f docker/docker-compose.yml up -d && docker compose -f docker/docker-compose.yml ps` | N/A (command) | ⬜ pending |
@@ -74,7 +74,7 @@ created: 2026-03-14
 - [ ] Sampling continuity: no 3 consecutive tasks without automated verify
 - [ ] Wave 0 covers all MISSING references
 - [ ] No watch-mode flags
-- [ ] Feedback latency < 15s
+- [ ] Feedback latency < 90s
 - [ ] `nyquist_compliant: true` set in frontmatter
 
 **Approval:** pending
