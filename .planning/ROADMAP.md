@@ -35,8 +35,8 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. SPFx solution builds and serves to the local workbench with Heft toolchain (no Gulp)
   2. All scaffolded class components are converted to functional components with hooks
   3. Azure Functions project starts locally and responds to a /api/health endpoint
-  4. Docker Compose brings up Azure SQL Edge and EF Core migrations apply successfully
-  5. Database contains all five tables (ArticleMetadata, ReadConfirmations, ArticleFlags, Favorites, ApprovalHistory)
+  4. Docker Compose brings up SQL Server 2022 and EF Core migrations apply successfully
+  5. Database contains all eight tables (ArticleMetadata, ReadConfirmations, ArticleFlags, Favorites, ApprovalHistory, Categories, TargetGroups, ArticleTargetGroups)
 **Plans**: 2 plans
 
 Plans:
@@ -197,7 +197,7 @@ Plans:
 **Requirements**: TEST-01, TEST-02, TEST-03
 **Success Criteria** (what must be TRUE):
   1. Jest unit tests cover frontend services, hooks, and key components — tests pass in Heft pipeline
-  2. .NET integration tests verify all API endpoints against Azure SQL Edge in Docker
+  2. .NET integration tests verify all API endpoints against SQL Server 2022 in Docker
   3. Playwright E2E tests execute critical user flows (browse dashboard, mark as read, approve article, admin config)
 **Plans**: TBD
 
