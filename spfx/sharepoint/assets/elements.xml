@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="UnreadBadge"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="20c7774b-e3ff-4f8b-8495-67dc37e9c038"
+        ClientSideComponentProperties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+    </CustomAction>
+</Elements>

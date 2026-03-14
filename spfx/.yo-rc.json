@@ -1,0 +1,23 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "wissens-hub",
+    "environment": "spo",
+    "packageManager": "npm",
+    "skipFeatureDeployment": true,
+    "useGulp": false,
+    "componentType": "extension",
+    "template": "none",
+    "componentName": "UnreadBadge",
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "nodeVersion": "22.22.1",
+    "sdksVersions": {},
+    "version": "1.22.2",
+    "libraryName": "wissens-hub",
+    "libraryId": "18134e6f-2deb-4551-ae6a-d5f26db41418",
+    "solutionShortDescription": "wissens-hub description",
+    "isDomainIsolated": false,
+    "extensionType": "ApplicationCustomizer"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "dashboard-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dashboard/DashboardWebPart.js",
+          "manifest": "./src/webparts/dashboard/DashboardWebPart.manifest.json"
+        }
+      ]
+    },
+    "article-sidebar-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/articleSidebar/ArticleSidebarWebPart.js",
+          "manifest": "./src/webparts/articleSidebar/ArticleSidebarWebPart.manifest.json"
+        }
+      ]
+    },
+    "freigabecenter-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/freigabecenter/FreigabecenterWebPart.js",
+          "manifest": "./src/webparts/freigabecenter/FreigabecenterWebPart.manifest.json"
+        }
+      ]
+    },
+    "admin-panel-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/adminPanel/AdminPanelWebPart.js",
+          "manifest": "./src/webparts/adminPanel/AdminPanelWebPart.manifest.json"
+        }
+      ]
+    },
+    "unread-badge-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/unreadBadge/UnreadBadgeApplicationCustomizer.js",
+          "manifest": "./src/extensions/unreadBadge/UnreadBadgeApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "DashboardWebPartStrings": "lib/webparts/dashboard/loc/{locale}.js",
+    "ArticleSidebarWebPartStrings": "lib/webparts/articleSidebar/loc/{locale}.js",
+    "FreigabecenterWebPartStrings": "lib/webparts/freigabecenter/loc/{locale}.js",
+    "AdminPanelWebPartStrings": "lib/webparts/adminPanel/loc/{locale}.js",
+    "UnreadBadgeApplicationCustomizerStrings": "lib/extensions/unreadBadge/loc/{locale}.js"
+  }
+}

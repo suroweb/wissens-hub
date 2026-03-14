@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/WissensHub.Application/WissensHub.Application.csproj" />
+    <Project Path="src/WissensHub.Domain/WissensHub.Domain.csproj" />
+    <Project Path="src/WissensHub.Functions/WissensHub.Functions.csproj" />
+    <Project Path="src/WissensHub.Infrastructure/WissensHub.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/WissensHub.Tests/WissensHub.Tests.csproj" />
+  </Folder>
+</Solution>
