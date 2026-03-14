@@ -37,11 +37,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Azure Functions project starts locally and responds to a /api/health endpoint
   4. Docker Compose brings up Azure SQL Edge and EF Core migrations apply successfully
   5. Database contains all five tables (ArticleMetadata, ReadConfirmations, ArticleFlags, Favorites, ApprovalHistory)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: SPFx solution scaffold and Heft toolchain setup
-- [ ] 01-02: Azure Functions project with EF Core and Docker Compose
+- [ ] 01-01-PLAN.md — SPFx solution scaffold with all 5 components, functional component conversion
+- [ ] 01-02-PLAN.md — .NET Clean Architecture backend, EF Core schema, Docker Compose, dev scripts
 
 ### Phase 2: SharePoint Site & Auth Pipeline
 **Goal**: SPFx web parts can authenticate to Azure Functions via AadHttpClient against a real SharePoint tenant
