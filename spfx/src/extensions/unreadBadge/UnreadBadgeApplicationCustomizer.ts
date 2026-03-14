@@ -2,38 +2,24 @@ import { Log } from '@microsoft/sp-core-library';
 import {
   BaseApplicationCustomizer
 } from '@microsoft/sp-application-base';
-import { Dialog } from '@microsoft/sp-dialog';
-
-import * as strings from 'UnreadBadgeApplicationCustomizerStrings';
 
 const LOG_SOURCE: string = 'UnreadBadgeApplicationCustomizer';
 
 /**
- * If your command set uses the ClientSideComponentProperties JSON input,
- * it will be deserialized into the BaseExtension.properties object.
- * You can define an interface to describe it.
+ * Properties for the UnreadBadge Application Customizer.
+ * React component for badge UI will be added in Phase 8.
  */
 export interface IUnreadBadgeApplicationCustomizerProperties {
-  // This is an example; replace with your own property
-  testMessage: string;
+  // Reserved for future configuration
 }
 
-/** A Custom Action which can be run during execution of a Client Side Application */
+/** Application Customizer shell for the unread article badge notification. */
 export default class UnreadBadgeApplicationCustomizer
   extends BaseApplicationCustomizer<IUnreadBadgeApplicationCustomizerProperties> {
 
   public onInit(): Promise<void> {
-    Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
-
-    let message: string = this.properties.testMessage;
-    if (!message) {
-      message = '(No properties were provided.)';
-    }
-
-    Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`).catch(() => {
-      /* handle error */
-    });
-
+    Log.info(LOG_SOURCE, 'UnreadBadge Application Customizer initialized.');
+    console.log('UnreadBadge Application Customizer initialized.');
     return Promise.resolve();
   }
 }
