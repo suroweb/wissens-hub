@@ -12,7 +12,7 @@ WissensHub delivers a SharePoint Framework knowledge management hub in 12 phases
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Project Scaffolding & Local Dev** - SPFx solution, Azure Functions project, Docker Compose, EF Core initial schema
+- [x] **Phase 1: Project Scaffolding & Local Dev** - SPFx solution, Azure Functions project, Docker Compose, EF Core initial schema
 - [ ] **Phase 2: SharePoint Site & Auth Pipeline** - Provisioning script, Entra ID app registration, AadHttpClient smoke test, SharePoint groups and columns
 - [ ] **Phase 3: Frontend Architecture & Service Layer** - WissensHubContext, service interfaces, mock implementations, Result pattern, domain models, role detection
 - [ ] **Phase 4: Backend Architecture & API Skeleton** - MediatR CQRS, FluentValidation, pipeline behaviors, repositories, EF Core entity configs, bearer token auth
@@ -41,7 +41,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md — SPFx solution scaffold with all 5 components, functional component conversion
-- [ ] 01-02-PLAN.md — .NET Clean Architecture backend, EF Core schema, Docker Compose, dev scripts
+- [x] 01-02-PLAN.md — .NET Clean Architecture backend, EF Core schema, Docker Compose, dev scripts
 
 ### Phase 2: SharePoint Site & Auth Pipeline
 **Goal**: SPFx web parts can authenticate to Azure Functions via AadHttpClient against a real SharePoint tenant
@@ -231,7 +231,7 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Project Scaffolding & Local Dev | 1/2 | In Progress | - |
+| 1. Project Scaffolding & Local Dev | 2/2 | Complete | 2026-03-14 |
 | 2. SharePoint Site & Auth Pipeline | 0/2 | Not started | - |
 | 3. Frontend Architecture & Service Layer | 0/3 | Not started | - |
 | 4. Backend Architecture & API Skeleton | 0/3 | Not started | - |

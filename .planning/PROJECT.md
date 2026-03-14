@@ -64,6 +64,7 @@ Employees can find, read, and confirm mandatory knowledge articles through a cen
 - **Azure Functions Isolated Worker** with .NET 10, C# 14, EF Core 10, MediatR, FluentValidation
 - **Target environment** — real SharePoint Online tenant + Azure subscription available for deployment
 - **German-first i18n** — UI labels in German by default, English as secondary language
+- **CRITICAL: The spec (wissens-hub-spec.md) is the source of truth** — research informs understanding but must not change requirements without user approval
 
 ## Constraints
 
@@ -72,6 +73,7 @@ Employees can find, read, and confirm mandatory knowledge articles through a cen
 - **No Gulp**: SPFx 1.22 uses Heft-based toolchain
 - **SharePoint 5000-item threshold**: Azure SQL handles tracking data to avoid list view threshold issues
 - **Application Insights cost**: Must disable auto-dependency tracking in SPFx to prevent cost explosion from SharePoint background HTTP calls
+- **Spec is immutable**: Any proposed changes to the spec require explicit user approval
 
 ## Key Decisions
 
@@ -84,6 +86,9 @@ Employees can find, read, and confirm mandatory knowledge articles through a cen
 | Admin-configurable categories | More flexible than hardcoded, demonstrates admin panel capabilities | — Pending |
 | Target groups via SharePoint groups | Leverages existing identity infrastructure, no custom group management needed | — Pending |
 | i18n (German + English) | Portfolio demonstrates localization capability | — Pending |
+| Full content search via SharePoint Search API | Users expect to search page body content, not just titles | — Pending |
+| Read confirmation reset on article update | Major edits invalidate existing read confirmations — ensures compliance | — Pending |
+| Reminders via dashboard badges + email | Dashboard badges for in-app visibility, email notifications for overdue mandatory articles | — Pending |
 
 ---
 *Last updated: 2026-03-14 after initialization*

@@ -7,11 +7,11 @@
 
 ### Infrastructure & Foundation
 
-- [ ] **INFRA-01**: SPFx 1.22.2 solution scaffolded with Heft toolchain, Node.js 22 LTS, React 17, TypeScript 5.8
-- [ ] **INFRA-02**: All scaffolded class components converted to functional components with hooks
-- [ ] **INFRA-03**: Azure Functions project (.NET 10, Isolated Worker, C# 14) with EF Core 10
-- [ ] **INFRA-04**: Azure SQL database schema created via EF Core code-first migrations (ArticleMetadata, ReadConfirmations, ArticleFlags, Favorites, ApprovalHistory tables)
-- [ ] **INFRA-05**: Docker Compose with Azure SQL Edge for local development
+- [x] **INFRA-01**: SPFx 1.22.2 solution scaffolded with Heft toolchain, Node.js 22 LTS, React 17, TypeScript 5.8
+- [x] **INFRA-02**: All scaffolded class components converted to functional components with hooks
+- [x] **INFRA-03**: Azure Functions project (.NET 10, Isolated Worker, C# 14) with EF Core 10
+- [x] **INFRA-04**: Azure SQL database schema created via EF Core code-first migrations (ArticleMetadata, ReadConfirmations, ArticleFlags, Favorites, ApprovalHistory tables)
+- [x] **INFRA-05**: Docker Compose with Azure SQL Edge for local development
 - [ ] **INFRA-06**: Entra ID app registration with AadHttpClient for SPFx-to-Azure Functions authentication
 - [ ] **INFRA-07**: SharePoint Communication Site provisioned with custom columns on Site Pages (Category, Status, TargetGroups, IsMandatory, Reviewer, ReviewByDate)
 - [ ] **INFRA-08**: SharePoint Groups created (WissensHub Members, WissensHub Editors, WissensHub Reviewers, WissensHub Owners)
@@ -208,11 +208,11 @@ Deferred to future release. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INFRA-01 | Phase 1 | Pending |
-| INFRA-02 | Phase 1 | Pending |
-| INFRA-03 | Phase 1 | Pending |
-| INFRA-04 | Phase 1 | Pending |
-| INFRA-05 | Phase 1 | Pending |
+| INFRA-01 | Phase 1 | Complete |
+| INFRA-02 | Phase 1 | Complete |
+| INFRA-03 | Phase 1 | Complete |
+| INFRA-04 | Phase 1 | Complete |
+| INFRA-05 | Phase 1 | Complete |
 | INFRA-06 | Phase 2 | Pending |
 | INFRA-07 | Phase 2 | Pending |
 | INFRA-08 | Phase 2 | Pending |
