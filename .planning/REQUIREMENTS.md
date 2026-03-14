@@ -206,17 +206,122 @@ Deferred to future release. Tracked but not in current roadmap.
 
 ## Traceability
 
-<!-- Populated during roadmap creation -->
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (To be filled by roadmapper) | | |
+| INFRA-01 | Phase 1 | Pending |
+| INFRA-02 | Phase 1 | Pending |
+| INFRA-03 | Phase 1 | Pending |
+| INFRA-04 | Phase 1 | Pending |
+| INFRA-05 | Phase 1 | Pending |
+| INFRA-06 | Phase 2 | Pending |
+| INFRA-07 | Phase 2 | Pending |
+| INFRA-08 | Phase 2 | Pending |
+| ARCH-01 | Phase 3 | Pending |
+| ARCH-02 | Phase 3 | Pending |
+| ARCH-03 | Phase 3 | Pending |
+| ARCH-04 | Phase 3 | Pending |
+| ARCH-05 | Phase 3 | Pending |
+| ARCH-06 | Phase 3 | Pending |
+| ARCH-07 | Phase 3 | Pending |
+| ARCH-08 | Phase 3 | Pending |
+| ARCH-09 | Phase 3 | Pending |
+| ARCH-10 | Phase 3 | Pending |
+| ROLE-01 | Phase 3 | Pending |
+| ROLE-02 | Phase 3 | Pending |
+| ROLE-03 | Phase 3 | Pending |
+| ROLE-04 | Phase 3 | Pending |
+| DASH-01 | Phase 5 | Pending |
+| DASH-02 | Phase 5 | Pending |
+| DASH-03 | Phase 5 | Pending |
+| DASH-04 | Phase 5 | Pending |
+| DASH-05 | Phase 5 | Pending |
+| DASH-06 | Phase 5 | Pending |
+| DASH-07 | Phase 5 | Pending |
+| DASH-08 | Phase 5 | Pending |
+| DASH-09 | Phase 5 | Pending |
+| DASH-10 | Phase 5 | Pending |
+| SIDE-01 | Phase 6 | Pending |
+| SIDE-02 | Phase 6 | Pending |
+| SIDE-03 | Phase 6 | Pending |
+| SIDE-04 | Phase 6 | Pending |
+| SIDE-05 | Phase 6 | Pending |
+| SIDE-06 | Phase 6 | Pending |
+| SIDE-07 | Phase 6 | Pending |
+| SIDE-08 | Phase 6 | Pending |
+| FREI-01 | Phase 7 | Pending |
+| FREI-02 | Phase 7 | Pending |
+| FREI-03 | Phase 7 | Pending |
+| FREI-04 | Phase 7 | Pending |
+| FREI-05 | Phase 7 | Pending |
+| FREI-06 | Phase 7 | Pending |
+| BADGE-01 | Phase 8 | Pending |
+| BADGE-02 | Phase 8 | Pending |
+| BADGE-03 | Phase 8 | Pending |
+| ADMIN-01 | Phase 9 | Pending |
+| ADMIN-02 | Phase 9 | Pending |
+| ADMIN-03 | Phase 9 | Pending |
+| ADMIN-04 | Phase 9 | Pending |
+| ADMIN-05 | Phase 9 | Pending |
+| ADMIN-06 | Phase 9 | Pending |
+| READ-01 | Phase 6 | Pending |
+| READ-02 | Phase 6 | Pending |
+| READ-03 | Phase 6 | Pending |
+| APPR-01 | Phase 7 | Pending |
+| APPR-02 | Phase 7 | Pending |
+| APPR-03 | Phase 7 | Pending |
+| RMND-01 | Phase 5 | Pending |
+| RMND-02 | Phase 9 | Pending |
+| API-01 | Phase 4 | Pending |
+| API-02 | Phase 4 | Pending |
+| API-03 | Phase 4 | Pending |
+| API-04 | Phase 4 | Pending |
+| API-05 | Phase 4 | Pending |
+| API-06 | Phase 4 | Pending |
+| API-07 | Phase 4 | Pending |
+| API-08 | Phase 4 | Pending |
+| API-09 | Phase 4 | Pending |
+| API-10 | Phase 4 | Pending |
+| BACK-01 | Phase 4 | Pending |
+| BACK-02 | Phase 4 | Pending |
+| BACK-03 | Phase 4 | Pending |
+| BACK-04 | Phase 4 | Pending |
+| BACK-05 | Phase 4 | Pending |
+| BACK-06 | Phase 4 | Pending |
+| CACH-01 | Phase 10 | Pending |
+| CACH-02 | Phase 10 | Pending |
+| CACH-03 | Phase 10 | Pending |
+| CACH-04 | Phase 10 | Pending |
+| TELE-01 | Phase 10 | Pending |
+| TELE-02 | Phase 10 | Pending |
+| TELE-03 | Phase 10 | Pending |
+| TELE-04 | Phase 10 | Pending |
+| TELE-05 | Phase 10 | Pending |
+| TELE-06 | Phase 10 | Pending |
+| UX-01 | Phase 10 | Pending |
+| UX-02 | Phase 10 | Pending |
+| UX-03 | Phase 10 | Pending |
+| UX-04 | Phase 10 | Pending |
+| UX-05 | Phase 10 | Pending |
+| I18N-01 | Phase 10 | Pending |
+| I18N-02 | Phase 10 | Pending |
+| I18N-03 | Phase 10 | Pending |
+| TEST-01 | Phase 11 | Pending |
+| TEST-02 | Phase 11 | Pending |
+| TEST-03 | Phase 11 | Pending |
+| DEVP-01 | Phase 2 | Pending |
+| DEVP-02 | Phase 12 | Pending |
+| DEVP-03 | Phase 12 | Pending |
+| DEVP-04 | Phase 12 | Pending |
+| DEVP-05 | Phase 12 | Pending |
+| DEVP-06 | Phase 12 | Pending |
+| DEVP-07 | Phase 12 | Pending |
+| DEVP-08 | Phase 12 | Pending |
 
 **Coverage:**
-- v1 requirements: 82 total
-- Mapped to phases: 0
-- Unmapped: 82
+- v1 requirements: 108 total
+- Mapped to phases: 108
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-14*
-*Last updated: 2026-03-14 after initial definition*
+*Last updated: 2026-03-14 after roadmap creation (traceability populated)*
