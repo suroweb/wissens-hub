@@ -1,0 +1,16 @@
+{
+  "name": "wissens-hub",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n spfx,api -c blue,green \"npm run spfx:serve\" \"npm run api:start\"",
+    "spfx:serve": "cd spfx && npm run start",
+    "api:start": "cd api/src/WissensHub.Functions && func start",
+    "db:up": "docker-compose -f docker/docker-compose.yml up -d",
+    "db:down": "docker-compose -f docker/docker-compose.yml down",
+    "db:migrate": "cd api && dotnet ef database update --project src/WissensHub.Infrastructure --startup-project src/WissensHub.Functions"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

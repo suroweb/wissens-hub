@@ -1,0 +1,35 @@
+# Node.js
+node_modules/
+dist/
+lib/
+temp/
+*.log
+npm-debug.log*
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.DotSettings.user
+
+# SPFx
+sharepoint/solution/*.sppkg
+release/
+
+# Azure Functions
+local.settings.json
+
+# IDE
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+*.pfx
+
+# Keep empty directories
+!.gitkeep
