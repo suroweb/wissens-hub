@@ -53,11 +53,11 @@ Plans:
   3. Entra ID app registration is configured and AadHttpClient gets a valid bearer token
   4. A smoke test from SPFx successfully calls Azure Functions /api/health with CORS and auth working
   5. PnP PowerShell provisioning script creates the site, groups, columns, sample pages, and navigation in one run
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: PnP PowerShell provisioning script (site, groups, columns, pages, navigation)
-- [ ] 02-02: Entra ID app registration and AadHttpClient auth pipeline with CORS smoke test
+- [ ] 02-01-PLAN.md — PnP PowerShell provisioning scripts (site, groups, columns, pages, navigation, sample data)
+- [ ] 02-02-PLAN.md — Entra ID app registration, Azure Functions JWT middleware, AadHttpClient smoke test
 
 ### Phase 3: Frontend Architecture & Service Layer
 **Goal**: All frontend web parts share a consistent architecture with dependency-inverted services that work in both mock and production modes
