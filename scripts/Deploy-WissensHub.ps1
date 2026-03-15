@@ -57,7 +57,7 @@ $modulesPath = Join-Path $PSScriptRoot "modules"
 . (Join-Path $modulesPath "New-WissensHubPages.ps1")
 . (Join-Path $modulesPath "New-WissensHubNavigation.ps1")
 . (Join-Path $modulesPath "New-WissensHubSampleData.ps1")
-# . (Join-Path $modulesPath "New-WissensHubEntraApp.ps1")  # Uncommented by Plan 02-02 which creates this module
+. (Join-Path $modulesPath "New-WissensHubEntraApp.ps1")
 
 # --- Connect to SharePoint admin ---
 Write-Host "Connecting to SharePoint Online..." -ForegroundColor Cyan
@@ -73,20 +73,25 @@ $results = @{
 
 # --- Execute modules in order ---
 $modules = @(
-    @{ Name = "Site";        Function = "New-WissensHubSite" },
-    @{ Name = "Groups";      Function = "New-WissensHubGroups" },
-    @{ Name = "Columns";     Function = "New-WissensHubColumns" },
-    @{ Name = "Pages";       Function = "New-WissensHubPages" },
-    @{ Name = "Navigation";  Function = "New-WissensHubNavigation" },
-    @{ Name = "Sample Data"; Function = "New-WissensHubSampleData" }
-    # @{ Name = "Entra ID App"; Function = "New-WissensHubEntraApp" }  # Uncommented by Plan 02-02
+    @{ Name = "Site";         Function = "New-WissensHubSite" },
+    @{ Name = "Groups";       Function = "New-WissensHubGroups" },
+    @{ Name = "Columns";      Function = "New-WissensHubColumns" },
+    @{ Name = "Entra ID App"; Function = "New-WissensHubEntraApp" },
+    @{ Name = "Pages";        Function = "New-WissensHubPages" },
+    @{ Name = "Navigation";   Function = "New-WissensHubNavigation" },
+    @{ Name = "Sample Data";  Function = "New-WissensHubSampleData" }
 )
 
 foreach ($module in $modules) {
     Write-Host ""
     Write-Host "--- $($module.Name) ---" -ForegroundColor Cyan
     try {
-        & $module.Function -Config $config
+        if ($module.Function -eq "New-WissensHubEntraApp") {
+            & $module.Function -Config $config -ConfigPath $ConfigPath
+        }
+        else {
+            & $module.Function -Config $config
+        }
         [void]$results.Created.Add($module.Name)
         Write-Host "$($module.Name): completed successfully." -ForegroundColor Green
     }
