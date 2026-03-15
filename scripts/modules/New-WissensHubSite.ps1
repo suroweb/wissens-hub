@@ -32,5 +32,5 @@ function New-WissensHubSite {
 
     # Reconnect to the site URL for subsequent modules
     Write-Host "Connecting to site '$siteUrl'..." -ForegroundColor Cyan
-    Connect-PnPOnline -Url $siteUrl -Interactive
+    Connect-PnPOnline -Url $siteUrl -Interactive -ClientId $Config.pnpClientId
 }

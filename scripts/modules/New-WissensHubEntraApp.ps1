@@ -8,12 +8,33 @@
     service principal, and writes the client ID and scope URI back to the config file.
     Idempotent: skips creation if an app with the same display name already exists.
 
+    NOTE: Must run in a separate PowerShell session from Deploy-WissensHub.ps1 due to
+    module version conflicts between PnP.PowerShell and Microsoft.Graph.Applications.
+
 .PARAMETER Config
     The configuration object loaded from config.json.
 
 .PARAMETER ConfigPath
     Path to the JSON configuration file, used to write back clientId and scopeUri.
+
+.EXAMPLE
+    pwsh ./scripts/modules/New-WissensHubEntraApp.ps1 -ConfigPath ./scripts/config.json
 #>
+
+# --- Standalone entry point ---
+param(
+    [string]$ConfigPath
+)
+
+if ($ConfigPath) {
+    if (-not (Get-Module -ListAvailable Microsoft.Graph.Applications)) {
+        Write-Host "Installing module 'Microsoft.Graph.Applications'..." -ForegroundColor Yellow
+        Install-Module -Name Microsoft.Graph.Applications -Force -Scope CurrentUser
+    }
+    $Config = Get-Content $ConfigPath -Raw | ConvertFrom-Json
+    New-WissensHubEntraApp -Config $Config -ConfigPath $ConfigPath
+    return
+}
 function New-WissensHubEntraApp {
     param(
         [Parameter(Mandatory)]

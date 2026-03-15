@@ -2,6 +2,7 @@
   "tenantName": "contoso",
   "siteUrl": "https://contoso.sharepoint.com/sites/WissensHub",
   "adminUpn": "admin@contoso.onmicrosoft.com",
+  "pnpClientId": "",
   "azureFunctionUrl": "https://wissenshub-api.azurewebsites.net",
   "entraApp": {
     "displayName": "WissensHub API",

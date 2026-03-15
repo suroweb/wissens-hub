@@ -10,6 +10,13 @@
 .PARAMETER ConfigPath
     Path to the JSON configuration file. Defaults to ./scripts/config.json.
 
+.NOTES
+    Prerequisites (one-time setup):
+    1. Install PowerShell (macOS: brew install powershell)
+    2. Register a PnP app in Entra ID:
+       pwsh -Command "Register-PnPEntraIDAppForInteractiveLogin -ApplicationName 'WissensHub Provisioning' -SharePointDelegatePermissions AllSites.Manage"
+    3. Copy config.template.json to config.json and fill in tenant values including pnpClientId from step 2.
+
 .EXAMPLE
     ./scripts/Deploy-WissensHub.ps1
     ./scripts/Deploy-WissensHub.ps1 -ConfigPath ./scripts/config.json
@@ -21,6 +28,15 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+# --- Ensure required PowerShell modules ---
+$requiredModules = @('PnP.PowerShell', 'Microsoft.Graph.Applications')
+foreach ($mod in $requiredModules) {
+    if (-not (Get-Module -ListAvailable -Name $mod)) {
+        Write-Host "Installing module '$mod'..." -ForegroundColor Yellow
+        Install-Module -Name $mod -Force -Scope CurrentUser
+    }
+}
+
 # --- Load configuration ---
 if (-not (Test-Path $ConfigPath)) {
     Write-Host "ERROR: Configuration file not found at '$ConfigPath'." -ForegroundColor Red
@@ -31,7 +47,7 @@ if (-not (Test-Path $ConfigPath)) {
 $config = Get-Content $ConfigPath -Raw | ConvertFrom-Json
 
 # --- Validate required fields ---
-$requiredFields = @("tenantName", "siteUrl", "adminUpn")
+$requiredFields = @("tenantName", "siteUrl", "adminUpn", "pnpClientId")
 foreach ($field in $requiredFields) {
     if (-not $config.$field -or $config.$field -eq "") {
         Write-Host "ERROR: Required config field '$field' is missing or empty." -ForegroundColor Red
@@ -62,7 +78,7 @@ $modulesPath = Join-Path $PSScriptRoot "modules"
 # --- Connect to SharePoint admin ---
 Write-Host "Connecting to SharePoint Online..." -ForegroundColor Cyan
 $adminUrl = "https://$($config.tenantName)-admin.sharepoint.com"
-Connect-PnPOnline -Url $adminUrl -Interactive
+Connect-PnPOnline -Url $adminUrl -Interactive -ClientId $config.pnpClientId
 
 # --- Track results ---
 $results = @{
@@ -76,7 +92,9 @@ $modules = @(
     @{ Name = "Site";         Function = "New-WissensHubSite" },
     @{ Name = "Groups";       Function = "New-WissensHubGroups" },
     @{ Name = "Columns";      Function = "New-WissensHubColumns" },
-    @{ Name = "Entra ID App"; Function = "New-WissensHubEntraApp" },
+    # Entra ID App must run in a separate PowerShell session (module version conflict with PnP.PowerShell).
+    # Run separately: pwsh ./scripts/modules/New-WissensHubEntraApp.ps1 -ConfigPath ./scripts/config.json
+    # @{ Name = "Entra ID App"; Function = "New-WissensHubEntraApp" },
     @{ Name = "Pages";        Function = "New-WissensHubPages" },
     @{ Name = "Navigation";   Function = "New-WissensHubNavigation" },
     @{ Name = "Sample Data";  Function = "New-WissensHubSampleData" }
