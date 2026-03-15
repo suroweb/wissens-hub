@@ -13,8 +13,8 @@
 - [x] **INFRA-04**: Azure SQL database schema created via EF Core code-first migrations (ArticleMetadata, ReadConfirmations, ArticleFlags, Favorites, ApprovalHistory tables)
 - [x] **INFRA-05**: Docker Compose with SQL Server 2022 for local development
 - [ ] **INFRA-06**: Entra ID app registration with AadHttpClient for SPFx-to-Azure Functions authentication
-- [ ] **INFRA-07**: SharePoint Communication Site provisioned with custom columns on Site Pages (Category, Status, TargetGroups, IsMandatory, Reviewer, ReviewByDate)
-- [ ] **INFRA-08**: SharePoint Groups created (WissensHub Members, WissensHub Editors, WissensHub Reviewers, WissensHub Owners)
+- [x] **INFRA-07**: SharePoint Communication Site provisioned with custom columns on Site Pages (Category, Status, TargetGroups, IsMandatory, Reviewer, ReviewByDate)
+- [x] **INFRA-08**: SharePoint Groups created (WissensHub Members, WissensHub Editors, WissensHub Reviewers, WissensHub Owners)
 
 ### Shared Architecture
 
@@ -161,7 +161,7 @@
 
 ### DevOps & Deployment
 
-- [ ] **DEVP-01**: PnP PowerShell provisioning script (site, groups, columns, pages, navigation, sample data)
+- [x] **DEVP-01**: PnP PowerShell provisioning script (site, groups, columns, pages, navigation, sample data)
 - [ ] **DEVP-02**: Azure Bicep modules (Functions App, SQL Server, App Insights, Key Vault, Storage Account)
 - [ ] **DEVP-03**: GitHub Actions CI pipeline (build + test on PR)
 - [ ] **DEVP-04**: GitHub Actions CD pipeline (build + test + deploy on merge to main)
@@ -214,8 +214,8 @@ Deferred to future release. Tracked but not in current roadmap.
 | INFRA-04 | Phase 1 | Complete |
 | INFRA-05 | Phase 1 | Complete |
 | INFRA-06 | Phase 2 | Pending |
-| INFRA-07 | Phase 2 | Pending |
-| INFRA-08 | Phase 2 | Pending |
+| INFRA-07 | Phase 2 | Complete |
+| INFRA-08 | Phase 2 | Complete |
 | ARCH-01 | Phase 3 | Pending |
 | ARCH-02 | Phase 3 | Pending |
 | ARCH-03 | Phase 3 | Pending |
@@ -308,7 +308,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | TEST-01 | Phase 11 | Pending |
 | TEST-02 | Phase 11 | Pending |
 | TEST-03 | Phase 11 | Pending |
-| DEVP-01 | Phase 2 | Pending |
+| DEVP-01 | Phase 2 | Complete |
 | DEVP-02 | Phase 12 | Pending |
 | DEVP-03 | Phase 12 | Pending |
 | DEVP-04 | Phase 12 | Pending |
