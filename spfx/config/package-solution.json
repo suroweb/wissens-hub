@@ -25,6 +25,12 @@
       "videoUrl": "",
       "categories": []
     },
+    "webApiPermissionRequests": [
+      {
+        "resource": "WissensHub API",
+        "scope": "access_as_user"
+      }
+    ],
     "features": [
       {
         "title": "wissens-hub Feature",

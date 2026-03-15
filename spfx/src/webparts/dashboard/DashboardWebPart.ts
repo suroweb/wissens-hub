@@ -7,6 +7,7 @@ import {
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
+import { AadHttpClient } from '@microsoft/sp-http';
 
 import * as strings from 'DashboardWebPartStrings';
 import Dashboard from './components/Dashboard';
@@ -20,6 +21,7 @@ export default class DashboardWebPart extends BaseClientSideWebPart<IDashboardWe
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
+  private _apiClient: AadHttpClient | undefined;
 
   public render(): void {
     const element: React.ReactElement<IDashboardProps> = React.createElement(
@@ -29,17 +31,28 @@ export default class DashboardWebPart extends BaseClientSideWebPart<IDashboardWe
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        httpClient: this._apiClient,
+        // TODO: Replace placeholder with actual Azure Functions URL after deployment
+        apiBaseUrl: 'https://{function-app-placeholder}.azurewebsites.net'
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected onInit(): Promise<void> {
-    return this._getEnvironmentMessage().then(message => {
-      this._environmentMessage = message;
-    });
+  protected async onInit(): Promise<void> {
+    await super.onInit();
+    this._environmentMessage = await this._getEnvironmentMessage();
+
+    try {
+      // The resource URI must match the Entra ID app's Application ID URI.
+      // TODO: Replace {client-id-placeholder} with the actual client ID from
+      // scripts/config.json after running the provisioning script.
+      this._apiClient = await this.context.aadHttpClientFactory.getClient('api://{client-id-placeholder}');
+    } catch (error) {
+      console.warn('AadHttpClient not available (expected in workbench):', error);
+    }
   }
 
 
