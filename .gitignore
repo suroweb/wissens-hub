@@ -31,5 +31,8 @@ Thumbs.db
 # Secrets
 *.pfx
 
+# Provisioning secrets
+scripts/config.json
+
 # Keep empty directories
 !.gitkeep
