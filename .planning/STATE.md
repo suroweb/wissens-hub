@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-stopped_at: Completed 02-01-PLAN.md
-last_updated: "2026-03-15T13:08:18.940Z"
-last_activity: 2026-03-15 — Completed 02-01 PnP PowerShell provisioning scripts
+stopped_at: Completed 02-02-PLAN.md (checkpoint approved)
+last_updated: "2026-03-15T18:30:00.000Z"
+last_activity: 2026-03-15 — Completed 02-02 auth pipeline, verified provisioning on tenant
 progress:
   total_phases: 12
   completed_phases: 1
   total_plans: 4
-  completed_plans: 3
-  percent: 75
+  completed_plans: 4
+  percent: 100
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-14)
 ## Current Position
 
 Phase: 2 of 12 (SharePoint Site & Auth Pipeline)
-Plan: 1 of 2 in current phase -- Plan 1 COMPLETE
-Status: Plan 02-01 complete, ready for Plan 02-02
-Last activity: 2026-03-15 — Completed 02-01 PnP PowerShell provisioning scripts
+Plan: 2 of 2 in current phase -- Both plans COMPLETE
+Status: Phase 02 execution complete, provisioning verified on contoso tenant
+Last activity: 2026-03-15 — Verified provisioning on real tenant, fixed German locale issues
 
-Progress: [████████░░] 75%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -44,7 +44,7 @@ Progress: [████████░░] 75%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 | 2/2 | 31min | 16min |
-| 2 | 1/2 | 5min | 5min |
+| 2 | 2/2 | 15min | 8min |
 
 **Recent Trend:**
 - Last 5 plans: 01-01 (5min), 01-02 (26min), 02-01 (5min)
@@ -72,6 +72,11 @@ Recent decisions affecting current work:
 - [Phase 02]: Foreach-loop pattern for sample data instead of inline Add-PnPPage per article (DRY)
 - [Phase 02]: Navigation uses clear-and-rebuild for idempotency instead of per-node check
 - [Phase 02]: CAML query to locate page items for metadata assignment in sample data
+- [Phase 02]: PnP Management Shell deprecated — must register own Entra ID app with Register-PnPEntraIDAppForInteractiveLogin
+- [Phase 02]: German locale (LCID 1031) requires German permission level names (Lesen, Bearbeiten, Vollzugriff)
+- [Phase 02]: Use internal list name 'SitePages' not display name 'Site Pages' for locale safety
+- [Phase 02]: Pages must be published before use in navigation or as home page
+- [Phase 02]: Microsoft.Graph.Applications conflicts with PnP.PowerShell — run Entra app registration in separate session
 
 ### Pending Todos
 
@@ -86,6 +91,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15T13:06:24Z
-Stopped at: Completed 02-01-PLAN.md
-Resume file: .planning/phases/02-sharepoint-site-auth-pipeline/02-01-SUMMARY.md
+Last session: 2026-03-15T18:30:00Z
+Stopped at: Completed 02-02-PLAN.md (checkpoint approved after tenant verification)
+Resume file: .planning/phases/02-sharepoint-site-auth-pipeline/02-02-PLAN.md
