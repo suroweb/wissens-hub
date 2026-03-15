@@ -36,3 +36,6 @@ scripts/config.json
 
 # Keep empty directories
 !.gitkeep
+
+# Spec
+wissens-hub-spec.md
