@@ -11,7 +11,7 @@
 - [x] **INFRA-02**: All scaffolded class components converted to functional components with hooks
 - [x] **INFRA-03**: Azure Functions project (.NET 10, Isolated Worker, C# 14) with EF Core 10
 - [x] **INFRA-04**: Azure SQL database schema created via EF Core code-first migrations (ArticleMetadata, ReadConfirmations, ArticleFlags, Favorites, ApprovalHistory tables)
-- [x] **INFRA-05**: Docker Compose with Azure SQL Edge for local development
+- [x] **INFRA-05**: Docker Compose with SQL Server 2022 for local development
 - [ ] **INFRA-06**: Entra ID app registration with AadHttpClient for SPFx-to-Azure Functions authentication
 - [ ] **INFRA-07**: SharePoint Communication Site provisioned with custom columns on Site Pages (Category, Status, TargetGroups, IsMandatory, Reviewer, ReviewByDate)
 - [ ] **INFRA-08**: SharePoint Groups created (WissensHub Members, WissensHub Editors, WissensHub Reviewers, WissensHub Owners)
