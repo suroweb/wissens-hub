@@ -14,7 +14,7 @@ function New-WissensHubColumns {
         [PSCustomObject]$Config
     )
 
-    $listName = "Site Pages"
+    $listName = "SitePages"
 
     # --- WH_Category (Choice) ---
     $existing = Get-PnPField -List $listName -Identity "WH_Category" -ErrorAction SilentlyContinue

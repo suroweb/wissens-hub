@@ -14,10 +14,10 @@ function New-WissensHubGroups {
     )
 
     $groups = @(
-        @{ Name = $Config.groups.members;   PermLevel = "Read" },
-        @{ Name = $Config.groups.editors;   PermLevel = "Edit" },
-        @{ Name = $Config.groups.reviewers; PermLevel = "Read" },
-        @{ Name = $Config.groups.owners;    PermLevel = "Full Control" }
+        @{ Name = $Config.groups.members;   PermLevel = "Lesen" },
+        @{ Name = $Config.groups.editors;   PermLevel = "Bearbeiten" },
+        @{ Name = $Config.groups.reviewers; PermLevel = "Lesen" },
+        @{ Name = $Config.groups.owners;    PermLevel = "Vollzugriff" }
     )
 
     $existingGroups = Get-PnPSiteGroup

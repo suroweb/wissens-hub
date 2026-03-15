@@ -336,10 +336,10 @@ function New-WissensHubSampleData {
         Add-PnPPageTextPart -Page $article.Name -Text $article.Content
 
         # Get the page list item to set metadata
-        $pageItem = Get-PnPListItem -List "Site Pages" -Query "<View><Query><Where><Eq><FieldRef Name='FileLeafRef'/><Value Type='Text'>$($article.Name).aspx</Value></Eq></Where></Query></View>"
+        $pageItem = Get-PnPListItem -List "SitePages" -Query "<View><Query><Where><Eq><FieldRef Name='FileLeafRef'/><Value Type='Text'>$($article.Name).aspx</Value></Eq></Where></Query></View>"
 
         if ($pageItem) {
-            Set-PnPListItem -List "Site Pages" -Identity $pageItem.Id -Values $article.Values
+            Set-PnPListItem -List "SitePages" -Identity $pageItem.Id -Values $article.Values
             Write-Host "Article '$($article.Title)' created with metadata." -ForegroundColor Green
         }
         else {

@@ -47,6 +47,13 @@ function New-WissensHubPages {
         Write-Host "Page 'Administration' created." -ForegroundColor Green
     }
 
+    # --- Publish all pages before setting home page ---
+    Write-Host "Publishing pages..." -ForegroundColor Cyan
+    Set-PnPPage -Identity "Dashboard" -Publish
+    Set-PnPPage -Identity "Freigabecenter" -Publish
+    Set-PnPPage -Identity "Administration" -Publish
+    Write-Host "Pages published." -ForegroundColor Green
+
     # --- Set Dashboard as home page ---
     Write-Host "Setting Dashboard as site home page..." -ForegroundColor Cyan
     Set-PnPHomePage -RootFolderRelativeUrl "SitePages/Dashboard.aspx"
