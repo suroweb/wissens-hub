@@ -24,7 +24,7 @@
 - [x] **ARCH-04**: Mock service implementations for testing and local dev
 - [x] **ARCH-05**: Result<T> pattern for all service calls — no thrown exceptions for expected failures
 - [x] **ARCH-06**: Domain models separate from DTOs with mapper layer (dto → domain transformers)
-- [ ] **ARCH-07**: CQRS-lite hooks — separate query hooks (read operations) from command hooks (write operations)
+- [x] **ARCH-07**: CQRS-lite hooks — separate query hooks (read operations) from command hooks (write operations)
 - [x] **ARCH-08**: QueryState<T> and CommandState types for consistent async state handling
 - [x] **ARCH-09**: RoleGate wrapper component for role-based UI visibility
 - [x] **ARCH-10**: Role detection via sp.web.currentUser.groups() — highest applicable role stored in context
@@ -222,7 +222,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | ARCH-04 | Phase 3 | Complete |
 | ARCH-05 | Phase 3 | Complete |
 | ARCH-06 | Phase 3 | Complete |
-| ARCH-07 | Phase 3 | Pending |
+| ARCH-07 | Phase 3 | Complete |
 | ARCH-08 | Phase 3 | Complete |
 | ARCH-09 | Phase 3 | Complete |
 | ARCH-10 | Phase 3 | Complete |
