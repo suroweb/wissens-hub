@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Phase 5 context gathered
-last_updated: "2026-03-16T14:54:12.422Z"
-last_activity: 2026-03-16 — Completed Plan 04-05 Gap Closure (route conflict + dev auth bypass)
+stopped_at: Completed 05-00-PLAN.md
+last_updated: "2026-03-16T15:50:08.324Z"
+last_activity: 2026-03-16 — Completed Plan 05-01 Article Display Foundation
 progress:
   total_phases: 12
   completed_phases: 4
-  total_plans: 12
-  completed_plans: 12
-  percent: 100
+  total_plans: 16
+  completed_plans: 14
+  percent: 88
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-14)
 
 **Core value:** Employees can find, read, and confirm mandatory knowledge articles through a central hub with role-based workflows
-**Current focus:** Phase 4 COMPLETE -- Full CQRS pipeline with 11 Azure Functions endpoints, gap closure done
+**Current focus:** Phase 5 IN PROGRESS -- Dashboard Web Part article display foundation built
 
 ## Current Position
 
-Phase: 4 of 12 (Backend Architecture & API Skeleton) -- PHASE COMPLETE
-Plan: 5 of 5 in current phase -- Plan 05 COMPLETE (gap closure)
-Status: All 5 plans complete -- full CQRS pipeline with 11 endpoints, dev auth bypass enabled
-Last activity: 2026-03-16 — Completed Plan 04-05 Gap Closure (route conflict + dev auth bypass)
+Phase: 5 of 12 (Dashboard Web Part) -- IN PROGRESS
+Plan: 1 of 4 in current phase -- Plan 01 COMPLETE (article display foundation)
+Status: Plan 01 complete -- ArticleCard, ArticleListView, EmptyState, Dashboard orchestrator with data loading
+Last activity: 2026-03-16 — Completed Plan 05-01 Article Display Foundation
 
-Progress: [██████████] 100%
+Progress: [█████████░] 88%
 
 ## Performance Metrics
 
@@ -59,6 +59,8 @@ Progress: [██████████] 100%
 | Phase 04 P03 | 2min | 2 tasks | 30 files |
 | Phase 04 P04 | 2min | 2 tasks | 9 files |
 | Phase 04 P05 | 2min | 2 tasks | 2 files |
+| Phase 05 P00 | 6min | 1 tasks | 6 files |
+| Phase 05 P01 | 5min | 2 tasks | 14 files |
 
 ## Accumulated Context
 
@@ -108,6 +110,10 @@ Recent decisions affecting current work:
 - [Phase 04-05]: Route prefix 'administration' instead of 'admin' to avoid Azure Functions reserved path
 - [Phase 04-05]: Synthetic dev identity includes all 4 WissensHub groups for full endpoint coverage during local testing
 - [Phase 04-05]: local.settings.json stays gitignored; AZURE_FUNCTIONS_ENVIRONMENT=Development is local-only config
+- [Phase 05]: Used @testing-library/react v12 (not v13) because v13+ requires React 18 while SPFx uses React 17
+- [Phase 05]: Used @testing-library/jest-dom v5 (not v6) because v6 requires Jest 28+ while SPFx Heft uses Jest 27
+- [Phase 05-01]: Manual German date formatting instead of Intl.RelativeTimeFormat due to ES5 target in SPFx tsconfig
+- [Phase 05-01]: Fluent UI DetailsList onColumnClick parameters must be optional to match callback type signature
 
 ### Pending Todos
 
@@ -122,6 +128,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-16T14:54:12.412Z
-Stopped at: Phase 5 context gathered
-Resume file: .planning/phases/05-dashboard-web-part/05-CONTEXT.md
+Last session: 2026-03-16T15:47:52Z
+Stopped at: Completed 05-01-PLAN.md
+Resume file: .planning/phases/05-dashboard-web-part/05-01-SUMMARY.md

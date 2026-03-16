@@ -38,16 +38,16 @@
 
 ### Dashboard Web Part
 
-- [ ] **DASH-01**: User can view all published articles in a card grid or compact list view (toggle)
-- [ ] **DASH-02**: User can see unread mandatory articles with reminder badges
-- [ ] **DASH-03**: User can see recently updated articles
-- [ ] **DASH-04**: User can toggle favorites (star/unstar) from the dashboard
-- [ ] **DASH-05**: User can see stats bar showing unread count, favorites count, pending reviews count
-- [ ] **DASH-06**: User can filter articles by category, status, and target group
-- [ ] **DASH-07**: User can search across article titles and page body content via SharePoint Search API
-- [ ] **DASH-08**: User can click an article to navigate to the actual SharePoint page
-- [ ] **DASH-09**: Editor can see "New Article" button on dashboard
-- [ ] **DASH-10**: Reviewer can see "Pending Reviews" section on dashboard
+- [x] **DASH-01**: User can view all published articles in a card grid or compact list view (toggle)
+- [x] **DASH-02**: User can see unread mandatory articles with reminder badges
+- [x] **DASH-03**: User can see recently updated articles
+- [x] **DASH-04**: User can toggle favorites (star/unstar) from the dashboard
+- [x] **DASH-05**: User can see stats bar showing unread count, favorites count, pending reviews count
+- [x] **DASH-06**: User can filter articles by category, status, and target group
+- [x] **DASH-07**: User can search across article titles and page body content via SharePoint Search API
+- [x] **DASH-08**: User can click an article to navigate to the actual SharePoint page
+- [x] **DASH-09**: Editor can see "New Article" button on dashboard
+- [x] **DASH-10**: Reviewer can see "Pending Reviews" section on dashboard
 
 ### Article Sidebar Web Part
 
@@ -98,7 +98,7 @@
 
 ### Reminders
 
-- [ ] **RMND-01**: Dashboard shows badges for unread mandatory articles
+- [x] **RMND-01**: Dashboard shows badges for unread mandatory articles
 - [ ] **RMND-02**: Email notifications sent for overdue mandatory articles (configurable intervals)
 
 ### Azure Functions API
@@ -230,16 +230,16 @@ Deferred to future release. Tracked but not in current roadmap.
 | ROLE-02 | Phase 3 | Complete |
 | ROLE-03 | Phase 3 | Complete |
 | ROLE-04 | Phase 3 | Complete |
-| DASH-01 | Phase 5 | Pending |
-| DASH-02 | Phase 5 | Pending |
-| DASH-03 | Phase 5 | Pending |
-| DASH-04 | Phase 5 | Pending |
-| DASH-05 | Phase 5 | Pending |
-| DASH-06 | Phase 5 | Pending |
-| DASH-07 | Phase 5 | Pending |
-| DASH-08 | Phase 5 | Pending |
-| DASH-09 | Phase 5 | Pending |
-| DASH-10 | Phase 5 | Pending |
+| DASH-01 | Phase 5 | Complete |
+| DASH-02 | Phase 5 | Complete |
+| DASH-03 | Phase 5 | Complete |
+| DASH-04 | Phase 5 | Complete |
+| DASH-05 | Phase 5 | Complete |
+| DASH-06 | Phase 5 | Complete |
+| DASH-07 | Phase 5 | Complete |
+| DASH-08 | Phase 5 | Complete |
+| DASH-09 | Phase 5 | Complete |
+| DASH-10 | Phase 5 | Complete |
 | SIDE-01 | Phase 6 | Pending |
 | SIDE-02 | Phase 6 | Pending |
 | SIDE-03 | Phase 6 | Pending |
@@ -269,7 +269,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | APPR-01 | Phase 7 | Pending |
 | APPR-02 | Phase 7 | Pending |
 | APPR-03 | Phase 7 | Pending |
-| RMND-01 | Phase 5 | Pending |
+| RMND-01 | Phase 5 | Complete |
 | RMND-02 | Phase 9 | Pending |
 | API-01 | Phase 4 | Complete |
 | API-02 | Phase 4 | Complete |
