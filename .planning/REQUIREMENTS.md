@@ -65,7 +65,7 @@
 - [ ] **FREI-01**: Reviewer can see list of articles pending approval with status
 - [ ] **FREI-02**: Reviewer can approve an article with optional comment
 - [ ] **FREI-03**: Reviewer can reject an article with comment
-- [ ] **FREI-04**: Reviewer can see list of articles flagged as outdated
+- [x] **FREI-04**: Reviewer can see list of articles flagged as outdated
 - [ ] **FREI-05**: Reviewer can see content freshness alerts (articles not reviewed in X days)
 - [ ] **FREI-06**: Reviewer can filter by assigned reviewer
 
@@ -92,9 +92,9 @@
 
 ### Approval Workflow
 
-- [ ] **APPR-01**: Article status transitions: Draft → InReview → Published → Archived
-- [ ] **APPR-02**: Approval/rejection action saved to ApprovalHistory with ActionBy, ActionDate, Comment
-- [ ] **APPR-03**: Status change updates both SharePoint page column and Azure SQL ArticleMetadata
+- [x] **APPR-01**: Article status transitions: Draft → InReview → Published → Archived
+- [x] **APPR-02**: Approval/rejection action saved to ApprovalHistory with ActionBy, ActionDate, Comment
+- [x] **APPR-03**: Status change updates both SharePoint page column and Azure SQL ArticleMetadata
 
 ### Reminders
 
@@ -251,7 +251,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | FREI-01 | Phase 7 | Pending |
 | FREI-02 | Phase 7 | Pending |
 | FREI-03 | Phase 7 | Pending |
-| FREI-04 | Phase 7 | Pending |
+| FREI-04 | Phase 7 | Complete |
 | FREI-05 | Phase 7 | Pending |
 | FREI-06 | Phase 7 | Pending |
 | BADGE-01 | Phase 8 | Pending |
@@ -266,9 +266,9 @@ Deferred to future release. Tracked but not in current roadmap.
 | READ-01 | Phase 6 | Complete |
 | READ-02 | Phase 6 | Complete |
 | READ-03 | Phase 6 | Complete |
-| APPR-01 | Phase 7 | Pending |
-| APPR-02 | Phase 7 | Pending |
-| APPR-03 | Phase 7 | Pending |
+| APPR-01 | Phase 7 | Complete |
+| APPR-02 | Phase 7 | Complete |
+| APPR-03 | Phase 7 | Complete |
 | RMND-01 | Phase 5 | Complete |
 | RMND-02 | Phase 9 | Pending |
 | API-01 | Phase 4 | Complete |
