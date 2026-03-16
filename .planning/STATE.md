@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Application layer contracts and interfaces created
-stopped_at: Completed 04-01-PLAN.md
-last_updated: "2026-03-16T08:46:21.575Z"
-last_activity: 2026-03-16 — Completed Plan 04-01 Application layer contracts
+status: CQRS commands and queries with mock handlers complete
+stopped_at: Completed 04-03-PLAN.md
+last_updated: "2026-03-16T08:50:12Z"
+last_activity: 2026-03-16 — Completed Plan 04-03 Commands & Queries
 progress:
   total_phases: 12
   completed_phases: 3
   total_plans: 11
-  completed_plans: 8
-  percent: 73
+  completed_plans: 10
+  percent: 91
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-14)
 
 **Core value:** Employees can find, read, and confirm mandatory knowledge articles through a central hub with role-based workflows
-**Current focus:** Phase 4 in progress -- Application layer contracts complete
+**Current focus:** Phase 4 in progress -- CQRS commands and queries complete
 
 ## Current Position
 
 Phase: 4 of 12 (Backend Architecture & API Skeleton)
-Plan: 1 of 4 in current phase -- Plan 01 COMPLETE
-Status: Application layer contracts and interfaces created
-Last activity: 2026-03-16 — Completed Plan 04-01 Application layer contracts
+Plan: 3 of 4 in current phase -- Plan 03 COMPLETE
+Status: CQRS commands and queries with mock handlers complete
+Last activity: 2026-03-16 — Completed Plan 04-03 Commands & Queries
 
-Progress: [███████░░░] 73%
+Progress: [█████████░] 91%
 
 ## Performance Metrics
 
@@ -55,6 +55,8 @@ Progress: [███████░░░] 73%
 | Phase 03 P02 | 3min | 2 tasks | 22 files |
 | Phase 03 P03 | 5min | 2 tasks | 26 files |
 | Phase 04 P01 | 2min | 3 tasks | 13 files |
+| Phase 04 P02 | 3min | 2 tasks | 9 files |
+| Phase 04 P03 | 2min | 2 tasks | 30 files |
 
 ## Accumulated Context
 
@@ -93,6 +95,9 @@ Recent decisions affecting current work:
 - [Phase 04]: No explicit logging package needed -- ILogger available transitively via MediatR
 - [Phase 04]: Pipeline behavior order: Exception > Logging > Authorization > Validation (outermost to innermost)
 - [Phase 04]: Repository interfaces use domain-specific queries, not generic CRUD; no SaveChangesAsync in repos
+- [Phase 04-03]: Co-located DTOs in command files; queries use separate DTO files
+- [Phase 04-03]: Primary constructor DI injects ICurrentUser in all handlers even when mock doesn't use it
+- [Phase 04-03]: Task.FromResult wrapper for sync mock handlers preserving async IRequestHandler signature
 
 ### Pending Todos
 
@@ -107,6 +112,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-16T08:46:21.572Z
-Stopped at: Completed 04-01-PLAN.md
+Last session: 2026-03-16T08:50:12Z
+Stopped at: Completed 04-03-PLAN.md
 Resume file: None

@@ -103,16 +103,16 @@
 
 ### Azure Functions API
 
-- [ ] **API-01**: GET /api/articles/{pageId}/status — metadata + read status for current user
-- [ ] **API-02**: GET /api/articles/unread — all unread articles for current user
-- [ ] **API-03**: POST /api/articles/{pageId}/read — mark as read
-- [ ] **API-04**: POST /api/articles/{pageId}/flag — flag as outdated
-- [ ] **API-05**: GET /api/articles/{pageId}/readstats — who read, who didn't (reviewer/admin)
-- [ ] **API-06**: POST /api/articles/{pageId}/approve — approve/reject
-- [ ] **API-07**: GET /api/favorites — user's favorites
-- [ ] **API-08**: POST /api/favorites/{pageId} — toggle favorite
-- [ ] **API-09**: GET /api/dashboard/stats — unread count, favorites count, pending reviews count
-- [ ] **API-10**: GET /api/admin/reports — exportable read confirmation reports
+- [x] **API-01**: GET /api/articles/{pageId}/status — metadata + read status for current user
+- [x] **API-02**: GET /api/articles/unread — all unread articles for current user
+- [x] **API-03**: POST /api/articles/{pageId}/read — mark as read
+- [x] **API-04**: POST /api/articles/{pageId}/flag — flag as outdated
+- [x] **API-05**: GET /api/articles/{pageId}/readstats — who read, who didn't (reviewer/admin)
+- [x] **API-06**: POST /api/articles/{pageId}/approve — approve/reject
+- [x] **API-07**: GET /api/favorites — user's favorites
+- [x] **API-08**: POST /api/favorites/{pageId} — toggle favorite
+- [x] **API-09**: GET /api/dashboard/stats — unread count, favorites count, pending reviews count
+- [x] **API-10**: GET /api/admin/reports — exportable read confirmation reports
 
 ### Backend Architecture
 
@@ -271,16 +271,16 @@ Deferred to future release. Tracked but not in current roadmap.
 | APPR-03 | Phase 7 | Pending |
 | RMND-01 | Phase 5 | Pending |
 | RMND-02 | Phase 9 | Pending |
-| API-01 | Phase 4 | Pending |
-| API-02 | Phase 4 | Pending |
-| API-03 | Phase 4 | Pending |
-| API-04 | Phase 4 | Pending |
-| API-05 | Phase 4 | Pending |
-| API-06 | Phase 4 | Pending |
-| API-07 | Phase 4 | Pending |
-| API-08 | Phase 4 | Pending |
-| API-09 | Phase 4 | Pending |
-| API-10 | Phase 4 | Pending |
+| API-01 | Phase 4 | Complete |
+| API-02 | Phase 4 | Complete |
+| API-03 | Phase 4 | Complete |
+| API-04 | Phase 4 | Complete |
+| API-05 | Phase 4 | Complete |
+| API-06 | Phase 4 | Complete |
+| API-07 | Phase 4 | Complete |
+| API-08 | Phase 4 | Complete |
+| API-09 | Phase 4 | Complete |
+| API-10 | Phase 4 | Complete |
 | BACK-01 | Phase 4 | Complete |
 | BACK-02 | Phase 4 | Complete |
 | BACK-03 | Phase 4 | Complete |
