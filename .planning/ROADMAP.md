@@ -123,12 +123,12 @@ Plans:
   3. User can flag an article as outdated with a reason — flag appears in the system for reviewers
   4. Read confirmations are reset when an article is significantly updated, requiring re-confirmation
   5. Dynamic table of contents generates from page headings and scrolls to sections on click
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 06-01: Article Sidebar UI (metadata display, TOC, version history link)
-- [ ] 06-02: Read confirmation flow (mark-as-read, status display, reset on update)
-- [ ] 06-03: Flag and favorite actions with Azure SQL persistence
+- [ ] 06-01-PLAN.md — Sidebar UI foundation: WebPart props, useArticleStatusQuery hook, MetadataSection, TableOfContents, version history link, test stubs
+- [ ] 06-02-PLAN.md — Read confirmation with optimistic mark-as-read, version reset logic, FlagDialog, favorite toggle, ReadStatusSection
+- [ ] 06-03-PLAN.md — Workbench verification checkpoint for all 11 requirements
 
 ### Phase 7: Approval Workflow & Freigabecenter
 **Goal**: Reviewers can manage article lifecycle through a dedicated approval center — approving, rejecting, and monitoring content quality
