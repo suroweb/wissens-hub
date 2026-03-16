@@ -13,8 +13,8 @@ public class ApproveArticleValidator : AbstractValidator<ApproveArticleCommand>
         RuleFor(x => x.Action)
             .NotEmpty()
             .WithMessage("Action is required")
-            .Must(a => a is "Approved" or "Rejected")
-            .WithMessage("Action must be 'Approved' or 'Rejected'");
+            .Must(a => a is "Approved" or "Rejected" or "Submitted" or "Archived" or "Restored")
+            .WithMessage("Action must be 'Approved', 'Rejected', 'Submitted', 'Archived', or 'Restored'");
 
         RuleFor(x => x.Comment)
             .NotEmpty()

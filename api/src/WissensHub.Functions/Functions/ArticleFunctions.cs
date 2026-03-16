@@ -5,6 +5,7 @@ using Microsoft.Azure.Functions.Worker;
 using WissensHub.Application.Commands.FlagArticle;
 using WissensHub.Application.Commands.MarkAsRead;
 using WissensHub.Application.Queries.GetArticleStatus;
+using WissensHub.Application.Queries.GetFlaggedArticles;
 using WissensHub.Application.Queries.GetUnreadArticles;
 
 namespace WissensHub.Functions.Functions;
@@ -59,6 +60,18 @@ public class ArticleFunctions(IMediator mediator)
         {
             var body = await System.Text.Json.JsonSerializer.DeserializeAsync<FlagArticleRequest>(req.Body, new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             var result = await mediator.Send(new FlagArticleCommand(pageId, body?.Reason ?? string.Empty));
+            return new OkObjectResult(result);
+        }
+        catch (Exception ex) { return FunctionHelper.HandleException(ex); }
+    }
+    [Function("GetFlaggedArticles")]
+    public async Task<IActionResult> GetFlaggedArticles(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "articles/flagged")]
+        HttpRequest req)
+    {
+        try
+        {
+            var result = await mediator.Send(new GetFlaggedArticlesQuery());
             return new OkObjectResult(result);
         }
         catch (Exception ex) { return FunctionHelper.HandleException(ex); }

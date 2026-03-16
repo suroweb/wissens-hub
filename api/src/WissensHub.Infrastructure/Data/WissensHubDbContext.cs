@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using WissensHub.Application.Interfaces;
 using WissensHub.Domain.Entities;
 
 namespace WissensHub.Infrastructure.Data;
 
-public class WissensHubDbContext : DbContext
+public class WissensHubDbContext : DbContext, IUnitOfWork
 {
     public WissensHubDbContext(DbContextOptions<WissensHubDbContext> options)
         : base(options) { }
