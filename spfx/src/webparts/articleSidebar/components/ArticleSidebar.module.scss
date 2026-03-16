@@ -1,8 +1,7 @@
 @import '~@fluentui/react/dist/sass/References.scss';
 
 .articleSidebar {
-  overflow: hidden;
-  padding: 1em;
+  padding: 16px;
   color: "[theme:bodyText, default: #323130]";
   color: var(--bodyText);
   &.teams {
@@ -10,25 +9,101 @@
   }
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
+.divider {
+  height: 1px;
+  background-color: "[theme:neutralLight, default: #edebe9]";
+  background-color: var(--neutralLight, #edebe9);
+  margin: 16px 0;
 }
 
-.icon {
-  font-size: 24px;
-}
-
-.userInfo {
+/* Metadata Section */
+.metadataSection { /* container */ }
+.metaRow {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
-  margin-top: 12px;
-  padding: 8px 12px;
-  background-color: "[theme:neutralLighter, default: #f3f2f1]";
-  background-color: var(--neutralLighter, #f3f2f1);
-  border-radius: 4px;
+  margin-bottom: 8px;
   font-size: 13px;
+}
+.metaIcon {
+  font-size: 14px;
+  color: "[theme:themePrimary, default: #0078d4]";
+  color: var(--themePrimary, #0078d4);
+  min-width: 16px;
+  margin-top: 2px;
+}
+.metaLabel {
+  font-weight: 600;
+  min-width: 100px;
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+}
+.metaValue {
+  flex: 1;
+  word-break: break-word;
+}
+.editButton {
+  margin-top: 12px;
+}
+
+/* Table of Contents */
+.tocSection {
+  /* container */
+}
+.tocTitle {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.tocList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tocItem {
+  padding: 4px 8px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 2px;
+  color: "[theme:link, default: #0078d4]";
+  color: var(--link, #0078d4);
+  &:hover {
+    background-color: "[theme:neutralLighter, default: #f3f2f1]";
+    background-color: var(--neutralLighter, #f3f2f1);
+  }
+}
+.tocIndented {
+  padding-left: 24px;
+}
+.tocActive {
+  font-weight: 600;
+  background-color: "[theme:themeLighterAlt, default: #eff6fc]";
+  background-color: var(--themeLighterAlt, #eff6fc);
+  border-left: 2px solid;
+  border-left-color: "[theme:themePrimary, default: #0078d4]";
+  border-left-color: var(--themePrimary, #0078d4);
+}
+
+/* Version History */
+.versionHistory {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+.versionHistoryLink {
+  color: "[theme:link, default: #0078d4]";
+  color: var(--link, #0078d4);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Shimmer */
+.shimmerContainer {
+  padding: 16px 0;
+}
+.shimmerRow {
+  margin-bottom: 12px;
 }
