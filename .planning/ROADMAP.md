@@ -84,14 +84,15 @@ Plans:
   1. All 10 API endpoints exist as Azure Functions triggers and return structured responses (even if stubbed)
   2. MediatR dispatches commands and queries through ValidationBehavior, LoggingBehavior, and ExceptionBehavior pipeline
   3. FluentValidation validates all incoming requests before handler execution
-  4. Repository interfaces and EF Core implementations exist for all four repositories (ReadConfirmation, Favorite, Flag, Approval)
+  4. Repository interfaces and EF Core implementations exist for all six repositories (ReadConfirmation, Favorite, Flag, Approval, ArticleMetadata, Category)
   5. Entra ID bearer token is validated in middleware — unauthenticated requests are rejected with 401
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 04-01: MediatR CQRS setup, pipeline behaviors, and FluentValidation
-- [ ] 04-02: Repository pattern, EF Core entity configurations, and domain entities
-- [ ] 04-03: API endpoint functions with Entra ID bearer token middleware
+- [ ] 04-01-PLAN.md — ApiResponse envelope, pipeline behaviors, ICurrentUser interface, 6 repository interfaces
+- [ ] 04-02-PLAN.md — 6 EF Core repository implementations, CurrentUser service, UserIdentityMiddleware
+- [ ] 04-03-PLAN.md — MediatR commands, queries, handlers, validators, DTOs for all 10 endpoints
+- [ ] 04-04-PLAN.md — Azure Function endpoint classes, DI wiring in Program.cs, solution build verification
 
 ### Phase 5: Dashboard Web Part
 **Goal**: Users can browse, search, and filter knowledge articles from a central dashboard with role-appropriate views
@@ -234,7 +235,7 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 1. Project Scaffolding & Local Dev | 2/2 | Complete | 2026-03-14 |
 | 2. SharePoint Site & Auth Pipeline | 0/2 | Not started | - |
 | 3. Frontend Architecture & Service Layer | 2/3 | In Progress|  |
-| 4. Backend Architecture & API Skeleton | 0/3 | Not started | - |
+| 4. Backend Architecture & API Skeleton | 0/4 | Not started | - |
 | 5. Dashboard Web Part | 0/3 | Not started | - |
 | 6. Article Sidebar & Read Confirmations | 0/3 | Not started | - |
 | 7. Approval Workflow & Freigabecenter | 0/2 | Not started | - |
