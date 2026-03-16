@@ -52,10 +52,10 @@
 ### Article Sidebar Web Part
 
 - [x] **SIDE-01**: User can see article metadata (author, category, version, last updated, status, target groups)
-- [ ] **SIDE-02**: User can mark article as read via button — saves to Azure SQL via API
-- [ ] **SIDE-03**: User can see their read status ("You confirmed this on [date]" or unread badge)
-- [ ] **SIDE-04**: User can flag article as outdated with reason — saves to Azure SQL via API
-- [ ] **SIDE-05**: User can toggle favorite from sidebar
+- [x] **SIDE-02**: User can mark article as read via button — saves to Azure SQL via API
+- [x] **SIDE-03**: User can see their read status ("You confirmed this on [date]" or unread badge)
+- [x] **SIDE-04**: User can flag article as outdated with reason — saves to Azure SQL via API
+- [x] **SIDE-05**: User can toggle favorite from sidebar
 - [x] **SIDE-06**: User can see dynamic table of contents generated from page headings
 - [x] **SIDE-07**: User can access version history link
 - [x] **SIDE-08**: Editor can see "Edit Metadata" button on sidebar
@@ -86,9 +86,9 @@
 
 ### Read Confirmations
 
-- [ ] **READ-01**: Read confirmation saved to Azure SQL with PageId, UserId, UserDisplayName, ReadDate
-- [ ] **READ-02**: Read confirmations reset when an article is significantly updated (forces re-read for compliance)
-- [ ] **READ-03**: Unread count cross-referenced between Site Pages and ReadConfirmations table
+- [x] **READ-01**: Read confirmation saved to Azure SQL with PageId, UserId, UserDisplayName, ReadDate
+- [x] **READ-02**: Read confirmations reset when an article is significantly updated (forces re-read for compliance)
+- [x] **READ-03**: Unread count cross-referenced between Site Pages and ReadConfirmations table
 
 ### Approval Workflow
 
@@ -241,10 +241,10 @@ Deferred to future release. Tracked but not in current roadmap.
 | DASH-09 | Phase 5 | Complete |
 | DASH-10 | Phase 5 | Complete |
 | SIDE-01 | Phase 6 | Complete |
-| SIDE-02 | Phase 6 | Pending |
-| SIDE-03 | Phase 6 | Pending |
-| SIDE-04 | Phase 6 | Pending |
-| SIDE-05 | Phase 6 | Pending |
+| SIDE-02 | Phase 6 | Complete |
+| SIDE-03 | Phase 6 | Complete |
+| SIDE-04 | Phase 6 | Complete |
+| SIDE-05 | Phase 6 | Complete |
 | SIDE-06 | Phase 6 | Complete |
 | SIDE-07 | Phase 6 | Complete |
 | SIDE-08 | Phase 6 | Complete |
@@ -263,9 +263,9 @@ Deferred to future release. Tracked but not in current roadmap.
 | ADMIN-04 | Phase 9 | Pending |
 | ADMIN-05 | Phase 9 | Pending |
 | ADMIN-06 | Phase 9 | Pending |
-| READ-01 | Phase 6 | Pending |
-| READ-02 | Phase 6 | Pending |
-| READ-03 | Phase 6 | Pending |
+| READ-01 | Phase 6 | Complete |
+| READ-02 | Phase 6 | Complete |
+| READ-03 | Phase 6 | Complete |
 | APPR-01 | Phase 7 | Pending |
 | APPR-02 | Phase 7 | Pending |
 | APPR-03 | Phase 7 | Pending |
