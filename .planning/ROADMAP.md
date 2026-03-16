@@ -233,7 +233,7 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 |-------|----------------|--------|-----------|
 | 1. Project Scaffolding & Local Dev | 2/2 | Complete | 2026-03-14 |
 | 2. SharePoint Site & Auth Pipeline | 0/2 | Not started | - |
-| 3. Frontend Architecture & Service Layer | 0/3 | Not started | - |
+| 3. Frontend Architecture & Service Layer | 2/3 | In Progress|  |
 | 4. Backend Architecture & API Skeleton | 0/3 | Not started | - |
 | 5. Dashboard Web Part | 0/3 | Not started | - |
 | 6. Article Sidebar & Read Confirmations | 0/3 | Not started | - |

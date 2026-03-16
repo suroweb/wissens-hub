@@ -20,8 +20,8 @@
 
 - [x] **ARCH-01**: WissensHubContext providing current user info, role, and service container to all web parts
 - [x] **ARCH-02**: Service container with dependency-inverted interfaces (IPageService, IApiClient, IReadConfirmationService, IFavoriteService, IFlagService, IApprovalService)
-- [ ] **ARCH-03**: Production service implementations (SharePointPageService, AzureApiClient, ReadConfirmationService, FavoriteService, FlagService, ApprovalService)
-- [ ] **ARCH-04**: Mock service implementations for testing and local dev
+- [x] **ARCH-03**: Production service implementations (SharePointPageService, AzureApiClient, ReadConfirmationService, FavoriteService, FlagService, ApprovalService)
+- [x] **ARCH-04**: Mock service implementations for testing and local dev
 - [x] **ARCH-05**: Result<T> pattern for all service calls — no thrown exceptions for expected failures
 - [x] **ARCH-06**: Domain models separate from DTOs with mapper layer (dto → domain transformers)
 - [ ] **ARCH-07**: CQRS-lite hooks — separate query hooks (read operations) from command hooks (write operations)
@@ -218,8 +218,8 @@ Deferred to future release. Tracked but not in current roadmap.
 | INFRA-08 | Phase 2 | Complete |
 | ARCH-01 | Phase 3 | Complete |
 | ARCH-02 | Phase 3 | Complete |
-| ARCH-03 | Phase 3 | Pending |
-| ARCH-04 | Phase 3 | Pending |
+| ARCH-03 | Phase 3 | Complete |
+| ARCH-04 | Phase 3 | Complete |
 | ARCH-05 | Phase 3 | Complete |
 | ARCH-06 | Phase 3 | Complete |
 | ARCH-07 | Phase 3 | Pending |
