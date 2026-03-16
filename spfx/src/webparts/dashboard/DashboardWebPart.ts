@@ -139,7 +139,7 @@ export default class DashboardWebPart extends BaseClientSideWebPart<IDashboardWe
     ];
 
     // Show Mock Role dropdown only when in workbench (mock mode)
-    if (this._apiClient === undefined) {
+    if (this.context.isServedFromLocalhost) {
       groups.push({
         groupName: 'Development',
         groupFields: [

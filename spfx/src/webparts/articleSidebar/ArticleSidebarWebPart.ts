@@ -139,7 +139,7 @@ export default class ArticleSidebarWebPart extends BaseClientSideWebPart<IArticl
     ];
 
     // Show Mock Role dropdown only when in workbench (mock mode)
-    if (this._apiClient === undefined) {
+    if (this.context.isServedFromLocalhost) {
       groups.push({
         groupName: 'Development',
         groupFields: [

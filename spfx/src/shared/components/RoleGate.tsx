@@ -19,5 +19,6 @@ export const RoleGate: React.FC<IRoleGateProps> = ({ minimumRole, children, fall
 
   return fallback
     ? React.createElement(React.Fragment, undefined, fallback)
-    : (undefined as unknown as React.ReactElement);
+    // eslint-disable-next-line @rushstack/no-new-null
+    : (null as unknown as React.ReactElement);
 };

@@ -63,7 +63,7 @@ export const WissensHubProvider: React.FC<IWissensHubProviderProps> = ({
 
   React.useEffect(() => {
     const init = async (): Promise<void> => {
-      const isProduction = aadClient !== undefined;
+      const isProduction = !spContext.isServedFromLocalhost && aadClient !== undefined;
 
       let currentUser: ICurrentUser;
       let role: UserRole;
@@ -118,7 +118,8 @@ export const WissensHubProvider: React.FC<IWissensHubProviderProps> = ({
   }, []);
 
   if (contextValue === undefined) {
-    return undefined as unknown as React.ReactElement;
+    // eslint-disable-next-line @rushstack/no-new-null
+    return null as unknown as React.ReactElement;
   }
 
   return React.createElement(
