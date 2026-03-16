@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <ProjectReference Include="..\WissensHub.Application\WissensHub.Application.csproj" />
     <ProjectReference Include="..\WissensHub.Domain\WissensHub.Domain.csproj" />
   </ItemGroup>
 
