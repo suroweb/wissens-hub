@@ -37,6 +37,7 @@ export default class DashboardWebPart extends BaseClientSideWebPart<IDashboardWe
       environmentMessage: this._environmentMessage,
       hasTeamsContext: !!this.context.sdks.microsoftTeams,
       userDisplayName: this.context.pageContext.user.displayName,
+      containerWidth: this.width || 1200,
     });
 
     const element: React.ReactElement = React.createElement(
@@ -69,6 +70,10 @@ export default class DashboardWebPart extends BaseClientSideWebPart<IDashboardWe
   }
 
 
+
+  protected onAfterResize(newWidth: number): void {
+    this.render();
+  }
 
   private _getEnvironmentMessage(): Promise<string> {
     if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook

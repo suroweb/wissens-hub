@@ -4,4 +4,5 @@ export interface IDashboardProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
+  containerWidth: number;
 }
