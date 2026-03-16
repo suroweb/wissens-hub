@@ -105,12 +105,13 @@ Plans:
   3. User can filter articles by category, status, and target group — filters combine correctly
   4. User can see a stats bar showing their unread count, favorites count, and pending reviews count
   5. Unread mandatory articles display reminder badges and appear prominently
-**Plans**: 3 plans
+**Plans**: 4 plans
 
 Plans:
+- [ ] 05-00-PLAN.md — Wave 0: test infrastructure setup and test stub files for all dashboard components
 - [ ] 05-01-PLAN.md — Article card and list view components, utilities, Dashboard rebuild with data loading and article display
-- [ ] 05-02-PLAN.md — StatsBar and FilterBar components, search with debounce, client-side filtering, stats computation
-- [ ] 05-03-PLAN.md — Role-gated Neuer Artikel button, Offen stat visibility, workbench verification checkpoint
+- [ ] 05-02-PLAN.md — StatsBar (with RoleGate for Offen) and FilterBar components, search with debounce, client-side filtering, stats computation
+- [ ] 05-03-PLAN.md — Role-gated Neuer Artikel button, Offen stat verification, workbench verification checkpoint
 
 ### Phase 6: Article Sidebar & Read Confirmations
 **Goal**: Users can interact with individual articles — confirming reads, flagging problems, and managing favorites — with full tracking in Azure SQL
@@ -237,7 +238,7 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 2. SharePoint Site & Auth Pipeline | 0/2 | Not started | - |
 | 3. Frontend Architecture & Service Layer | 2/3 | In Progress|  |
 | 4. Backend Architecture & API Skeleton | 4/5 | UAT gaps | - |
-| 5. Dashboard Web Part | 0/3 | Not started | - |
+| 5. Dashboard Web Part | 0/4 | Not started | - |
 | 6. Article Sidebar & Read Confirmations | 0/3 | Not started | - |
 | 7. Approval Workflow & Freigabecenter | 0/2 | Not started | - |
 | 8. Unread Badge Application Customizer | 0/1 | Not started | - |
