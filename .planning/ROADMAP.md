@@ -105,12 +105,12 @@ Plans:
   3. User can filter articles by category, status, and target group — filters combine correctly
   4. User can see a stats bar showing their unread count, favorites count, and pending reviews count
   5. Unread mandatory articles display reminder badges and appear prominently
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 05-01: Article card and list view components with SharePoint page data integration
-- [ ] 05-02: Search (SharePoint Search API), filters, and stats bar
-- [ ] 05-03: Role-specific sections (Editor new article, Reviewer pending reviews) and navigation
+- [ ] 05-01-PLAN.md — Article card and list view components, utilities, Dashboard rebuild with data loading and article display
+- [ ] 05-02-PLAN.md — StatsBar and FilterBar components, search with debounce, client-side filtering, stats computation
+- [ ] 05-03-PLAN.md — Role-gated Neuer Artikel button, Offen stat visibility, workbench verification checkpoint
 
 ### Phase 6: Article Sidebar & Read Confirmations
 **Goal**: Users can interact with individual articles — confirming reads, flagging problems, and managing favorites — with full tracking in Azure SQL
