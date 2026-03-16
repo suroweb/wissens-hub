@@ -3,9 +3,11 @@ import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { AadHttpClient } from '@microsoft/sp-http';
 import { UserRole, ROLE_HIERARCHY } from '../models/domain/types';
 import { ICurrentUser } from '../models/domain/IUser';
-import { Result, fail } from '../models/Result';
 import { IServiceContainer } from './ServiceContainer';
 import { getSP } from './pnpSetup';
+import { createProductionServices } from '../services';
+import { createMockServices } from '../services/__mocks__';
+import { MOCK_CURRENT_USER } from '../services/__mocks__/mockData';
 
 export interface IWissensHubContext {
   services: IServiceContainer;
@@ -40,38 +42,6 @@ function resolveRole(groupTitles: string[]): UserRole {
   return highest;
 }
 
-function createPlaceholderServices(): IServiceContainer {
-  const notImplemented = (): Promise<Result<never>> =>
-    Promise.resolve(fail({ code: 'UNKNOWN', message: 'Service not yet implemented' }));
-  return {
-    pageService: {
-      getPublishedArticles: notImplemented,
-      getArticleById: notImplemented,
-    },
-    apiClient: {
-      get: notImplemented,
-      post: notImplemented,
-    },
-    readConfirmationService: {
-      getReadStatus: notImplemented,
-      markAsRead: notImplemented,
-      getReadStats: notImplemented,
-    },
-    favoriteService: {
-      getFavorites: notImplemented,
-      toggleFavorite: notImplemented,
-    },
-    flagService: {
-      flagArticle: notImplemented,
-    },
-    approvalService: {
-      getPendingApprovals: notImplemented,
-      approveArticle: notImplemented,
-      rejectArticle: notImplemented,
-    },
-  };
-}
-
 const WissensHubContext = React.createContext<IWissensHubContext | undefined>(undefined);
 
 export function useWissensHub(): IWissensHubContext {
@@ -85,7 +55,7 @@ export function useWissensHub(): IWissensHubContext {
 export const WissensHubProvider: React.FC<IWissensHubProviderProps> = ({
   spContext,
   aadClient,
-  apiBaseUrl: _apiBaseUrl,
+  apiBaseUrl,
   mockRole,
   children,
 }) => {
@@ -97,6 +67,7 @@ export const WissensHubProvider: React.FC<IWissensHubProviderProps> = ({
 
       let currentUser: ICurrentUser;
       let role: UserRole;
+      let services: IServiceContainer;
 
       if (isProduction) {
         const sp = getSP(spContext);
@@ -125,16 +96,13 @@ export const WissensHubProvider: React.FC<IWissensHubProviderProps> = ({
           console.warn('Role detection failed, defaulting to reader:', e);
           role = 'reader';
         }
-      } else {
-        currentUser = {
-          displayName: spContext.pageContext.user.displayName,
-          email: spContext.pageContext.user.email,
-          loginName: spContext.pageContext.user.loginName,
-        };
-        role = mockRole ?? 'reader';
-      }
 
-      const services = createPlaceholderServices();
+        services = createProductionServices(sp, aadClient, apiBaseUrl!);
+      } else {
+        currentUser = MOCK_CURRENT_USER;
+        role = mockRole ?? 'reader';
+        services = createMockServices();
+      }
 
       setContextValue({
         services,
