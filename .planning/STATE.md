@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 04-04-PLAN.md (Phase 04 complete)
-last_updated: "2026-03-16T09:02:51.925Z"
-last_activity: 2026-03-16 — Completed Plan 04-04 Azure Functions Endpoints & DI Wiring
+stopped_at: Completed 04-05-PLAN.md (Phase 04 gap closure complete)
+last_updated: "2026-03-16T13:42:26Z"
+last_activity: 2026-03-16 — Completed Plan 04-05 Gap Closure (route conflict + dev auth bypass)
 progress:
   total_phases: 12
   completed_phases: 4
-  total_plans: 11
-  completed_plans: 11
+  total_plans: 12
+  completed_plans: 12
   percent: 100
 ---
 
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-14)
 
 **Core value:** Employees can find, read, and confirm mandatory knowledge articles through a central hub with role-based workflows
-**Current focus:** Phase 4 COMPLETE -- Full CQRS pipeline with 10 Azure Functions endpoints
+**Current focus:** Phase 4 COMPLETE -- Full CQRS pipeline with 11 Azure Functions endpoints, gap closure done
 
 ## Current Position
 
 Phase: 4 of 12 (Backend Architecture & API Skeleton) -- PHASE COMPLETE
-Plan: 4 of 4 in current phase -- Plan 04 COMPLETE
-Status: All 4 plans complete -- full CQRS pipeline with 10 endpoints
-Last activity: 2026-03-16 — Completed Plan 04-04 Azure Functions Endpoints & DI Wiring
+Plan: 5 of 5 in current phase -- Plan 05 COMPLETE (gap closure)
+Status: All 5 plans complete -- full CQRS pipeline with 11 endpoints, dev auth bypass enabled
+Last activity: 2026-03-16 — Completed Plan 04-05 Gap Closure (route conflict + dev auth bypass)
 
 Progress: [██████████] 100%
 
@@ -58,6 +58,7 @@ Progress: [██████████] 100%
 | Phase 04 P02 | 3min | 2 tasks | 9 files |
 | Phase 04 P03 | 2min | 2 tasks | 30 files |
 | Phase 04 P04 | 2min | 2 tasks | 9 files |
+| Phase 04 P05 | 2min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -104,6 +105,9 @@ Recent decisions affecting current work:
 - [Phase 04-04]: Shared FunctionHelper.cs for exception-to-HTTP mapping instead of per-class private methods
 - [Phase 04-04]: MediatR behaviors registered outermost-to-innermost: Exception > Logging > Auth > Validation
 - [Phase 04-04]: UserIdentityMiddleware registered after AuthenticationMiddleware in Program.cs pipeline
+- [Phase 04-05]: Route prefix 'administration' instead of 'admin' to avoid Azure Functions reserved path
+- [Phase 04-05]: Synthetic dev identity includes all 4 WissensHub groups for full endpoint coverage during local testing
+- [Phase 04-05]: local.settings.json stays gitignored; AZURE_FUNCTIONS_ENVIRONMENT=Development is local-only config
 
 ### Pending Todos
 
@@ -118,6 +122,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-16T08:56:19Z
-Stopped at: Completed 04-04-PLAN.md (Phase 04 complete)
+Last session: 2026-03-16T13:42:26Z
+Stopped at: Completed 04-05-PLAN.md (Phase 04 gap closure complete)
 Resume file: None
