@@ -1,9 +1,9 @@
 ---
-status: complete
+status: diagnosed
 phase: 04-backend-architecture-api-skeleton
 source: [04-01-SUMMARY.md, 04-02-SUMMARY.md, 04-03-SUMMARY.md, 04-04-SUMMARY.md]
 started: 2026-03-16T09:00:00Z
-updated: 2026-03-16T13:18:00Z
+updated: 2026-03-16T13:20:00Z
 ---
 
 ## Current Test
@@ -73,9 +73,12 @@ skipped: 6
   reason: "User reported: GetAdminReports function fails to register: 'The specified route conflicts with one or more built in routes.' Only 10/11 functions loaded. Storage health check also reports unhealthy (timeout)."
   severity: major
   test: 1
-  root_cause: ""
-  artifacts: []
-  missing: []
+  root_cause: "AdminFunctions.cs line 13 uses Route = \"admin/reports\". Azure Functions reserves the /admin prefix for built-in management APIs, causing a route collision."
+  artifacts:
+    - path: "api/src/WissensHub.Functions/Functions/AdminFunctions.cs"
+      issue: "Route = \"admin/reports\" collides with reserved /admin prefix"
+  missing:
+    - "Change route to \"administration/reports\" or \"reports/admin\" to avoid reserved prefix"
   debug_session: ""
 
 - truth: "API endpoints return mock data when called locally"
@@ -83,7 +86,14 @@ skipped: 6
   reason: "User reported: Auth middleware blocks all unauthenticated requests with 'Missing or invalid Authorization header.' No way to test endpoints locally without a valid Entra ID token."
   severity: major
   test: 3
-  root_cause: ""
-  artifacts: []
-  missing: []
-  debug_session: ""
+  root_cause: "AuthenticationMiddleware.cs lines 65-71 unconditionally reject requests without Bearer token. No IHostEnvironment check for Development mode. local.settings.json missing AZURE_FUNCTIONS_ENVIRONMENT setting."
+  artifacts:
+    - path: "api/src/WissensHub.Functions/Middleware/AuthenticationMiddleware.cs"
+      issue: "Hard 401 at lines 65-71 with no dev bypass"
+    - path: "api/src/WissensHub.Functions/local.settings.json"
+      issue: "Missing AZURE_FUNCTIONS_ENVIRONMENT=Development"
+  missing:
+    - "Add IHostEnvironment injection to AuthenticationMiddleware"
+    - "Add dev bypass: if IsDevelopment(), seed synthetic ClaimsPrincipal and skip token validation"
+    - "Add AZURE_FUNCTIONS_ENVIRONMENT=Development to local.settings.json"
+  debug_session: ".planning/debug/auth-middleware-blocks-local.md"
