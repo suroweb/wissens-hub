@@ -18,23 +18,23 @@
 
 ### Shared Architecture
 
-- [ ] **ARCH-01**: WissensHubContext providing current user info, role, and service container to all web parts
-- [ ] **ARCH-02**: Service container with dependency-inverted interfaces (IPageService, IApiClient, IReadConfirmationService, IFavoriteService, IFlagService, IApprovalService)
+- [x] **ARCH-01**: WissensHubContext providing current user info, role, and service container to all web parts
+- [x] **ARCH-02**: Service container with dependency-inverted interfaces (IPageService, IApiClient, IReadConfirmationService, IFavoriteService, IFlagService, IApprovalService)
 - [ ] **ARCH-03**: Production service implementations (SharePointPageService, AzureApiClient, ReadConfirmationService, FavoriteService, FlagService, ApprovalService)
 - [ ] **ARCH-04**: Mock service implementations for testing and local dev
-- [ ] **ARCH-05**: Result<T> pattern for all service calls — no thrown exceptions for expected failures
-- [ ] **ARCH-06**: Domain models separate from DTOs with mapper layer (dto → domain transformers)
+- [x] **ARCH-05**: Result<T> pattern for all service calls — no thrown exceptions for expected failures
+- [x] **ARCH-06**: Domain models separate from DTOs with mapper layer (dto → domain transformers)
 - [ ] **ARCH-07**: CQRS-lite hooks — separate query hooks (read operations) from command hooks (write operations)
-- [ ] **ARCH-08**: QueryState<T> and CommandState types for consistent async state handling
-- [ ] **ARCH-09**: RoleGate wrapper component for role-based UI visibility
-- [ ] **ARCH-10**: Role detection via sp.web.currentUser.groups() — highest applicable role stored in context
+- [x] **ARCH-08**: QueryState<T> and CommandState types for consistent async state handling
+- [x] **ARCH-09**: RoleGate wrapper component for role-based UI visibility
+- [x] **ARCH-10**: Role detection via sp.web.currentUser.groups() — highest applicable role stored in context
 
 ### Roles & Permissions
 
-- [ ] **ROLE-01**: Reader can browse dashboard, read articles, mark as read, flag outdated, manage favorites
-- [ ] **ROLE-02**: Editor can do everything Reader can + create/edit pages, set metadata, assign target groups, submit for review
-- [ ] **ROLE-03**: Reviewer can do everything Reader can + approve/reject articles, view read confirmation reports
-- [ ] **ROLE-04**: Admin can do everything above + access admin panel, configure categories/target groups/reminders, export reports
+- [x] **ROLE-01**: Reader can browse dashboard, read articles, mark as read, flag outdated, manage favorites
+- [x] **ROLE-02**: Editor can do everything Reader can + create/edit pages, set metadata, assign target groups, submit for review
+- [x] **ROLE-03**: Reviewer can do everything Reader can + approve/reject articles, view read confirmation reports
+- [x] **ROLE-04**: Admin can do everything above + access admin panel, configure categories/target groups/reminders, export reports
 
 ### Dashboard Web Part
 
@@ -216,20 +216,20 @@ Deferred to future release. Tracked but not in current roadmap.
 | INFRA-06 | Phase 2 | Pending |
 | INFRA-07 | Phase 2 | Complete |
 | INFRA-08 | Phase 2 | Complete |
-| ARCH-01 | Phase 3 | Pending |
-| ARCH-02 | Phase 3 | Pending |
+| ARCH-01 | Phase 3 | Complete |
+| ARCH-02 | Phase 3 | Complete |
 | ARCH-03 | Phase 3 | Pending |
 | ARCH-04 | Phase 3 | Pending |
-| ARCH-05 | Phase 3 | Pending |
-| ARCH-06 | Phase 3 | Pending |
+| ARCH-05 | Phase 3 | Complete |
+| ARCH-06 | Phase 3 | Complete |
 | ARCH-07 | Phase 3 | Pending |
-| ARCH-08 | Phase 3 | Pending |
-| ARCH-09 | Phase 3 | Pending |
-| ARCH-10 | Phase 3 | Pending |
-| ROLE-01 | Phase 3 | Pending |
-| ROLE-02 | Phase 3 | Pending |
-| ROLE-03 | Phase 3 | Pending |
-| ROLE-04 | Phase 3 | Pending |
+| ARCH-08 | Phase 3 | Complete |
+| ARCH-09 | Phase 3 | Complete |
+| ARCH-10 | Phase 3 | Complete |
+| ROLE-01 | Phase 3 | Complete |
+| ROLE-02 | Phase 3 | Complete |
+| ROLE-03 | Phase 3 | Complete |
+| ROLE-04 | Phase 3 | Complete |
 | DASH-01 | Phase 5 | Pending |
 | DASH-02 | Phase 5 | Pending |
 | DASH-03 | Phase 5 | Pending |
