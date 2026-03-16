@@ -51,14 +51,14 @@
 
 ### Article Sidebar Web Part
 
-- [ ] **SIDE-01**: User can see article metadata (author, category, version, last updated, status, target groups)
+- [x] **SIDE-01**: User can see article metadata (author, category, version, last updated, status, target groups)
 - [ ] **SIDE-02**: User can mark article as read via button — saves to Azure SQL via API
 - [ ] **SIDE-03**: User can see their read status ("You confirmed this on [date]" or unread badge)
 - [ ] **SIDE-04**: User can flag article as outdated with reason — saves to Azure SQL via API
 - [ ] **SIDE-05**: User can toggle favorite from sidebar
-- [ ] **SIDE-06**: User can see dynamic table of contents generated from page headings
-- [ ] **SIDE-07**: User can access version history link
-- [ ] **SIDE-08**: Editor can see "Edit Metadata" button on sidebar
+- [x] **SIDE-06**: User can see dynamic table of contents generated from page headings
+- [x] **SIDE-07**: User can access version history link
+- [x] **SIDE-08**: Editor can see "Edit Metadata" button on sidebar
 
 ### Freigabecenter Web Part
 
@@ -240,14 +240,14 @@ Deferred to future release. Tracked but not in current roadmap.
 | DASH-08 | Phase 5 | Complete |
 | DASH-09 | Phase 5 | Complete |
 | DASH-10 | Phase 5 | Complete |
-| SIDE-01 | Phase 6 | Pending |
+| SIDE-01 | Phase 6 | Complete |
 | SIDE-02 | Phase 6 | Pending |
 | SIDE-03 | Phase 6 | Pending |
 | SIDE-04 | Phase 6 | Pending |
 | SIDE-05 | Phase 6 | Pending |
-| SIDE-06 | Phase 6 | Pending |
-| SIDE-07 | Phase 6 | Pending |
-| SIDE-08 | Phase 6 | Pending |
+| SIDE-06 | Phase 6 | Complete |
+| SIDE-07 | Phase 6 | Complete |
+| SIDE-08 | Phase 6 | Complete |
 | FREI-01 | Phase 7 | Pending |
 | FREI-02 | Phase 7 | Pending |
 | FREI-03 | Phase 7 | Pending |
