@@ -15,7 +15,7 @@ public class ApprovalFunctions(IMediator mediator)
     {
         try
         {
-            var body = await System.Text.Json.JsonSerializer.DeserializeAsync<ApproveArticleRequest>(req.Body);
+            var body = await System.Text.Json.JsonSerializer.DeserializeAsync<ApproveArticleRequest>(req.Body, new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             var result = await mediator.Send(new ApproveArticleCommand(
                 pageId, body?.Action ?? string.Empty, body?.Comment));
             return new OkObjectResult(result);

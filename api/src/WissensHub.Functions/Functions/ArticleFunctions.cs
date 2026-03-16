@@ -57,7 +57,7 @@ public class ArticleFunctions(IMediator mediator)
     {
         try
         {
-            var body = await System.Text.Json.JsonSerializer.DeserializeAsync<FlagArticleRequest>(req.Body);
+            var body = await System.Text.Json.JsonSerializer.DeserializeAsync<FlagArticleRequest>(req.Body, new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             var result = await mediator.Send(new FlagArticleCommand(pageId, body?.Reason ?? string.Empty));
             return new OkObjectResult(result);
         }
