@@ -32,3 +32,164 @@
   border-radius: 4px;
   font-size: 13px;
 }
+
+// Card grid
+.cardGrid {
+  display: grid;
+  gap: 16px;
+  &.columns3 { grid-template-columns: repeat(3, 1fr); }
+  &.columns2 { grid-template-columns: repeat(2, 1fr); }
+  &.columns1 { grid-template-columns: 1fr; }
+}
+
+// Article card
+.card {
+  background: "[theme:white, default: #ffffff]";
+  background: var(--white, #ffffff);
+  border: 1px solid "[theme:neutralLight, default: #edebe9]";
+  border: 1px solid var(--neutralLight, #edebe9);
+  border-radius: 4px;
+  padding: 16px;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+  position: relative;
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  }
+  &.unread {
+    border-left: 3px solid "[theme:themePrimary, default: #0078d4]";
+    border-left: 3px solid var(--themePrimary, #0078d4);
+  }
+}
+
+.categoryBadge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.unreadDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: "[theme:themePrimary, default: #0078d4]";
+  background-color: var(--themePrimary, #0078d4);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.cardMeta {
+  font-size: 13px;
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+  margin-bottom: 8px;
+}
+
+.cardBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.favoriteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 16px;
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+  &:hover {
+    color: "[theme:themePrimary, default: #0078d4]";
+    color: var(--themePrimary, #0078d4);
+  }
+  &.favorited {
+    color: #ffc83d;
+  }
+}
+
+.mandatoryBadge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  background-color: #797775;
+  color: #ffffff;
+}
+
+// View toggle
+.viewToggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+// Empty state
+.emptyState {
+  text-align: center;
+  padding: 48px 16px;
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+  i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: block;
+  }
+}
+
+.emptyStateLink {
+  color: "[theme:themePrimary, default: #0078d4]";
+  color: var(--themePrimary, #0078d4);
+  cursor: pointer;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 14px;
+}
+
+// Loading state
+.shimmerGrid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.shimmerCard {
+  padding: 16px;
+  border: 1px solid "[theme:neutralLight, default: #edebe9]";
+  border: 1px solid var(--neutralLight, #edebe9);
+  border-radius: 4px;
+}
+
+// Layout sections (for later plans to use)
+.dashboardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+// List view overrides
+.listView {
+  :global(.ms-DetailsList) {
+    .ms-DetailsRow {
+      cursor: pointer;
+    }
+  }
+}
