@@ -4,9 +4,11 @@ import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
 import { Shimmer, ShimmerElementType } from '@fluentui/react/lib/Shimmer';
 import styles from './ArticleSidebar.module.scss';
 import type { IArticleSidebarProps } from './IArticleSidebarProps';
-import { useArticleStatusQuery } from '../../../shared/hooks';
+import { useArticleStatusQuery, useFavoritesQuery } from '../../../shared/hooks';
 import { useWissensHub } from '../../../shared/context';
 import { MetadataSection } from './MetadataSection';
+import { ReadStatusSection } from './ReadStatusSection';
+import { FlagDialog } from './FlagDialog';
 import { TableOfContents } from './TableOfContents';
 
 const shimmerRows: React.ReactElement[] = [];
@@ -40,6 +42,9 @@ const ArticleSidebar: React.FunctionComponent<IArticleSidebarProps> = ({
 }) => {
   const { isLoading } = useWissensHub();
   const articleStatus = useArticleStatusQuery(pageId);
+  const favoritesQuery = useFavoritesQuery();
+  const [isFlagDialogOpen, setIsFlagDialogOpen] = React.useState<boolean>(false);
+  const [localFlagDate, setLocalFlagDate] = React.useState<Date | undefined>(undefined);
 
   if (isLoading) {
     // eslint-disable-next-line @rushstack/no-new-null
@@ -58,7 +63,11 @@ const ArticleSidebar: React.FunctionComponent<IArticleSidebarProps> = ({
     );
   }
 
-  const { article, contentVersion } = articleStatus.state.data;
+  const { article, readConfirmation, contentVersion } = articleStatus.state.data;
+
+  const isFavorited = favoritesQuery.state.status === 'success'
+    ? favoritesQuery.state.data.findIndex(f => f.pageId === pageId) >= 0
+    : false;
 
   const sidebarClassName = hasTeamsContext
     ? styles.articleSidebar + ' ' + styles.teams
@@ -74,7 +83,25 @@ const ArticleSidebar: React.FunctionComponent<IArticleSidebarProps> = ({
       siteUrl: siteUrl,
     }),
     React.createElement('div', { className: styles.divider }),
-    // ReadStatusSection will be added in Plan 02
+    React.createElement(ReadStatusSection, {
+      pageId: pageId,
+      isMandatory: article ? article.isMandatory : false,
+      readConfirmation: readConfirmation,
+      contentVersion: contentVersion,
+      isFavorited: isFavorited,
+      userFlagDate: localFlagDate,
+      onFlagClick: () => setIsFlagDialogOpen(true),
+      onReadStatusChange: () => articleStatus.refetch(),
+    }),
+    React.createElement(FlagDialog, {
+      isOpen: isFlagDialogOpen,
+      pageId: pageId,
+      onDismiss: () => setIsFlagDialogOpen(false),
+      onFlagSubmitted: (flagDate: Date) => {
+        setLocalFlagDate(flagDate);
+        setIsFlagDialogOpen(false);
+      },
+    }),
     React.createElement('div', { className: styles.divider }),
     React.createElement(TableOfContents, undefined),
     React.createElement('div', { className: styles.divider }),
