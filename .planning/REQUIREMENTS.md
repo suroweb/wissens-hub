@@ -116,12 +116,12 @@
 
 ### Backend Architecture
 
-- [ ] **BACK-01**: MediatR CQRS pattern — commands and queries separated with handlers
-- [ ] **BACK-02**: FluentValidation for request validation
-- [ ] **BACK-03**: MediatR pipeline behaviors: ValidationBehavior, LoggingBehavior, ExceptionBehavior
-- [ ] **BACK-04**: Repository pattern (IReadConfirmationRepository, IFavoriteRepository, IFlagRepository, IApprovalRepository)
-- [ ] **BACK-05**: EF Core entity configurations for all tables
-- [ ] **BACK-06**: Entra ID bearer token authentication on all endpoints
+- [x] **BACK-01**: MediatR CQRS pattern — commands and queries separated with handlers
+- [x] **BACK-02**: FluentValidation for request validation
+- [x] **BACK-03**: MediatR pipeline behaviors: ValidationBehavior, LoggingBehavior, ExceptionBehavior
+- [x] **BACK-04**: Repository pattern (IReadConfirmationRepository, IFavoriteRepository, IFlagRepository, IApprovalRepository)
+- [x] **BACK-05**: EF Core entity configurations for all tables
+- [x] **BACK-06**: Entra ID bearer token authentication on all endpoints
 
 ### Caching
 
@@ -281,12 +281,12 @@ Deferred to future release. Tracked but not in current roadmap.
 | API-08 | Phase 4 | Pending |
 | API-09 | Phase 4 | Pending |
 | API-10 | Phase 4 | Pending |
-| BACK-01 | Phase 4 | Pending |
-| BACK-02 | Phase 4 | Pending |
-| BACK-03 | Phase 4 | Pending |
-| BACK-04 | Phase 4 | Pending |
-| BACK-05 | Phase 4 | Pending |
-| BACK-06 | Phase 4 | Pending |
+| BACK-01 | Phase 4 | Complete |
+| BACK-02 | Phase 4 | Complete |
+| BACK-03 | Phase 4 | Complete |
+| BACK-04 | Phase 4 | Complete |
+| BACK-05 | Phase 4 | Complete |
+| BACK-06 | Phase 4 | Complete |
 | CACH-01 | Phase 10 | Pending |
 | CACH-02 | Phase 10 | Pending |
 | CACH-03 | Phase 10 | Pending |
