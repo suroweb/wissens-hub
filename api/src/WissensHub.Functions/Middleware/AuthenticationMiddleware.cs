@@ -3,6 +3,7 @@ using System.Security.Claims;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker.Middleware;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.JsonWebTokens;
@@ -23,10 +24,14 @@ internal sealed class AuthenticationMiddleware : IFunctionsWorkerMiddleware
     private static readonly object _lock = new();
 
     private readonly MicrosoftIdentityOptions _identityOptions;
+    private readonly IHostEnvironment _environment;
 
-    public AuthenticationMiddleware(IOptions<MicrosoftIdentityOptions> identityOptions)
+    public AuthenticationMiddleware(
+        IOptions<MicrosoftIdentityOptions> identityOptions,
+        IHostEnvironment environment)
     {
         _identityOptions = identityOptions.Value;
+        _environment = environment;
     }
 
     public async Task Invoke(FunctionContext context, FunctionExecutionDelegate next)
@@ -51,6 +56,26 @@ internal sealed class AuthenticationMiddleware : IFunctionsWorkerMiddleware
         var httpReqData = await context.GetHttpRequestDataAsync();
         if (httpReqData is null)
         {
+            await next(context);
+            return;
+        }
+
+        // In Development mode, skip token validation and seed a synthetic identity
+        // so endpoints can be tested locally via curl without Entra ID tokens.
+        if (_environment.IsDevelopment())
+        {
+            var devClaims = new ClaimsIdentity(new[]
+            {
+                new Claim("oid", "00000000-0000-0000-0000-000000000001"),
+                new Claim("name", "Dev User"),
+                new Claim("preferred_username", "dev@localhost"),
+                new Claim("groups", "WissensHub Members"),
+                new Claim("groups", "WissensHub Editors"),
+                new Claim("groups", "WissensHub Reviewers"),
+                new Claim("groups", "WissensHub Owners"),
+            }, "Development");
+
+            context.Items["User"] = new ClaimsPrincipal(devClaims);
             await next(context);
             return;
         }
