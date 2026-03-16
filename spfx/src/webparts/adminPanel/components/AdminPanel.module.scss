@@ -20,3 +20,15 @@
 .icon {
   font-size: 24px;
 }
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 8px 12px;
+  background-color: "[theme:neutralLighter, default: #f3f2f1]";
+  background-color: var(--neutralLighter, #f3f2f1);
+  border-radius: 4px;
+  font-size: 13px;
+}

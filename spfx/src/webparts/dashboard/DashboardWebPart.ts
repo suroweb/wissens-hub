@@ -3,7 +3,9 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  type IPropertyPaneGroup,
+  PropertyPaneTextField,
+  PropertyPaneDropdown
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -12,9 +14,14 @@ import { AadHttpClient } from '@microsoft/sp-http';
 import * as strings from 'DashboardWebPartStrings';
 import Dashboard from './components/Dashboard';
 import { IDashboardProps } from './components/IDashboardProps';
+import { WissensHubProvider } from '../../shared/context';
+import { getSP } from '../../shared/context/pnpSetup';
+import { UserRole } from '../../shared/models/domain/types';
 
 export interface IDashboardWebPartProps {
   description: string;
+  apiBaseUrl: string;
+  mockRole: UserRole;
 }
 
 export default class DashboardWebPart extends BaseClientSideWebPart<IDashboardWebPartProps> {
@@ -24,17 +31,22 @@ export default class DashboardWebPart extends BaseClientSideWebPart<IDashboardWe
   private _apiClient: AadHttpClient | undefined;
 
   public render(): void {
-    const element: React.ReactElement<IDashboardProps> = React.createElement(
-      Dashboard,
+    const child: React.ReactElement<IDashboardProps> = React.createElement(Dashboard, {
+      description: this.properties.description,
+      isDarkTheme: this._isDarkTheme,
+      environmentMessage: this._environmentMessage,
+      hasTeamsContext: !!this.context.sdks.microsoftTeams,
+      userDisplayName: this.context.pageContext.user.displayName,
+    });
+
+    const element: React.ReactElement = React.createElement(
+      WissensHubProvider,
       {
-        description: this.properties.description,
-        isDarkTheme: this._isDarkTheme,
-        environmentMessage: this._environmentMessage,
-        hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName,
-        httpClient: this._apiClient,
-        // TODO: Replace placeholder with actual Azure Functions URL after deployment
-        apiBaseUrl: 'https://{function-app-placeholder}.azurewebsites.net'
+        spContext: this.context,
+        aadClient: this._apiClient,
+        apiBaseUrl: this.properties.apiBaseUrl || 'https://{function-app-placeholder}.azurewebsites.net',
+        mockRole: this.properties.mockRole as UserRole,
+        children: child,
       }
     );
 
@@ -45,13 +57,14 @@ export default class DashboardWebPart extends BaseClientSideWebPart<IDashboardWe
     await super.onInit();
     this._environmentMessage = await this._getEnvironmentMessage();
 
+    // Initialize PnPjs singleton
+    getSP(this.context);
+
+    // Try AadHttpClient (fails gracefully in workbench)
     try {
-      // The resource URI must match the Entra ID app's Application ID URI.
-      // TODO: Replace {client-id-placeholder} with the actual client ID from
-      // scripts/config.json after running the provisioning script.
       this._apiClient = await this.context.aadHttpClientFactory.getClient('api://{client-id-placeholder}');
     } catch (error) {
-      console.warn('AadHttpClient not available (expected in workbench):', error);
+      console.warn('AadHttpClient not available (workbench mode):', error);
     }
   }
 
@@ -111,22 +124,46 @@ export default class DashboardWebPart extends BaseClientSideWebPart<IDashboardWe
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    const groups: IPropertyPaneGroup[] = [
+      {
+        groupName: strings.BasicGroupName,
+        groupFields: [
+          PropertyPaneTextField('description', {
+            label: strings.DescriptionFieldLabel
+          }),
+          PropertyPaneTextField('apiBaseUrl', {
+            label: 'API Base URL'
+          })
+        ]
+      }
+    ];
+
+    // Show Mock Role dropdown only when in workbench (mock mode)
+    if (this._apiClient === undefined) {
+      groups.push({
+        groupName: 'Development',
+        groupFields: [
+          PropertyPaneDropdown('mockRole', {
+            label: 'Mock Role',
+            options: [
+              { key: 'reader', text: 'Reader' },
+              { key: 'editor', text: 'Editor' },
+              { key: 'reviewer', text: 'Reviewer' },
+              { key: 'admin', text: 'Admin' }
+            ],
+            selectedKey: this.properties.mockRole || 'reader'
+          })
+        ]
+      });
+    }
+
     return {
       pages: [
         {
           header: {
             description: strings.PropertyPaneDescription
           },
-          groups: [
-            {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
+          groups
         }
       ]
     };

@@ -3,43 +3,69 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  type IPropertyPaneGroup,
+  PropertyPaneTextField,
+  PropertyPaneDropdown
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
+import { AadHttpClient } from '@microsoft/sp-http';
 
 import * as strings from 'FreigabecenterWebPartStrings';
 import Freigabecenter from './components/Freigabecenter';
 import { IFreigabecenterProps } from './components/IFreigabecenterProps';
+import { WissensHubProvider } from '../../shared/context';
+import { getSP } from '../../shared/context/pnpSetup';
+import { UserRole } from '../../shared/models/domain/types';
 
 export interface IFreigabecenterWebPartProps {
   description: string;
+  apiBaseUrl: string;
+  mockRole: UserRole;
 }
 
 export default class FreigabecenterWebPart extends BaseClientSideWebPart<IFreigabecenterWebPartProps> {
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
+  private _apiClient: AadHttpClient | undefined;
 
   public render(): void {
-    const element: React.ReactElement<IFreigabecenterProps> = React.createElement(
-      Freigabecenter,
+    const child: React.ReactElement<IFreigabecenterProps> = React.createElement(Freigabecenter, {
+      description: this.properties.description,
+      isDarkTheme: this._isDarkTheme,
+      environmentMessage: this._environmentMessage,
+      hasTeamsContext: !!this.context.sdks.microsoftTeams,
+      userDisplayName: this.context.pageContext.user.displayName,
+    });
+
+    const element: React.ReactElement = React.createElement(
+      WissensHubProvider,
       {
-        description: this.properties.description,
-        isDarkTheme: this._isDarkTheme,
-        environmentMessage: this._environmentMessage,
-        hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        spContext: this.context,
+        aadClient: this._apiClient,
+        apiBaseUrl: this.properties.apiBaseUrl || 'https://{function-app-placeholder}.azurewebsites.net',
+        mockRole: this.properties.mockRole as UserRole,
+        children: child,
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected onInit(): Promise<void> {
-    return this._getEnvironmentMessage().then(message => {
-      this._environmentMessage = message;
-    });
+  protected async onInit(): Promise<void> {
+    await super.onInit();
+    this._environmentMessage = await this._getEnvironmentMessage();
+
+    // Initialize PnPjs singleton
+    getSP(this.context);
+
+    // Try AadHttpClient (fails gracefully in workbench)
+    try {
+      this._apiClient = await this.context.aadHttpClientFactory.getClient('api://{client-id-placeholder}');
+    } catch (error) {
+      console.warn('AadHttpClient not available (workbench mode):', error);
+    }
   }
 
 
@@ -98,22 +124,46 @@ export default class FreigabecenterWebPart extends BaseClientSideWebPart<IFreiga
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    const groups: IPropertyPaneGroup[] = [
+      {
+        groupName: strings.BasicGroupName,
+        groupFields: [
+          PropertyPaneTextField('description', {
+            label: strings.DescriptionFieldLabel
+          }),
+          PropertyPaneTextField('apiBaseUrl', {
+            label: 'API Base URL'
+          })
+        ]
+      }
+    ];
+
+    // Show Mock Role dropdown only when in workbench (mock mode)
+    if (this._apiClient === undefined) {
+      groups.push({
+        groupName: 'Development',
+        groupFields: [
+          PropertyPaneDropdown('mockRole', {
+            label: 'Mock Role',
+            options: [
+              { key: 'reader', text: 'Reader' },
+              { key: 'editor', text: 'Editor' },
+              { key: 'reviewer', text: 'Reviewer' },
+              { key: 'admin', text: 'Admin' }
+            ],
+            selectedKey: this.properties.mockRole || 'reader'
+          })
+        ]
+      });
+    }
+
     return {
       pages: [
         {
           header: {
             description: strings.PropertyPaneDescription
           },
-          groups: [
-            {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
+          groups
         }
       ]
     };
