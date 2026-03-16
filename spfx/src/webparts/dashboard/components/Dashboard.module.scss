@@ -312,3 +312,8 @@
   background-color: "[theme:neutralLighter, default: #f3f2f1]";
   background-color: var(--neutralLighter, #f3f2f1);
 }
+
+.newArticleButton {
+  margin-left: auto;
+  white-space: nowrap;
+}

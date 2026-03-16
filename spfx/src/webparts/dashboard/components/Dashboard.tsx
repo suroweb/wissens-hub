@@ -343,6 +343,7 @@ const Dashboard: React.FunctionComponent<IDashboardProps> = (props) => {
           categories={categories}
           targetGroups={targetGroups}
           onClearAllFilters={handleClearAllFilters}
+          siteUrl={window.location.pathname.split('/SitePages')[0] || '/sites/wissenshub'}
         />
 
         {/* Loading state */}

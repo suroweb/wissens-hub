@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { SearchBox } from '@fluentui/react/lib/SearchBox';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
-import { IconButton } from '@fluentui/react/lib/Button';
+import { IconButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import { Icon } from '@fluentui/react/lib/Icon';
+import { RoleGate } from '../../../shared/components/RoleGate';
 import styles from './Dashboard.module.scss';
 
 export interface IFilterBarProps {
@@ -19,6 +20,7 @@ export interface IFilterBarProps {
   categories: string[];
   targetGroups: string[];
   onClearAllFilters: () => void;
+  siteUrl?: string;
 }
 
 const STATUS_LABELS: Record<string, string> = {
@@ -136,6 +138,17 @@ export const FilterBar: React.FunctionComponent<IFilterBarProps> = (props) => {
             onClick={() => onViewModeChange('list')}
           />
         </div>
+        <RoleGate minimumRole="editor">
+          <PrimaryButton
+            text="Neuer Artikel"
+            iconProps={{ iconName: 'Add' }}
+            onClick={() => {
+              const baseUrl = props.siteUrl || '/sites/wissenshub';
+              window.location.href = `${baseUrl}/_layouts/15/CreatePage.aspx`;
+            }}
+            className={styles.newArticleButton}
+          />
+        </RoleGate>
       </div>
 
       {/* Row 2: Active filter pills */}
