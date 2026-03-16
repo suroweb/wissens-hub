@@ -7,5 +7,6 @@ export function toReadConfirmation(dto: ReadConfirmationDto): IReadConfirmation 
     userId: dto.userId,
     userDisplayName: dto.userDisplayName,
     readDate: new Date(dto.readDate),
+    confirmedVersion: dto.contentVersion,
   };
 }

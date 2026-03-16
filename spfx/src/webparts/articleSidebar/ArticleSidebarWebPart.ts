@@ -31,12 +31,15 @@ export default class ArticleSidebarWebPart extends BaseClientSideWebPart<IArticl
   private _apiClient: AadHttpClient | undefined;
 
   public render(): void {
+    const pageId = this.context.pageContext.listItem?.id ?? 1; // fallback for workbench
+    const listId = this.context.pageContext.list?.id.toString() ?? '';
+    const siteUrl = this.context.pageContext.web.absoluteUrl;
+
     const child: React.ReactElement<IArticleSidebarProps> = React.createElement(ArticleSidebar, {
-      description: this.properties.description,
-      isDarkTheme: this._isDarkTheme,
-      environmentMessage: this._environmentMessage,
+      pageId,
+      listId,
+      siteUrl,
       hasTeamsContext: !!this.context.sdks.microsoftTeams,
-      userDisplayName: this.context.pageContext.user.displayName,
     });
 
     const element: React.ReactElement = React.createElement(

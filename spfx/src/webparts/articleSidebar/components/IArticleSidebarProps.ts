@@ -1,7 +1,6 @@
 export interface IArticleSidebarProps {
-  description: string;
-  isDarkTheme: boolean;
-  environmentMessage: string;
+  pageId: number;
+  listId: string;
+  siteUrl: string;
   hasTeamsContext: boolean;
-  userDisplayName: string;
 }

@@ -148,9 +148,27 @@ export const MOCK_ARTICLES: IArticlePage[] = [
   },
 ];
 
-// Empty by default so all articles start as unread in the dashboard.
-// The user marks articles as read via markAsRead() which appends entries at runtime.
-export const MOCK_READ_CONFIRMATIONS: IReadConfirmation[] = [];
+// Pre-populated read confirmations for sidebar testing with version values to test reset scenarios.
+// pageId 1: confirmedVersion=1, current content version=2 (triggers version reset warning in sidebar).
+// pageId 9: confirmedVersion=1, current content version=1 (no reset).
+// The dashboard still works correctly with pre-populated confirmations (it checks by userId match).
+// The user can mark additional articles as read via markAsRead() which appends entries at runtime.
+export const MOCK_READ_CONFIRMATIONS: IReadConfirmation[] = [
+  {
+    pageId: 1,
+    userId: 'mock-user-id',
+    userDisplayName: 'Max Mustermann',
+    readDate: new Date('2026-02-15T10:00:00Z'),
+    confirmedVersion: 1,
+  },
+  {
+    pageId: 9,
+    userId: 'mock-user-id',
+    userDisplayName: 'Max Mustermann',
+    readDate: new Date('2026-03-01T14:30:00Z'),
+    confirmedVersion: 1,
+  },
+];
 
 export const MOCK_FAVORITES: IFavorite[] = [
   {

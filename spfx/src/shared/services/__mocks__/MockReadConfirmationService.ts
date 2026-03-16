@@ -27,6 +27,7 @@ export class MockReadConfirmationService implements IReadConfirmationService {
         userId: 'mock-user-id',
         userDisplayName: 'Max Mustermann',
         readDate: new Date(),
+        confirmedVersion: 1, // mock: assume version 1 for new confirmations
       });
     }
     return delay(ok(undefined as unknown as void));

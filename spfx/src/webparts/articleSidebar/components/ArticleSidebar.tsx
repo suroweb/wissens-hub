@@ -5,7 +5,7 @@ import { Icon } from '@fluentui/react/lib/Icon';
 import { useWissensHub } from '../../../shared/context';
 
 const ArticleSidebar: React.FunctionComponent<IArticleSidebarProps> = (props) => {
-  const { description, hasTeamsContext } = props;
+  const { pageId, hasTeamsContext } = props;
   const { role, currentUser, isLoading } = useWissensHub();
 
   if (isLoading) return null;
@@ -16,7 +16,7 @@ const ArticleSidebar: React.FunctionComponent<IArticleSidebarProps> = (props) =>
         <Icon iconName="ReadingMode" className={styles.icon} />
         <h2>Article Sidebar</h2>
       </div>
-      <p>{description}</p>
+      <p>Page ID: {pageId}</p>
       <div className={styles.userInfo}>
         <Icon iconName="Contact" />
         <span>{currentUser.displayName} ({role})</span>
