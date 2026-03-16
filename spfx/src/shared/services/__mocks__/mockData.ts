@@ -124,7 +124,7 @@ export const MOCK_ARTICLES: IArticlePage[] = [
   },
   {
     id: 9,
-    title: 'Datenschutz-Folgenabschaetzung',
+    title: 'Datenschutz-Folgenabsch\u00e4tzung',
     category: 'Datenschutz',
     status: 'Published',
     isMandatory: false,
@@ -148,38 +148,9 @@ export const MOCK_ARTICLES: IArticlePage[] = [
   },
 ];
 
-export const MOCK_READ_CONFIRMATIONS: IReadConfirmation[] = [
-  {
-    pageId: 1,
-    userId: 'mock-user-id',
-    userDisplayName: 'Max Mustermann',
-    readDate: new Date('2026-01-20T10:30:00Z'),
-  },
-  {
-    pageId: 2,
-    userId: 'mock-user-id',
-    userDisplayName: 'Max Mustermann',
-    readDate: new Date('2026-02-05T14:00:00Z'),
-  },
-  {
-    pageId: 3,
-    userId: 'mock-user-id',
-    userDisplayName: 'Max Mustermann',
-    readDate: new Date('2026-01-25T09:15:00Z'),
-  },
-  {
-    pageId: 4,
-    userId: 'mock-user-id',
-    userDisplayName: 'Max Mustermann',
-    readDate: new Date('2026-02-12T11:00:00Z'),
-  },
-  {
-    pageId: 10,
-    userId: 'mock-user-id',
-    userDisplayName: 'Max Mustermann',
-    readDate: new Date('2026-03-01T08:45:00Z'),
-  },
-];
+// Empty by default so all articles start as unread in the dashboard.
+// The user marks articles as read via markAsRead() which appends entries at runtime.
+export const MOCK_READ_CONFIRMATIONS: IReadConfirmation[] = [];
 
 export const MOCK_FAVORITES: IFavorite[] = [
   {
@@ -205,7 +176,7 @@ export const MOCK_FLAGS: IFlag[] = [
     pageId: 9,
     userId: 'mock-user-id',
     userDisplayName: 'Max Mustermann',
-    reason: 'Veraltete Informationen zur Folgenabschaetzung',
+    reason: 'Veraltete Informationen zur Folgenabsch\u00e4tzung',
     flaggedDate: new Date('2026-03-10T16:00:00Z'),
   },
 ];

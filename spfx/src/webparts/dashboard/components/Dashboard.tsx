@@ -180,12 +180,16 @@ const Dashboard: React.FunctionComponent<IDashboardProps> = (props) => {
                 TrimDuplicates: false,
                 EnableQueryRules: false,
               });
-              matchedIds = new Set(
-                results.PrimarySearchResults
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  .map((r: any) => parseInt(r.ListItemID || '0', 10))
-                  .filter((id: number) => !isNaN(id) && id > 0)
-              );
+              const spIds = results.PrimarySearchResults
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                .map((r: any) => parseInt(r.ListItemID || '0', 10))
+                .filter((id: number) => !isNaN(id) && id > 0);
+              if (spIds.length > 0) {
+                matchedIds = new Set(spIds);
+              } else {
+                // SP Search returned no results (common in workbench) — fall through to client-side
+                throw new Error('Empty SP Search results, falling back to client-side');
+              }
             } else {
               throw new Error('Search not available');
             }
@@ -306,9 +310,9 @@ const Dashboard: React.FunctionComponent<IDashboardProps> = (props) => {
     }
   }, [toggleFavorite]);
 
-  // Article click handler
+  // Article click handler — open in new tab so the dashboard stays open
   const handleArticleClick = React.useCallback((url: string): void => {
-    window.location.href = url;
+    window.open(url, '_blank', 'noopener');
   }, []);
 
   if (isLoading) {
