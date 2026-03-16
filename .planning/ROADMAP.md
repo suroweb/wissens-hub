@@ -69,12 +69,12 @@ Plans:
   3. Role detection resolves the highest applicable role (Reader/Editor/Reviewer/Admin) from SharePoint group membership
   4. RoleGate component conditionally renders children based on the user's resolved role
   5. All service calls return Result<T> with typed success/failure — no thrown exceptions for expected failures
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 03-01: WissensHubContext, role detection, and RoleGate component
-- [ ] 03-02: Service interfaces, domain models, DTOs, and mapper layer
-- [ ] 03-03: Mock service implementations and CQRS-lite hooks (QueryState, CommandState)
+- [ ] 03-01-PLAN.md — Types, interfaces, Result pattern, WissensHubContext, role detection, RoleGate, PnPjs install
+- [ ] 03-02-PLAN.md — Production services, mock services, German mock data, DTO-to-domain mappers
+- [ ] 03-03-PLAN.md — CQRS-lite query/command hooks, WebPart WissensHubProvider wiring, mock role property pane
 
 ### Phase 4: Backend Architecture & API Skeleton
 **Goal**: Azure Functions API has a complete architectural foundation with CQRS, validation, auth, and all endpoint stubs ready for feature implementation
