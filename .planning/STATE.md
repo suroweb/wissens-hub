@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: CQRS commands and queries with mock handlers complete
-stopped_at: Completed 04-03-PLAN.md
-last_updated: "2026-03-16T08:50:12Z"
+status: completed
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-03-16T08:52:40.281Z"
 last_activity: 2026-03-16 — Completed Plan 04-03 Commands & Queries
 progress:
   total_phases: 12
@@ -95,6 +95,8 @@ Recent decisions affecting current work:
 - [Phase 04]: No explicit logging package needed -- ILogger available transitively via MediatR
 - [Phase 04]: Pipeline behavior order: Exception > Logging > Authorization > Validation (outermost to innermost)
 - [Phase 04]: Repository interfaces use domain-specific queries, not generic CRUD; no SaveChangesAsync in repos
+- [Phase 04-02]: Used FindFirst/FindAll pattern instead of FindFirstValue for broader .NET compatibility
+- [Phase 04-02]: Cast ICurrentUser to CurrentUser in middleware to access SetFromClaimsPrincipal (non-interface method)
 - [Phase 04-03]: Co-located DTOs in command files; queries use separate DTO files
 - [Phase 04-03]: Primary constructor DI injects ICurrentUser in all handlers even when mock doesn't use it
 - [Phase 04-03]: Task.FromResult wrapper for sync mock handlers preserving async IRequestHandler signature
@@ -112,6 +114,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-16T08:50:12Z
-Stopped at: Completed 04-03-PLAN.md
+Last session: 2026-03-16T08:52:40.278Z
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None
