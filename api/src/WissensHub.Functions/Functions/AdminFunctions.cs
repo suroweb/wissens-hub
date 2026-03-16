@@ -10,7 +10,7 @@ public class AdminFunctions(IMediator mediator)
 {
     [Function("GetAdminReports")]
     public async Task<IActionResult> GetAdminReports(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "admin/reports")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "administration/reports")]
         HttpRequest req)
     {
         try
