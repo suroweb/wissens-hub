@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 3: Frontend Architecture & Service Layer** - WissensHubContext, service interfaces, mock implementations, Result pattern, domain models, role detection
 - [ ] **Phase 4: Backend Architecture & API Skeleton** - MediatR CQRS, FluentValidation, pipeline behaviors, repositories, EF Core entity configs, bearer token auth
 - [x] **Phase 5: Dashboard Web Part** - Article browsing with card/list views, search, filters, stats bar, unread badges, role-specific sections (completed 2026-03-16)
-- [ ] **Phase 6: Article Sidebar & Read Confirmations** - Article metadata display, mark-as-read, flag, favorite, TOC, read confirmation tracking and reset
+- [x] **Phase 6: Article Sidebar & Read Confirmations** - Article metadata display, mark-as-read, flag, favorite, TOC, read confirmation tracking and reset (completed 2026-03-16)
 - [ ] **Phase 7: Approval Workflow & Freigabecenter** - Status transitions, approve/reject actions, approval history, Freigabecenter web part with freshness alerts
 - [ ] **Phase 8: Unread Badge Application Customizer** - Header notification icon, flyout panel with unread summaries, cross-web-part event bus
 - [ ] **Phase 9: Admin Panel & Reporting** - Category/target group configuration, reminder intervals, read confirmation reports with CSV/Excel export
@@ -126,9 +126,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — Sidebar UI foundation: WebPart props, useArticleStatusQuery hook, MetadataSection, TableOfContents, version history link, test stubs
-- [ ] 06-02-PLAN.md — Read confirmation with optimistic mark-as-read, version reset logic, FlagDialog, favorite toggle, ReadStatusSection
-- [ ] 06-03-PLAN.md — Workbench verification checkpoint for all 11 requirements
+- [x] 06-01-PLAN.md — Sidebar UI foundation: WebPart props, useArticleStatusQuery hook, MetadataSection, TableOfContents, version history link, test stubs
+- [x] 06-02-PLAN.md — Read confirmation with optimistic mark-as-read, version reset logic, FlagDialog, favorite toggle, ReadStatusSection
+- [x] 06-03-PLAN.md — Workbench verification checkpoint for all 11 requirements
 
 ### Phase 7: Approval Workflow & Freigabecenter
 **Goal**: Reviewers can manage article lifecycle through a dedicated approval center — approving, rejecting, and monitoring content quality
@@ -239,7 +239,7 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 3. Frontend Architecture & Service Layer | 2/3 | In Progress|  |
 | 4. Backend Architecture & API Skeleton | 4/5 | UAT gaps | - |
 | 5. Dashboard Web Part | 4/4 | Complete   | 2026-03-16 |
-| 6. Article Sidebar & Read Confirmations | 0/3 | Not started | - |
+| 6. Article Sidebar & Read Confirmations | 3/3 | Complete | 2026-03-16 |
 | 7. Approval Workflow & Freigabecenter | 0/2 | Not started | - |
 | 8. Unread Badge Application Customizer | 0/1 | Not started | - |
 | 9. Admin Panel & Reporting | 0/2 | Not started | - |
