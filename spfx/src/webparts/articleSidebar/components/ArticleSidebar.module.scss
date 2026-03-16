@@ -100,6 +100,71 @@
   }
 }
 
+/* Read Status Section */
+.readStatusSection {
+  /* container */
+}
+
+.pflichtartikelBadge {
+  margin-bottom: 12px;
+}
+
+.resetWarning {
+  margin-bottom: 12px;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: "[theme:neutralTertiary, default: #a19f9d]";
+  color: var(--neutralTertiary, #a19f9d);
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.markAsReadButton {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.readConfirmed {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: "[theme:greenLight, default: #e6f7e6]";
+  border-radius: 4px;
+  font-size: 13px;
+  color: "[theme:green, default: #107c10]";
+  margin-bottom: 12px;
+}
+
+.readCheckIcon {
+  color: "[theme:green, default: #107c10]";
+  font-size: 16px;
+}
+
+.actionsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actionButton {
+  flex: 1;
+  font-size: 12px;
+}
+
+.favoritedStar {
+  color: "[theme:yellowDark, default: #d29200]";
+  color: var(--yellowDark, #d29200);
+}
+
+.unfavoritedStar {
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+}
+
 /* Shimmer */
 .shimmerContainer {
   padding: 16px 0;
