@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 07-01-PLAN.md
-last_updated: "2026-03-16T20:19:04.880Z"
-last_activity: 2026-03-16 -- Completed 07-01-PLAN.md
+stopped_at: Completed 07-02-PLAN.md
+last_updated: "2026-03-16T20:29:57.632Z"
+last_activity: 2026-03-16 -- Completed 07-02-PLAN.md
 progress:
   total_phases: 12
   completed_phases: 6
   total_plans: 22
-  completed_plans: 20
-  percent: 91
+  completed_plans: 21
+  percent: 95
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-14)
 ## Current Position
 
 Phase: 7 of 12 (Approval Workflow & Freigabecenter)
-Plan: 1 of 3 in current phase -- Plan 01 COMPLETE (backend handlers + frontend shared infrastructure)
-Status: Plan 01 complete -- real ApproveArticleHandler, query endpoints, extended services/hooks
-Last activity: 2026-03-16 -- Completed 07-01-PLAN.md
+Plan: 2 of 3 in current phase -- Plan 02 COMPLETE (Freigabecenter UI + Article Sidebar extensions)
+Status: Plan 02 complete -- Freigabecenter 3-tab Pivot, approval dialogs, Article Sidebar approval actions/history
+Last activity: 2026-03-16 -- Completed 07-02-PLAN.md
 
-Progress: [█████████░] 91%
+Progress: [██████████] 95%
 
 ## Performance Metrics
 
@@ -67,6 +67,7 @@ Progress: [█████████░] 91%
 | Phase 06 P02 | 4min | 2 tasks | 6 files |
 | Phase 06 P03 | 2min | 1 tasks | 0 files |
 | Phase 07 P01 | 7min | 2 tasks | 28 files |
+| Phase 07 P02 | 7min | 2 tasks | 22 files |
 
 ## Accumulated Context
 
@@ -133,6 +134,8 @@ Recent decisions affecting current work:
 - [Phase 06-03]: All 11 requirements verified via build (0 errors), tests (56/56 pass), and workbench visual inspection
 - [Phase 07-01]: IUnitOfWork interface instead of direct WissensHubDbContext in Application layer to maintain clean architecture
 - [Phase 07-01]: ApprovalService sends capitalized action values (Approved/Rejected) matching backend FluentValidation rules
+- [Phase 07-02]: Optimistic removal pattern for approve/reject: tracked removal IDs array with rollback on API failure
+- [Phase 07-02]: Combined pending+published articles for flagged tab pageId-to-article lookup across statuses
 
 ### Pending Todos
 
@@ -147,6 +150,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-16T20:19:04.876Z
-Stopped at: Completed 07-01-PLAN.md
+Last session: 2026-03-16T20:29:57.628Z
+Stopped at: Completed 07-02-PLAN.md
 Resume file: None

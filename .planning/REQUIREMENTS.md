@@ -62,12 +62,12 @@
 
 ### Freigabecenter Web Part
 
-- [ ] **FREI-01**: Reviewer can see list of articles pending approval with status
-- [ ] **FREI-02**: Reviewer can approve an article with optional comment
-- [ ] **FREI-03**: Reviewer can reject an article with comment
+- [x] **FREI-01**: Reviewer can see list of articles pending approval with status
+- [x] **FREI-02**: Reviewer can approve an article with optional comment
+- [x] **FREI-03**: Reviewer can reject an article with comment
 - [x] **FREI-04**: Reviewer can see list of articles flagged as outdated
-- [ ] **FREI-05**: Reviewer can see content freshness alerts (articles not reviewed in X days)
-- [ ] **FREI-06**: Reviewer can filter by assigned reviewer
+- [x] **FREI-05**: Reviewer can see content freshness alerts (articles not reviewed in X days)
+- [x] **FREI-06**: Reviewer can filter by assigned reviewer
 
 ### Unread Badge Application Customizer
 
@@ -248,12 +248,12 @@ Deferred to future release. Tracked but not in current roadmap.
 | SIDE-06 | Phase 6 | Complete |
 | SIDE-07 | Phase 6 | Complete |
 | SIDE-08 | Phase 6 | Complete |
-| FREI-01 | Phase 7 | Pending |
-| FREI-02 | Phase 7 | Pending |
-| FREI-03 | Phase 7 | Pending |
+| FREI-01 | Phase 7 | Complete |
+| FREI-02 | Phase 7 | Complete |
+| FREI-03 | Phase 7 | Complete |
 | FREI-04 | Phase 7 | Complete |
-| FREI-05 | Phase 7 | Pending |
-| FREI-06 | Phase 7 | Pending |
+| FREI-05 | Phase 7 | Complete |
+| FREI-06 | Phase 7 | Complete |
 | BADGE-01 | Phase 8 | Pending |
 | BADGE-02 | Phase 8 | Pending |
 | BADGE-03 | Phase 8 | Pending |
