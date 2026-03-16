@@ -9,6 +9,8 @@ import { useWissensHub } from '../../../shared/context';
 import { MetadataSection } from './MetadataSection';
 import { ReadStatusSection } from './ReadStatusSection';
 import { FlagDialog } from './FlagDialog';
+import { ApprovalActions } from './ApprovalActions';
+import { ApprovalHistory } from './ApprovalHistory';
 import { TableOfContents } from './TableOfContents';
 
 const shimmerRows: React.ReactElement[] = [];
@@ -102,6 +104,14 @@ const ArticleSidebar: React.FunctionComponent<IArticleSidebarProps> = ({
         setIsFlagDialogOpen(false);
       },
     }),
+    React.createElement('div', { className: styles.divider }),
+    React.createElement(ApprovalActions, {
+      pageId: pageId,
+      articleStatus: article ? article.status : 'Draft',
+      onStatusChange: () => articleStatus.refetch(),
+    }),
+    React.createElement('div', { className: styles.divider }),
+    React.createElement(ApprovalHistory, { pageId: pageId }),
     React.createElement('div', { className: styles.divider }),
     React.createElement(TableOfContents, undefined),
     React.createElement('div', { className: styles.divider }),

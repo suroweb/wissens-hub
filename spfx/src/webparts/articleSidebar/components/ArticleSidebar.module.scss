@@ -165,6 +165,47 @@
   color: var(--neutralSecondary, #605e5c);
 }
 
+/* Approval Actions */
+.approvalActions {
+  padding: 8px 0;
+}
+
+/* Approval History */
+.approvalHistory {
+  padding: 8px 0;
+}
+
+.historyItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--neutralLighter, #f3f2f1);
+  font-size: 13px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.historyAction {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.historyComment {
+  font-style: italic;
+  font-size: 12px;
+  color: var(--neutralSecondary, #605e5c);
+  margin-top: 2px;
+}
+
+.historyDate {
+  font-size: 12px;
+  color: var(--neutralTertiary, #a19f9d);
+}
+
 /* Shimmer */
 .shimmerContainer {
   padding: 16px 0;
