@@ -193,3 +193,122 @@
     }
   }
 }
+
+// Stats bar
+.statsBar {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid "[theme:neutralLight, default: #edebe9]";
+  border-bottom: 1px solid var(--neutralLight, #edebe9);
+  margin-bottom: 16px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 24px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s ease;
+  min-width: 100px;
+  &:hover {
+    background-color: "[theme:neutralLighterAlt, default: #faf9f8]";
+    background-color: var(--neutralLighterAlt, #faf9f8);
+  }
+}
+
+.statItemActive {
+  border-bottom-color: "[theme:themePrimary, default: #0078d4]";
+  border-bottom-color: var(--themePrimary, #0078d4);
+  font-weight: 600;
+}
+
+.statCount {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+  margin-top: 2px;
+}
+
+.statIcon {
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+}
+
+// Filter bar
+.filterBar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filterRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filterPills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filterPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background-color: "[theme:neutralLighter, default: #f3f2f1]";
+  background-color: var(--neutralLighter, #f3f2f1);
+  border-radius: 16px;
+  font-size: 12px;
+}
+
+.filterPillRemove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  padding: 0 2px;
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+  &:hover {
+    color: "[theme:neutralDark, default: #201f1e]";
+    color: var(--neutralDark, #201f1e);
+  }
+}
+
+.clearFiltersLink {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  color: "[theme:themePrimary, default: #0078d4]";
+  color: var(--themePrimary, #0078d4);
+  text-decoration: underline;
+  padding: 0;
+}
+
+.viewToggleButton {
+  border-radius: 4px;
+}
+
+.viewToggleActive {
+  background-color: "[theme:neutralLighter, default: #f3f2f1]";
+  background-color: var(--neutralLighter, #f3f2f1);
+}
