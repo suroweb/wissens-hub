@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 2: SharePoint Site & Auth Pipeline** - Provisioning script, Entra ID app registration, AadHttpClient smoke test, SharePoint groups and columns
 - [ ] **Phase 3: Frontend Architecture & Service Layer** - WissensHubContext, service interfaces, mock implementations, Result pattern, domain models, role detection
 - [ ] **Phase 4: Backend Architecture & API Skeleton** - MediatR CQRS, FluentValidation, pipeline behaviors, repositories, EF Core entity configs, bearer token auth
-- [ ] **Phase 5: Dashboard Web Part** - Article browsing with card/list views, search, filters, stats bar, unread badges, role-specific sections
+- [x] **Phase 5: Dashboard Web Part** - Article browsing with card/list views, search, filters, stats bar, unread badges, role-specific sections (completed 2026-03-16)
 - [ ] **Phase 6: Article Sidebar & Read Confirmations** - Article metadata display, mark-as-read, flag, favorite, TOC, read confirmation tracking and reset
 - [ ] **Phase 7: Approval Workflow & Freigabecenter** - Status transitions, approve/reject actions, approval history, Freigabecenter web part with freshness alerts
 - [ ] **Phase 8: Unread Badge Application Customizer** - Header notification icon, flyout panel with unread summaries, cross-web-part event bus
@@ -238,7 +238,7 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 2. SharePoint Site & Auth Pipeline | 0/2 | Not started | - |
 | 3. Frontend Architecture & Service Layer | 2/3 | In Progress|  |
 | 4. Backend Architecture & API Skeleton | 4/5 | UAT gaps | - |
-| 5. Dashboard Web Part | 0/4 | Not started | - |
+| 5. Dashboard Web Part | 4/4 | Complete   | 2026-03-16 |
 | 6. Article Sidebar & Read Confirmations | 0/3 | Not started | - |
 | 7. Approval Workflow & Freigabecenter | 0/2 | Not started | - |
 | 8. Unread Badge Application Customizer | 0/1 | Not started | - |
