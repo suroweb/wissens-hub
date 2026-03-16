@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 04-02-PLAN.md
-last_updated: "2026-03-16T08:52:40.281Z"
-last_activity: 2026-03-16 — Completed Plan 04-03 Commands & Queries
+stopped_at: Completed 04-04-PLAN.md
+last_updated: "2026-03-16T08:57:20.928Z"
+last_activity: 2026-03-16 — Completed Plan 04-04 Azure Functions Endpoints & DI Wiring
 progress:
   total_phases: 12
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 11
-  completed_plans: 10
-  percent: 91
+  completed_plans: 11
+  percent: 100
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-14)
 
 **Core value:** Employees can find, read, and confirm mandatory knowledge articles through a central hub with role-based workflows
-**Current focus:** Phase 4 in progress -- CQRS commands and queries complete
+**Current focus:** Phase 4 COMPLETE -- Full CQRS pipeline with 10 Azure Functions endpoints
 
 ## Current Position
 
-Phase: 4 of 12 (Backend Architecture & API Skeleton)
-Plan: 3 of 4 in current phase -- Plan 03 COMPLETE
-Status: CQRS commands and queries with mock handlers complete
-Last activity: 2026-03-16 — Completed Plan 04-03 Commands & Queries
+Phase: 4 of 12 (Backend Architecture & API Skeleton) -- PHASE COMPLETE
+Plan: 4 of 4 in current phase -- Plan 04 COMPLETE
+Status: All 4 plans complete -- full CQRS pipeline with 10 endpoints
+Last activity: 2026-03-16 — Completed Plan 04-04 Azure Functions Endpoints & DI Wiring
 
-Progress: [█████████░] 91%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -57,6 +57,7 @@ Progress: [█████████░] 91%
 | Phase 04 P01 | 2min | 3 tasks | 13 files |
 | Phase 04 P02 | 3min | 2 tasks | 9 files |
 | Phase 04 P03 | 2min | 2 tasks | 30 files |
+| Phase 04 P04 | 2min | 2 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -100,6 +101,9 @@ Recent decisions affecting current work:
 - [Phase 04-03]: Co-located DTOs in command files; queries use separate DTO files
 - [Phase 04-03]: Primary constructor DI injects ICurrentUser in all handlers even when mock doesn't use it
 - [Phase 04-03]: Task.FromResult wrapper for sync mock handlers preserving async IRequestHandler signature
+- [Phase 04-04]: Shared FunctionHelper.cs for exception-to-HTTP mapping instead of per-class private methods
+- [Phase 04-04]: MediatR behaviors registered outermost-to-innermost: Exception > Logging > Auth > Validation
+- [Phase 04-04]: UserIdentityMiddleware registered after AuthenticationMiddleware in Program.cs pipeline
 
 ### Pending Todos
 
@@ -114,6 +118,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-16T08:52:40.278Z
-Stopped at: Completed 04-02-PLAN.md
+Last session: 2026-03-16T08:56:19Z
+Stopped at: Completed 04-04-PLAN.md (Phase 04 complete)
 Resume file: None
