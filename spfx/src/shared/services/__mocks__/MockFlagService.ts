@@ -21,4 +21,8 @@ export class MockFlagService implements IFlagService {
     });
     return delay(ok(undefined as unknown as void));
   }
+
+  public async getFlaggedArticles(): Promise<Result<IFlag[]>> {
+    return delay(ok([...this.flags]));
+  }
 }

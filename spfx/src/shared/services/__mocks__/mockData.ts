@@ -2,6 +2,7 @@ import { IArticlePage } from '../../models/domain/IArticlePage';
 import { IReadConfirmation } from '../../models/domain/IReadConfirmation';
 import { IFavorite } from '../../models/domain/IFavorite';
 import { IFlag } from '../../models/domain/IFlag';
+import { IApprovalAction } from '../../models/domain/IApprovalAction';
 import { ICurrentUser } from '../../models/domain/IUser';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -196,5 +197,27 @@ export const MOCK_FLAGS: IFlag[] = [
     userDisplayName: 'Max Mustermann',
     reason: 'Regelung wird derzeit \u00fcberarbeitet, neue Version Q2 2026 erwartet',
     flaggedDate: new Date('2026-03-10T16:00:00Z'),
+  },
+];
+
+export const MOCK_APPROVAL_HISTORY: IApprovalAction[] = [
+  {
+    id: 1,
+    pageId: 1,
+    actionBy: 'mock-reviewer-id',
+    actionByDisplayName: 'Klaus Weber',
+    actionDate: new Date('2026-01-10T09:00:00Z'),
+    fromStatus: 'InReview',
+    toStatus: 'Published',
+    comment: 'Inhalt gepr\u00fcft und freigegeben',
+  },
+  {
+    id: 2,
+    pageId: 7,
+    actionBy: 'mock-editor-id',
+    actionByDisplayName: 'Stefan Braun',
+    actionDate: new Date('2026-03-08T11:00:00Z'),
+    fromStatus: 'Draft',
+    toStatus: 'InReview',
   },
 ];

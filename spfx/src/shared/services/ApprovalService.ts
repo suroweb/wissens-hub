@@ -1,6 +1,7 @@
 import { IApiClient } from '../interfaces/IApiClient';
 import { IApprovalService } from '../interfaces/IApprovalService';
 import { IArticlePage } from '../models/domain/IArticlePage';
+import { IApprovalAction } from '../models/domain/IApprovalAction';
 import { Result } from '../models/Result';
 
 export class ApprovalService implements IApprovalService {
@@ -12,10 +13,26 @@ export class ApprovalService implements IApprovalService {
   }
 
   public async approveArticle(pageId: number, comment?: string): Promise<Result<void>> {
-    return this.api.post(`/api/articles/${pageId}/approve`, { action: 'approve', comment });
+    return this.api.post(`/api/articles/${pageId}/approve`, { action: 'Approved', comment });
   }
 
   public async rejectArticle(pageId: number, comment: string): Promise<Result<void>> {
-    return this.api.post(`/api/articles/${pageId}/approve`, { action: 'reject', comment });
+    return this.api.post(`/api/articles/${pageId}/approve`, { action: 'Rejected', comment });
+  }
+
+  public async submitForReview(pageId: number): Promise<Result<void>> {
+    return this.api.post(`/api/articles/${pageId}/approve`, { action: 'Submitted' });
+  }
+
+  public async archiveArticle(pageId: number): Promise<Result<void>> {
+    return this.api.post(`/api/articles/${pageId}/approve`, { action: 'Archived' });
+  }
+
+  public async restoreArticle(pageId: number): Promise<Result<void>> {
+    return this.api.post(`/api/articles/${pageId}/approve`, { action: 'Restored' });
+  }
+
+  public async getApprovalHistory(pageId: number): Promise<Result<IApprovalAction[]>> {
+    return this.api.get(`/api/articles/${pageId}/history`);
   }
 }

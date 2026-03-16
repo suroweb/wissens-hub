@@ -5,3 +5,4 @@ export { IReadConfirmation } from './IReadConfirmation';
 export { IFlag } from './IFlag';
 export { IFavorite } from './IFavorite';
 export { IApprovalAction } from './IApprovalAction';
+export { VALID_TRANSITIONS, isValidTransition } from './statusTransitions';
