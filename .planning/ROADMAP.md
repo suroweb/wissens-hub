@@ -140,11 +140,12 @@ Plans:
   3. Reviewer can see all pending approvals, flagged articles, and content freshness alerts in the Freigabecenter
   4. Reviewer can filter the Freigabecenter by assigned reviewer
   5. Approval and rejection actions are visible in the article's history
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 07-01: Approval workflow state machine and dual-store update pattern
-- [ ] 07-02: Freigabecenter Web Part (pending approvals, flagged articles, freshness alerts)
+- [ ] 07-01-PLAN.md — Backend real handlers, new query endpoints (flagged articles, approval history), frontend service/hook/mock extensions, status transition utility
+- [ ] 07-02-PLAN.md — Freigabecenter Web Part UI (Pivot tabs, approval/flagged/stale cards, approve/reject dialogs, reviewer filter) + Article Sidebar extensions (approval actions, approval history)
+- [ ] 07-03-PLAN.md — Workbench verification checkpoint for all 9 requirements
 
 ### Phase 8: Unread Badge Application Customizer
 **Goal**: Users see a persistent unread article count in the site header across every page in the hub, with quick access to unread summaries
@@ -240,7 +241,7 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 4. Backend Architecture & API Skeleton | 4/5 | UAT gaps | - |
 | 5. Dashboard Web Part | 4/4 | Complete   | 2026-03-16 |
 | 6. Article Sidebar & Read Confirmations | 3/3 | Complete | 2026-03-16 |
-| 7. Approval Workflow & Freigabecenter | 0/2 | Not started | - |
+| 7. Approval Workflow & Freigabecenter | 0/3 | Not started | - |
 | 8. Unread Badge Application Customizer | 0/1 | Not started | - |
 | 9. Admin Panel & Reporting | 0/2 | Not started | - |
 | 10. Caching, Telemetry, UX Polish & i18n | 0/5 | Not started | - |
