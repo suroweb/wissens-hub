@@ -1,9 +1,9 @@
 ---
-status: diagnosed
+status: resolved
 phase: 04-backend-architecture-api-skeleton
 source: [04-01-SUMMARY.md, 04-02-SUMMARY.md, 04-03-SUMMARY.md, 04-04-SUMMARY.md]
 started: 2026-03-16T09:00:00Z
-updated: 2026-03-16T13:20:00Z
+updated: 2026-03-16T17:00:00Z
 ---
 
 ## Current Test
@@ -69,7 +69,7 @@ skipped: 6
 ## Gaps
 
 - truth: "All 11 functions register and host boots without errors"
-  status: failed
+  status: resolved
   reason: "User reported: GetAdminReports function fails to register: 'The specified route conflicts with one or more built in routes.' Only 10/11 functions loaded. Storage health check also reports unhealthy (timeout)."
   severity: major
   test: 1
@@ -82,7 +82,7 @@ skipped: 6
   debug_session: ""
 
 - truth: "API endpoints return mock data when called locally"
-  status: failed
+  status: resolved
   reason: "User reported: Auth middleware blocks all unauthenticated requests with 'Missing or invalid Authorization header.' No way to test endpoints locally without a valid Entra ID token."
   severity: major
   test: 3
