@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 05-01-PLAN.md
-last_updated: "2026-03-16T15:50:50.296Z"
-last_activity: 2026-03-16 — Completed Plan 05-01 Article Display Foundation
+stopped_at: Completed 05-02-PLAN.md
+last_updated: "2026-03-16T15:57:25Z"
+last_activity: 2026-03-16 — Completed Plan 05-02 Search, Filter, and Stats Bar
 progress:
   total_phases: 12
   completed_phases: 4
   total_plans: 16
-  completed_plans: 14
-  percent: 88
+  completed_plans: 15
+  percent: 94
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-14)
 ## Current Position
 
 Phase: 5 of 12 (Dashboard Web Part) -- IN PROGRESS
-Plan: 1 of 4 in current phase -- Plan 01 COMPLETE (article display foundation)
-Status: Plan 01 complete -- ArticleCard, ArticleListView, EmptyState, Dashboard orchestrator with data loading
-Last activity: 2026-03-16 — Completed Plan 05-01 Article Display Foundation
+Plan: 2 of 4 in current phase -- Plan 02 COMPLETE (search, filter, stats bar)
+Status: Plan 02 complete -- StatsBar with RoleGate, FilterBar with search/dropdowns/pills, Dashboard search/filter orchestration
+Last activity: 2026-03-16 — Completed Plan 05-02 Search, Filter, and Stats Bar
 
-Progress: [█████████░] 88%
+Progress: [█████████░] 94%
 
 ## Performance Metrics
 
@@ -61,6 +61,7 @@ Progress: [█████████░] 88%
 | Phase 04 P05 | 2min | 2 tasks | 2 files |
 | Phase 05 P00 | 6min | 1 tasks | 6 files |
 | Phase 05 P01 | 5min | 2 tasks | 14 files |
+| Phase 05 P02 | 5min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -114,6 +115,9 @@ Recent decisions affecting current work:
 - [Phase 05]: Used @testing-library/jest-dom v5 (not v6) because v6 requires Jest 28+ while SPFx Heft uses Jest 27
 - [Phase 05-01]: Manual German date formatting instead of Intl.RelativeTimeFormat due to ES5 target in SPFx tsconfig
 - [Phase 05-01]: Fluent UI DetailsList onColumnClick parameters must be optional to match callback type signature
+- [Phase 05-02]: Compute stats locally from query data instead of useUnreadCountQuery (MockApiClient returns errors in workbench)
+- [Phase 05-02]: Use indexOf/forEach instead of includes/flatMap for ES5 target compatibility
+- [Phase 05-02]: Cast PnPjs search results to any for ListItemID dynamic property access
 
 ### Pending Todos
 
@@ -128,6 +132,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-16T15:50:50.293Z
-Stopped at: Completed 05-01-PLAN.md
+Last session: 2026-03-16T15:57:25Z
+Stopped at: Completed 05-02-PLAN.md
 Resume file: None
