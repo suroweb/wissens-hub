@@ -1,0 +1,6 @@
+node_modules/
+.auth-state.json
+test-results/
+test-results.json
+playwright-report/
+dist/

@@ -8,7 +8,11 @@
     "api:start": "cd api/src/WissensHub.Functions && func start",
     "db:up": "docker-compose -f docker/docker-compose.yml up -d",
     "db:down": "docker-compose -f docker/docker-compose.yml down",
-    "db:migrate": "cd api && dotnet ef database update --project src/WissensHub.Infrastructure --startup-project src/WissensHub.Functions"
+    "db:migrate": "cd api && dotnet ef database update --project src/WissensHub.Infrastructure --startup-project src/WissensHub.Functions",
+    "test:frontend": "cd spfx && npx heft test --clean",
+    "test:backend": "cd api && dotnet test tests/WissensHub.Tests -e AZURE_FUNCTIONS_ENVIRONMENT=Development",
+    "test:e2e": "cd e2e && npx playwright test",
+    "test:all": "npm run test:frontend && npm run test:backend"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
