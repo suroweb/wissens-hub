@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: verifying
-stopped_at: Phase 8 context gathered
-last_updated: "2026-03-17T02:54:39.299Z"
-last_activity: 2026-03-17 -- Completed 07-03-PLAN.md
+status: executing
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-03-17T08:57:10.000Z"
+last_activity: 2026-03-17 -- Completed 08-01-PLAN.md
 progress:
   total_phases: 12
   completed_phases: 7
-  total_plans: 22
-  completed_plans: 22
+  total_plans: 24
+  completed_plans: 23
   percent: 100
 ---
 
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-14)
 
 **Core value:** Employees can find, read, and confirm mandatory knowledge articles through a central hub with role-based workflows
-**Current focus:** Phase 7 complete -- ready for Phase 8 (Unread Badge Application Customizer)
+**Current focus:** Phase 8 in progress -- Unread Badge Application Customizer
 
 ## Current Position
 
-Phase: 7 of 12 (Approval Workflow & Freigabecenter) -- COMPLETE
-Plan: 3 of 3 in current phase -- Plan 03 COMPLETE (Workbench verification, all 9 requirements approved)
-Status: Phase 7 complete -- all 9 requirements verified and approved via workbench inspection
-Last activity: 2026-03-17 -- Completed 07-03-PLAN.md
+Phase: 8 of 12 (Unread Badge Application Customizer)
+Plan: 1 of 2 in current phase -- Plan 01 COMPLETE
+Status: Plan 01 complete -- bell icon, flyout panel, shared utils, CustomEvent wiring, 13 tests
+Last activity: 2026-03-17 -- Completed 08-01-PLAN.md
 
-Progress: [██████████] 100%
+Progress: [██████████] 96%
 
 ## Performance Metrics
 
@@ -69,6 +69,7 @@ Progress: [██████████] 100%
 | Phase 07 P01 | 7min | 2 tasks | 28 files |
 | Phase 07 P02 | 7min | 2 tasks | 22 files |
 | Phase 07 P03 | 2min | 1 tasks | 0 files |
+| Phase 08 P01 | 6min | 2 tasks | 14 files |
 
 ## Accumulated Context
 
@@ -138,6 +139,9 @@ Recent decisions affecting current work:
 - [Phase 07-02]: Optimistic removal pattern for approve/reject: tracked removal IDs array with rollback on API failure
 - [Phase 07-02]: Combined pending+published articles for flagged tab pageId-to-article lookup across statuses
 - [Phase 07-03]: All 9 Phase 7 requirements verified via build (0 errors), tests (82 pass), and workbench visual inspection
+- [Phase 08-01]: jest.mock calls placed before imports to satisfy @rushstack/hoist-jest-mock lint rule
+- [Phase 08-01]: Dashboard utils converted to re-exports from shared/utils for backward compatibility
+- [Phase 08-01]: Mock data fallback via try/catch around AadHttpClient (workbench has no AAD context)
 
 ### Pending Todos
 
@@ -152,6 +156,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T02:54:39.295Z
-Stopped at: Phase 8 context gathered
-Resume file: .planning/phases/08-unread-badge-application-customizer/08-CONTEXT.md
+Last session: 2026-03-17T08:57:10.000Z
+Stopped at: Completed 08-01-PLAN.md
+Resume file: .planning/phases/08-unread-badge-application-customizer/08-02-PLAN.md

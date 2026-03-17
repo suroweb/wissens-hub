@@ -71,9 +71,9 @@
 
 ### Unread Badge Application Customizer
 
-- [ ] **BADGE-01**: User can see notification icon with unread count in header on every page in the hub
-- [ ] **BADGE-02**: User can click notification icon to open flyout panel with unread article summaries
-- [ ] **BADGE-03**: User can click article in flyout to navigate directly to the article page
+- [x] **BADGE-01**: User can see notification icon with unread count in header on every page in the hub
+- [x] **BADGE-02**: User can click notification icon to open flyout panel with unread article summaries
+- [x] **BADGE-03**: User can click article in flyout to navigate directly to the article page
 
 ### Admin Panel Web Part
 
@@ -254,9 +254,9 @@ Deferred to future release. Tracked but not in current roadmap.
 | FREI-04 | Phase 7 | Complete |
 | FREI-05 | Phase 7 | Complete |
 | FREI-06 | Phase 7 | Complete |
-| BADGE-01 | Phase 8 | Pending |
-| BADGE-02 | Phase 8 | Pending |
-| BADGE-03 | Phase 8 | Pending |
+| BADGE-01 | Phase 8 | Complete |
+| BADGE-02 | Phase 8 | Complete |
+| BADGE-03 | Phase 8 | Complete |
 | ADMIN-01 | Phase 9 | Pending |
 | ADMIN-02 | Phase 9 | Pending |
 | ADMIN-03 | Phase 9 | Pending |
