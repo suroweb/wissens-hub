@@ -11,6 +11,9 @@ import * as ReactDOM from 'react-dom';
 import { UnreadBadgeHeader } from './components/UnreadBadgeHeader';
 import { IUnreadArticle } from './models/IUnreadArticle';
 import { MOCK_ARTICLES, MOCK_READ_CONFIRMATIONS } from '../../shared/services/__mocks__/mockData';
+import { ErrorBoundary } from '../../shared/components/ErrorBoundary';
+import { ErrorFallback } from '../../shared/components/ErrorFallback';
+import { createTelemetryService, ITelemetryService } from '../../shared/services/TelemetryService';
 
 const LOG_SOURCE: string = 'UnreadBadgeApplicationCustomizer';
 
@@ -37,9 +40,12 @@ export default class UnreadBadgeApplicationCustomizer
   private _articles: IUnreadArticle[] = [];
   private _isLoading: boolean = true;
   private _error: string | undefined;
+  private _telemetryService: ITelemetryService | undefined;
 
   public async onInit(): Promise<void> {
     Log.info(LOG_SOURCE, 'UnreadBadge Application Customizer initializing.');
+
+    this._telemetryService = createTelemetryService('');
 
     this._isLoading = true;
     this._articles = [];
@@ -93,25 +99,31 @@ export default class UnreadBadgeApplicationCustomizer
   }
 
   private _renderPlaceholder(): void {
-    if (this._topPlaceholder) {
-      return;
+    if (!this._topPlaceholder) {
+      this._topPlaceholder = this.context.placeholderProvider.tryCreateContent(
+        PlaceholderName.Top,
+        { onDispose: this._onDispose.bind(this) }
+      );
     }
-
-    this._topPlaceholder = this.context.placeholderProvider.tryCreateContent(
-      PlaceholderName.Top,
-      { onDispose: this._onDispose.bind(this) }
-    );
 
     if (!this._topPlaceholder) {
       Log.warn(LOG_SOURCE, 'Top placeholder not available');
       return;
     }
 
-    const element: React.ReactElement = React.createElement(UnreadBadgeHeader, {
+    const child: React.ReactElement = React.createElement(UnreadBadgeHeader, {
       articles: this._articles,
       isLoading: this._isLoading,
       error: this._error,
       siteUrl: this.context.pageContext.web.absoluteUrl,
+    });
+
+    const element: React.ReactElement = React.createElement(ErrorBoundary, {
+      telemetry: this._telemetryService!,
+      fallback: React.createElement(ErrorFallback, {
+        onRetry: () => { this._renderPlaceholder(); }
+      }),
+      children: child,
     });
 
     ReactDOM.render(element, this._topPlaceholder.domElement);

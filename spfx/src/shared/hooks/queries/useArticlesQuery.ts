@@ -30,7 +30,6 @@ export function useArticlesQuery(): {
     const result = await services.pageService.getPublishedArticles();
     if (result.success) {
       services.cache.set(cacheKey, result.data, CACHE_TTLS.ARTICLES);
-      // eslint-disable-next-line require-atomic-updates
       hasDataRef.current = true; // eslint-disable-line require-atomic-updates
       setState({ status: 'success', data: result.data });
     } else if (!hadData) {

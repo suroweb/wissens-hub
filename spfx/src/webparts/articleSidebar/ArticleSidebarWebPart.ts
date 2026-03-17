@@ -17,10 +17,15 @@ import { IArticleSidebarProps } from './components/IArticleSidebarProps';
 import { WissensHubProvider } from '../../shared/context';
 import { getSP } from '../../shared/context/pnpSetup';
 import { UserRole } from '../../shared/models/domain/types';
+import { ErrorBoundary } from '../../shared/components/ErrorBoundary';
+import { ErrorFallback } from '../../shared/components/ErrorFallback';
+import { ToastProvider } from '../../shared/components/ToastProvider';
+import { createTelemetryService, ITelemetryService } from '../../shared/services/TelemetryService';
 
 export interface IArticleSidebarWebPartProps {
   description: string;
   apiBaseUrl: string;
+  appInsightsConnectionString: string;
   mockRole: UserRole;
 }
 
@@ -29,6 +34,7 @@ export default class ArticleSidebarWebPart extends BaseClientSideWebPart<IArticl
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
   private _apiClient: AadHttpClient | undefined;
+  private _telemetryService: ITelemetryService | undefined;
 
   public render(): void {
     const pageId = this.context.pageContext.listItem?.id ?? 5; // fallback for workbench (id 5 = Draft article)
@@ -42,16 +48,24 @@ export default class ArticleSidebarWebPart extends BaseClientSideWebPart<IArticl
       hasTeamsContext: !!this.context.sdks.microsoftTeams,
     });
 
-    const element: React.ReactElement = React.createElement(
-      WissensHubProvider,
-      {
-        spContext: this.context,
-        aadClient: this._apiClient,
-        apiBaseUrl: this.properties.apiBaseUrl || 'https://{function-app-placeholder}.azurewebsites.net',
-        mockRole: this.properties.mockRole as UserRole,
-        children: child,
-      }
-    );
+    const toasted = React.createElement(ToastProvider, { children: child });
+
+    const provider = React.createElement(WissensHubProvider, {
+      spContext: this.context,
+      aadClient: this._apiClient,
+      apiBaseUrl: this.properties.apiBaseUrl || 'https://{function-app-placeholder}.azurewebsites.net',
+      appInsightsConnectionString: this.properties.appInsightsConnectionString || '',
+      mockRole: this.properties.mockRole as UserRole,
+      children: toasted,
+    });
+
+    const element = React.createElement(ErrorBoundary, {
+      telemetry: this._telemetryService!,
+      fallback: React.createElement(ErrorFallback, {
+        onRetry: () => { this.render(); }
+      }),
+      children: provider,
+    });
 
     ReactDom.render(element, this.domElement);
   }
@@ -69,6 +83,8 @@ export default class ArticleSidebarWebPart extends BaseClientSideWebPart<IArticl
     } catch (error) {
       console.warn('AadHttpClient not available (workbench mode):', error);
     }
+
+    this._telemetryService = createTelemetryService(this.properties.appInsightsConnectionString || '');
   }
 
 
@@ -136,6 +152,9 @@ export default class ArticleSidebarWebPart extends BaseClientSideWebPart<IArticl
           }),
           PropertyPaneTextField('apiBaseUrl', {
             label: 'API Base URL'
+          }),
+          PropertyPaneTextField('appInsightsConnectionString', {
+            label: 'Application Insights Connection String'
           })
         ]
       }

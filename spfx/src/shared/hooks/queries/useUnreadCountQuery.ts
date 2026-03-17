@@ -30,7 +30,6 @@ export function useUnreadCountQuery(): {
     const result = await services.apiClient.get<DashboardStatsDto>('/api/dashboard/stats');
     if (result.success) {
       services.cache.set(cacheKey, result.data, CACHE_TTLS.UNREAD_COUNT);
-      // eslint-disable-next-line require-atomic-updates
       hasDataRef.current = true; // eslint-disable-line require-atomic-updates
       setState({ status: 'success', data: result.data });
     } else if (!hadData) {
