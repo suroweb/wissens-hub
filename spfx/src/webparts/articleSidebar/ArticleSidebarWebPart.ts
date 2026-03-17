@@ -31,7 +31,7 @@ export default class ArticleSidebarWebPart extends BaseClientSideWebPart<IArticl
   private _apiClient: AadHttpClient | undefined;
 
   public render(): void {
-    const pageId = this.context.pageContext.listItem?.id ?? 1; // fallback for workbench
+    const pageId = this.context.pageContext.listItem?.id ?? 5; // fallback for workbench (id 5 = Draft article)
     const listId = this.context.pageContext.list?.id.toString() ?? '';
     const siteUrl = this.context.pageContext.web.absoluteUrl;
 

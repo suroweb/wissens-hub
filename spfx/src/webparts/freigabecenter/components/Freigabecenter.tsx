@@ -63,7 +63,7 @@ const Freigabecenter: React.FunctionComponent<IFreigabecenterProps> = (props) =>
     return combined;
   }, [publishedArticles, pendingArticles]);
 
-  // Derive reviewer dropdown options from all data sources
+  // Derive reviewer dropdown options from all data sources (including flagged article reviewers)
   const reviewerOptions: IDropdownOption[] = React.useMemo(() => {
     const names: string[] = [];
     const addNames = (articles: IArticlePage[]): void => {
@@ -76,6 +76,18 @@ const Freigabecenter: React.FunctionComponent<IFreigabecenterProps> = (props) =>
     };
     addNames(pendingArticles);
     addNames(publishedArticles);
+    // Also include reviewer names from articles that have flags
+    for (let i = 0; i < flaggedFlags.length; i++) {
+      for (let j = 0; j < allArticles.length; j++) {
+        if (allArticles[j].id === flaggedFlags[i].pageId) {
+          const name = allArticles[j].reviewerName;
+          if (name && names.indexOf(name) === -1) {
+            names.push(name);
+          }
+          break;
+        }
+      }
+    }
     names.sort();
 
     const options: IDropdownOption[] = [{ key: 'all', text: 'Alle Prüfer' }];
@@ -83,7 +95,7 @@ const Freigabecenter: React.FunctionComponent<IFreigabecenterProps> = (props) =>
       options.push({ key: names[i], text: names[i] });
     }
     return options;
-  }, [pendingArticles, publishedArticles]);
+  }, [pendingArticles, publishedArticles, flaggedFlags, allArticles]);
 
   // Filter by selected reviewer
   const filteredPending: IArticlePage[] = React.useMemo(() => {

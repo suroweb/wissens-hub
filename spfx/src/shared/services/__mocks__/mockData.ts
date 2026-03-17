@@ -34,7 +34,7 @@ export const MOCK_ARTICLES: IArticlePage[] = [
     status: 'Published',
     isMandatory: true,
     targetGroups: ['Alle Mitarbeiter'],
-    modifiedDate: new Date('2026-01-15T10:00:00Z'),
+    modifiedDate: new Date('2025-11-17T10:00:00Z'), // ~120 days ago — stale (yellow)
     author: { displayName: 'Anna Schmidt', email: 'anna.schmidt@contoso.de' },
     reviewerName: 'Klaus Weber',
     reviewByDate: new Date('2026-06-15T00:00:00Z'),
@@ -73,8 +73,10 @@ export const MOCK_ARTICLES: IArticlePage[] = [
     status: 'Published',
     isMandatory: false,
     targetGroups: ['IT-Abteilung'],
-    modifiedDate: new Date('2026-01-20T14:15:00Z'),
+    modifiedDate: new Date('2025-08-29T14:15:00Z'), // ~200 days ago — stale (orange)
     author: { displayName: 'Stefan Braun', email: 'stefan.braun@contoso.de' },
+    reviewerName: 'Klaus Weber',
+    reviewByDate: new Date('2026-05-01T00:00:00Z'),
     url: '/sites/WissensHub/SitePages/VPN-Zugang-einrichten.aspx',
   },
   {
@@ -130,8 +132,10 @@ export const MOCK_ARTICLES: IArticlePage[] = [
     status: 'Published',
     isMandatory: false,
     targetGroups: ['Alle Mitarbeiter'],
-    modifiedDate: new Date('2026-02-20T15:00:00Z'),
+    modifiedDate: new Date('2025-02-11T15:00:00Z'), // ~400 days ago — stale (red)
     author: { displayName: 'Lisa Fischer', email: 'lisa.fischer@contoso.de' },
+    reviewerName: 'Thomas Mueller',
+    reviewByDate: new Date('2025-12-01T00:00:00Z'),
     url: '/sites/WissensHub/SitePages/Homeoffice-Regelung.aspx',
   },
   {
