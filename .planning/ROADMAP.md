@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 4: Backend Architecture & API Skeleton** - MediatR CQRS, FluentValidation, pipeline behaviors, repositories, EF Core entity configs, bearer token auth
 - [x] **Phase 5: Dashboard Web Part** - Article browsing with card/list views, search, filters, stats bar, unread badges, role-specific sections (completed 2026-03-16)
 - [x] **Phase 6: Article Sidebar & Read Confirmations** - Article metadata display, mark-as-read, flag, favorite, TOC, read confirmation tracking and reset (completed 2026-03-16)
-- [ ] **Phase 7: Approval Workflow & Freigabecenter** - Status transitions, approve/reject actions, approval history, Freigabecenter web part with freshness alerts
+- [x] **Phase 7: Approval Workflow & Freigabecenter** - Status transitions, approve/reject actions, approval history, Freigabecenter web part with freshness alerts (completed 2026-03-17)
 - [ ] **Phase 8: Unread Badge Application Customizer** - Header notification icon, flyout panel with unread summaries, cross-web-part event bus
 - [ ] **Phase 9: Admin Panel & Reporting** - Category/target group configuration, reminder intervals, read confirmation reports with CSV/Excel export
 - [ ] **Phase 10: Caching, Telemetry, UX Polish & i18n** - Multi-layer caching, Application Insights, error boundaries, toasts, optimistic UI, shimmer, responsive, accessibility, internationalization
@@ -241,7 +241,7 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 4. Backend Architecture & API Skeleton | 4/5 | UAT gaps | - |
 | 5. Dashboard Web Part | 4/4 | Complete   | 2026-03-16 |
 | 6. Article Sidebar & Read Confirmations | 3/3 | Complete | 2026-03-16 |
-| 7. Approval Workflow & Freigabecenter | 0/3 | Not started | - |
+| 7. Approval Workflow & Freigabecenter | 3/3 | Complete   | 2026-03-17 |
 | 8. Unread Badge Application Customizer | 0/1 | Not started | - |
 | 9. Admin Panel & Reporting | 0/2 | Not started | - |
 | 10. Caching, Telemetry, UX Polish & i18n | 0/5 | Not started | - |
