@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 11-00-PLAN.md
-last_updated: "2026-03-17T18:36:33.131Z"
-last_activity: "2026-03-17 -- Completed 11-00-PLAN.md (Test infrastructure: renderWithContext, SQL Server fixture, Playwright scaffold)"
+stopped_at: Completed 11-05-PLAN.md
+last_updated: "2026-03-17T18:48:57.543Z"
+last_activity: "2026-03-17 -- Completed 11-05-PLAN.md (4 Playwright E2E specs: Dashboard, Mark-as-Read, Approval, Admin Config)"
 progress:
   total_phases: 12
   completed_phases: 10
   total_plans: 42
-  completed_plans: 36
+  completed_plans: 37
   percent: 89
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-03-14)
 ## Current Position
 
 Phase: 11 of 12 (Testing)
-Plan: 1 of 7 in current phase
-Status: Plan 11-00 complete, continuing Phase 11
-Last activity: 2026-03-17 -- Completed 11-00-PLAN.md (Test infrastructure: renderWithContext, SQL Server fixture, Playwright scaffold)
+Plan: 6 of 7 in current phase
+Status: Plan 11-05 complete, continuing Phase 11
+Last activity: 2026-03-17 -- Completed 11-05-PLAN.md (4 Playwright E2E specs: Dashboard, Mark-as-Read, Approval, Admin Config)
 
 Progress: [█████████░] 89%
 
@@ -83,6 +83,7 @@ Progress: [█████████░] 89%
 | Phase 10 P05 | 27min | 2 tasks | 45 files |
 | Phase 10 P06 | 2min | 2 tasks | 0 files |
 | Phase 11 P00 | 5min | 2 tasks | 14 files |
+| Phase 11 P05 | 5min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -184,6 +185,9 @@ Recent decisions affecting current work:
 - [Phase 11]: EnsureCreatedAsync instead of MigrateAsync for faster test database setup
 - [Phase 11]: createWebPartFixture() factory pattern for per-web-part E2E test fixtures
 - [Phase 11]: Updated DatabaseSchemaTests to use SqlServer provider after removing InMemory
+- [Phase 11-05]: createWebPartFixture per spec file for isolated worker-scoped web part loading
+- [Phase 11-05]: Bilingual locator strategy (DE/EN) for locale-agnostic E2E test resilience
+- [Phase 11-05]: Mock data assertions (Passwort-Richtlinie, Datensicherung-Konzept, IT-Sicherheit) tied to MOCK_ARTICLES
 
 ### Pending Todos
 
@@ -198,6 +202,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T18:36:33.128Z
-Stopped at: Completed 11-00-PLAN.md
+Last session: 2026-03-17T18:48:57.539Z
+Stopped at: Completed 11-05-PLAN.md
 Resume file: None
