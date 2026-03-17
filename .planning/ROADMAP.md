@@ -171,11 +171,12 @@ Plans:
   3. Admin can view a per-article read confirmation report showing who read, who has not, and when
   4. Admin can export read confirmation reports as CSV or Excel files
   5. Admin can see an overview of all articles by status, content freshness, and flag count
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 09-01: Admin Panel categories and target groups CRUD
-- [ ] 09-02: Read confirmation reports, export (CSV/Excel), and article overview dashboard
+- [ ] 09-01-PLAN.md — Backend CQRS commands/queries, SystemConfiguration entity, IAdminService, admin hooks
+- [ ] 09-02-PLAN.md — Admin Panel UI: Pivot tabs, KategorienTab, ZielgruppenTab, BerichteTab, UebersichtTab, CSV/Excel export
+- [ ] 09-03-PLAN.md — Workbench verification checkpoint for all 7 requirements
 
 ### Phase 10: Caching, Telemetry, UX Polish & i18n
 **Goal**: The application performs well under load, provides production observability, handles errors gracefully, and supports German and English UI
@@ -204,7 +205,7 @@ Plans:
   1. Jest unit tests cover frontend services, hooks, and key components — tests pass in Heft pipeline
   2. .NET integration tests verify all API endpoints against SQL Server 2022 in Docker
   3. Playwright E2E tests execute critical user flows (browse dashboard, mark as read, approve article, admin config)
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
 - [ ] 11-01: Jest unit tests for frontend (services, hooks, components)
@@ -221,7 +222,7 @@ Plans:
   3. GitHub Actions CD pipeline deploys SPFx package and Azure Functions on merge to main, with EF Core migrations running before code deployment
   4. Federated identity (OIDC) connects GitHub Actions to Azure and M365 — no stored secrets in the repository
   5. README.md contains architecture diagram, local setup guide, production deployment guide, and API documentation
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
 - [ ] 12-01: Azure Bicep modules for all infrastructure
@@ -244,7 +245,7 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 6. Article Sidebar & Read Confirmations | 3/3 | Complete | 2026-03-16 |
 | 7. Approval Workflow & Freigabecenter | 3/3 | Complete   | 2026-03-17 |
 | 8. Unread Badge Application Customizer | 2/2 | Complete | 2026-03-17 |
-| 9. Admin Panel & Reporting | 0/2 | Not started | - |
+| 9. Admin Panel & Reporting | 0/3 | Not started | - |
 | 10. Caching, Telemetry, UX Polish & i18n | 0/5 | Not started | - |
 | 11. Testing | 0/3 | Not started | - |
 | 12. DevOps & Deployment | 0/3 | Not started | - |
