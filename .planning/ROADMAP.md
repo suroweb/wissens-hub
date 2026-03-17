@@ -171,9 +171,10 @@ Plans:
   3. Admin can view a per-article read confirmation report showing who read, who has not, and when
   4. Admin can export read confirmation reports as CSV or Excel files
   5. Admin can see an overview of all articles by status, content freshness, and flag count
-**Plans**: 3 plans
+**Plans**: 4 plans
 
 Plans:
+- [ ] 09-00-PLAN.md — Wave 0: test stub files for all admin panel components and export utilities
 - [ ] 09-01-PLAN.md — Backend CQRS commands/queries, SystemConfiguration entity, IAdminService, admin hooks
 - [ ] 09-02-PLAN.md — Admin Panel UI: Pivot tabs, KategorienTab, ZielgruppenTab, BerichteTab, UebersichtTab, CSV/Excel export
 - [ ] 09-03-PLAN.md — Workbench verification checkpoint for all 7 requirements
@@ -245,7 +246,7 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 6. Article Sidebar & Read Confirmations | 3/3 | Complete | 2026-03-16 |
 | 7. Approval Workflow & Freigabecenter | 3/3 | Complete   | 2026-03-17 |
 | 8. Unread Badge Application Customizer | 2/2 | Complete | 2026-03-17 |
-| 9. Admin Panel & Reporting | 0/3 | Not started | - |
+| 9. Admin Panel & Reporting | 0/4 | Not started | - |
 | 10. Caching, Telemetry, UX Polish & i18n | 0/5 | Not started | - |
 | 11. Testing | 0/3 | Not started | - |
 | 12. DevOps & Deployment | 0/3 | Not started | - |
