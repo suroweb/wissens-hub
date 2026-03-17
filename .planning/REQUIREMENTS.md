@@ -77,12 +77,12 @@
 
 ### Admin Panel Web Part
 
-- [ ] **ADMIN-01**: Admin can add, edit, and remove article categories
-- [ ] **ADMIN-02**: Admin can configure target groups (select from SharePoint groups)
-- [ ] **ADMIN-03**: Admin can configure reminder intervals
-- [ ] **ADMIN-04**: Admin can view read confirmation report per article (who read, who didn't, when)
-- [ ] **ADMIN-05**: Admin can export read confirmation reports (CSV/Excel)
-- [ ] **ADMIN-06**: Admin can see overview of all articles by status, freshness, and flag count
+- [x] **ADMIN-01**: Admin can add, edit, and remove article categories
+- [x] **ADMIN-02**: Admin can configure target groups (select from SharePoint groups)
+- [x] **ADMIN-03**: Admin can configure reminder intervals
+- [x] **ADMIN-04**: Admin can view read confirmation report per article (who read, who didn't, when)
+- [x] **ADMIN-05**: Admin can export read confirmation reports (CSV/Excel)
+- [x] **ADMIN-06**: Admin can see overview of all articles by status, freshness, and flag count
 
 ### Read Confirmations
 
@@ -257,12 +257,12 @@ Deferred to future release. Tracked but not in current roadmap.
 | BADGE-01 | Phase 8 | Complete |
 | BADGE-02 | Phase 8 | Complete |
 | BADGE-03 | Phase 8 | Complete |
-| ADMIN-01 | Phase 9 | Pending |
-| ADMIN-02 | Phase 9 | Pending |
-| ADMIN-03 | Phase 9 | Pending |
-| ADMIN-04 | Phase 9 | Pending |
-| ADMIN-05 | Phase 9 | Pending |
-| ADMIN-06 | Phase 9 | Pending |
+| ADMIN-01 | Phase 9 | Complete |
+| ADMIN-02 | Phase 9 | Complete |
+| ADMIN-03 | Phase 9 | Complete |
+| ADMIN-04 | Phase 9 | Complete |
+| ADMIN-05 | Phase 9 | Complete |
+| ADMIN-06 | Phase 9 | Complete |
 | READ-01 | Phase 6 | Complete |
 | READ-02 | Phase 6 | Complete |
 | READ-03 | Phase 6 | Complete |
