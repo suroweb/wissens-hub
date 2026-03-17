@@ -5,6 +5,8 @@ export { FavoriteService } from './FavoriteService';
 export { FlagService } from './FlagService';
 export { ApprovalService } from './ApprovalService';
 export { AdminService } from './AdminService';
+export { CacheService, CACHE_TTLS } from './CacheService';
+export { ITelemetryService, AppInsightsTelemetryService, ConsoleTelemetryService, createTelemetryService } from './TelemetryService';
 
 import { AadHttpClient } from '@microsoft/sp-http';
 import { SPFI } from '@pnp/sp';
@@ -16,6 +18,8 @@ import { FavoriteService } from './FavoriteService';
 import { FlagService } from './FlagService';
 import { ApprovalService } from './ApprovalService';
 import { AdminService } from './AdminService';
+import { CacheService } from './CacheService';
+import { ConsoleTelemetryService } from './TelemetryService';
 
 export function createProductionServices(
   sp: SPFI,
@@ -31,5 +35,7 @@ export function createProductionServices(
     flagService: new FlagService(apiClient),
     approvalService: new ApprovalService(apiClient),
     adminService: new AdminService(apiClient),
+    cache: new CacheService(),
+    telemetry: new ConsoleTelemetryService(),
   };
 }

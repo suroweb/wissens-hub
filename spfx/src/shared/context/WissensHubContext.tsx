@@ -8,6 +8,8 @@ import { getSP } from './pnpSetup';
 import { createProductionServices } from '../services';
 import { createMockServices } from '../services/__mocks__';
 import { MOCK_CURRENT_USER } from '../services/__mocks__/mockData';
+import { CacheService } from '../services/CacheService';
+import { createTelemetryService } from '../services/TelemetryService';
 
 export interface IWissensHubContext {
   services: IServiceContainer;
@@ -21,6 +23,7 @@ export interface IWissensHubProviderProps {
   aadClient?: AadHttpClient;
   apiBaseUrl?: string;
   mockRole?: UserRole;
+  appInsightsConnectionString?: string;
   children: React.ReactNode;
 }
 
@@ -57,6 +60,7 @@ export const WissensHubProvider: React.FC<IWissensHubProviderProps> = ({
   aadClient,
   apiBaseUrl,
   mockRole,
+  appInsightsConnectionString,
   children,
 }) => {
   const [contextValue, setContextValue] = React.useState<IWissensHubContext | undefined>(undefined);
@@ -64,6 +68,9 @@ export const WissensHubProvider: React.FC<IWissensHubProviderProps> = ({
   React.useEffect(() => {
     const init = async (): Promise<void> => {
       const isProduction = !spContext.isServedFromLocalhost && aadClient !== undefined;
+
+      const cache = new CacheService();
+      const telemetry = createTelemetryService(appInsightsConnectionString || '');
 
       let currentUser: ICurrentUser;
       let role: UserRole;
@@ -86,6 +93,10 @@ export const WissensHubProvider: React.FC<IWissensHubProviderProps> = ({
             email: spContext.pageContext.user.email,
             loginName: spContext.pageContext.user.loginName,
           };
+          telemetry.trackEvent('error_sharepoint', {
+            errorMessage: (e as Error).message || 'Failed to get current user',
+            source: 'WissensHubProvider.init'
+          });
         }
 
         try {
@@ -95,13 +106,17 @@ export const WissensHubProvider: React.FC<IWissensHubProviderProps> = ({
         } catch (e) {
           console.warn('Role detection failed, defaulting to reader:', e);
           role = 'reader';
+          telemetry.trackEvent('error_sharepoint', {
+            errorMessage: (e as Error).message || 'Role detection failed',
+            source: 'WissensHubProvider.init'
+          });
         }
 
-        services = createProductionServices(sp, aadClient, apiBaseUrl!);
+        services = { ...createProductionServices(sp, aadClient, apiBaseUrl!), cache, telemetry };
       } else {
         currentUser = MOCK_CURRENT_USER;
         role = mockRole ?? 'reader';
-        services = createMockServices();
+        services = { ...createMockServices(), cache, telemetry };
       }
 
       setContextValue({
@@ -114,9 +129,15 @@ export const WissensHubProvider: React.FC<IWissensHubProviderProps> = ({
 
     init().catch((e) => {
       console.error('WissensHubProvider initialization failed:', e);
+      const fallbackCache = new CacheService();
+      const fallbackTelemetry = createTelemetryService(appInsightsConnectionString || '');
+      fallbackTelemetry.trackEvent('error_sharepoint', {
+        errorMessage: (e as Error).message || 'SharePoint service initialization failed',
+        source: 'WissensHubProvider.init'
+      });
       // Fallback to mock services so the web part does not stay stuck on null render
       setContextValue({
-        services: createMockServices(),
+        services: { ...createMockServices(), cache: fallbackCache, telemetry: fallbackTelemetry },
         currentUser: MOCK_CURRENT_USER,
         role: mockRole ?? 'reader',
         isLoading: false,

@@ -12,4 +12,7 @@ export {
   FlagService,
   ApprovalService,
   createProductionServices,
+  CacheService,
+  CACHE_TTLS,
+  createTelemetryService,
 } from './services';

@@ -14,6 +14,8 @@ import { MockFavoriteService } from './MockFavoriteService';
 import { MockFlagService } from './MockFlagService';
 import { MockApprovalService } from './MockApprovalService';
 import { MockAdminService } from './MockAdminService';
+import { CacheService } from '../CacheService';
+import { ConsoleTelemetryService } from '../TelemetryService';
 
 export function createMockServices(): IServiceContainer {
   return {
@@ -24,5 +26,7 @@ export function createMockServices(): IServiceContainer {
     flagService: new MockFlagService(),
     approvalService: new MockApprovalService(),
     adminService: new MockAdminService(),
+    cache: new CacheService(),
+    telemetry: new ConsoleTelemetryService(),
   };
 }
