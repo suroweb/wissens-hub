@@ -5,7 +5,8 @@ using WissensHub.Infrastructure.Data;
 
 namespace WissensHub.Tests.Infrastructure;
 
-public abstract class IntegrationTestBase : IClassFixture<IntegrationTestFixture>
+[Collection("Integration")]
+public abstract class IntegrationTestBase
 {
     protected readonly IntegrationTestFixture _fixture;
 
@@ -37,6 +38,7 @@ public abstract class IntegrationTestBase : IClassFixture<IntegrationTestFixture
         db.ArticleMetadata.RemoveRange(db.ArticleMetadata);
         db.Categories.RemoveRange(db.Categories);
         db.TargetGroups.RemoveRange(db.TargetGroups);
+        db.SystemConfigurations.RemoveRange(db.SystemConfigurations);
 
         await db.SaveChangesAsync();
     }
