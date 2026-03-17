@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 11-01-PLAN.md
-last_updated: "2026-03-17T19:24:22.828Z"
+stopped_at: Completed 11-02-PLAN.md
+last_updated: "2026-03-17T19:26:04.243Z"
 last_activity: 2026-03-17 -- Completed 11-04-PLAN.md (36 endpoint integration tests covering all 10 API endpoints against SQL Server)
 progress:
   total_phases: 12
   completed_phases: 10
   total_plans: 42
-  completed_plans: 40
+  completed_plans: 41
   percent: 90
 ---
 
@@ -87,6 +87,7 @@ Progress: [█████████░] 90%
 | Phase 11 P04 | 12min | 2 tasks | 8 files |
 | Phase 11 P03 | 16min | 2 tasks | 11 files |
 | Phase 11 P01 | 44min | 2 tasks | 10 files |
+| Phase 11 P02 | 46min | 1 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -197,6 +198,8 @@ Recent decisions affecting current work:
 - [Phase 11]: Added jest.config.json with moduleNameMapper to resolve __mocks__ directory path conflict when using renderWithContext
 - [Phase 11]: PnP mock block (9 jest.mock calls) required in all test files that use renderWithContext due to WissensHubContext import chain
 - [Phase 11]: SharedStrings mock must include all 19 relative date string keys when testing components that use formatRelativeDate
+- [Phase 11]: Mock @pnp/sp + pnpSetup at module level to prevent ESM parse errors in Jest CJS mode for tests using renderWithContext
+- [Phase 11]: Use Fluent UI CSS class selectors for MessageBar assertions in jsdom (innerText spans render empty)
 
 ### Pending Todos
 
@@ -211,6 +214,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T19:24:22.824Z
-Stopped at: Completed 11-01-PLAN.md
+Last session: 2026-03-17T19:26:04.240Z
+Stopped at: Completed 11-02-PLAN.md
 Resume file: None
