@@ -4,3 +4,12 @@ export { IReadConfirmationService } from './IReadConfirmationService';
 export { IFavoriteService } from './IFavoriteService';
 export { IFlagService } from './IFlagService';
 export { IApprovalService } from './IApprovalService';
+export {
+  IAdminService,
+  ICategory,
+  ITargetGroupConfig,
+  IArticleReport,
+  IAdminReport,
+  IUserReadStatus,
+  IDetailedReadStats,
+} from './IAdminService';

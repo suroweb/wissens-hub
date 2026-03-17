@@ -4,6 +4,7 @@ export { ReadConfirmationService } from './ReadConfirmationService';
 export { FavoriteService } from './FavoriteService';
 export { FlagService } from './FlagService';
 export { ApprovalService } from './ApprovalService';
+export { AdminService } from './AdminService';
 
 import { AadHttpClient } from '@microsoft/sp-http';
 import { SPFI } from '@pnp/sp';
@@ -14,6 +15,7 @@ import { ReadConfirmationService } from './ReadConfirmationService';
 import { FavoriteService } from './FavoriteService';
 import { FlagService } from './FlagService';
 import { ApprovalService } from './ApprovalService';
+import { AdminService } from './AdminService';
 
 export function createProductionServices(
   sp: SPFI,
@@ -28,5 +30,6 @@ export function createProductionServices(
     favoriteService: new FavoriteService(apiClient),
     flagService: new FlagService(apiClient),
     approvalService: new ApprovalService(apiClient),
+    adminService: new AdminService(apiClient),
   };
 }

@@ -204,6 +204,29 @@ export const MOCK_FLAGS: IFlag[] = [
   },
 ];
 
+export const MOCK_ADMIN_CATEGORIES: Array<{ id: number; name: string; description: string; isActive: boolean }> = [
+  { id: 1, name: 'IT-Sicherheit', description: 'IT-Sicherheitsrichtlinien', isActive: true },
+  { id: 2, name: 'Datenschutz', description: 'Datenschutzrichtlinien', isActive: true },
+  { id: 3, name: 'Onboarding', description: 'Onboarding-Materialien', isActive: true },
+  { id: 4, name: 'Arbeitsprozesse', description: 'Arbeitsprozess-Dokumentation', isActive: true },
+  { id: 5, name: 'Compliance', description: 'Compliance-Schulungen', isActive: true },
+];
+
+export const MOCK_ADMIN_TARGET_GROUPS: Array<{ id: number; name: string; sharePointGroupName: string; isActive: boolean }> = [
+  { id: 1, name: 'Alle Mitarbeiter', sharePointGroupName: 'WissensHub Members', isActive: true },
+  { id: 2, name: 'IT-Abteilung', sharePointGroupName: 'IT-Abteilung', isActive: true },
+  { id: 3, name: 'Management', sharePointGroupName: 'Management', isActive: true },
+  { id: 4, name: 'Neue Mitarbeiter', sharePointGroupName: 'Neue Mitarbeiter', isActive: true },
+];
+
+export const MOCK_ADMIN_USERS: string[] = [
+  'Anna Schmidt',
+  'Thomas Mueller',
+  'Lisa Fischer',
+  'Stefan Braun',
+  'Maria Hoffmann',
+];
+
 export const MOCK_APPROVAL_HISTORY: IApprovalAction[] = [
   {
     id: 1,

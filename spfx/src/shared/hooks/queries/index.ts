@@ -6,3 +6,8 @@ export { usePendingApprovalsQuery } from './usePendingApprovalsQuery';
 export { useArticleStatusQuery, IArticleStatus } from './useArticleStatusQuery';
 export { useFlaggedArticlesQuery } from './useFlaggedArticlesQuery';
 export { useApprovalHistoryQuery } from './useApprovalHistoryQuery';
+export { useCategoriesQuery } from './useCategoriesQuery';
+export { useTargetGroupsQuery } from './useTargetGroupsQuery';
+export { useAdminReportsQuery } from './useAdminReportsQuery';
+export { useReminderConfigQuery } from './useReminderConfigQuery';
+export { useDetailedReadStatsQuery } from './useDetailedReadStatsQuery';

@@ -45,6 +45,48 @@ export class AzureApiClient implements IApiClient {
     }
   }
 
+  public async put<T>(endpoint: string, body?: unknown): Promise<Result<T>> {
+    try {
+      const response = await this.client.fetch(
+        `${this.baseUrl}${endpoint}`,
+        AadHttpClient.configurations.v1,
+        {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: body ? JSON.stringify(body) : undefined,
+        }
+      );
+      if (!response.ok) {
+        return fail(this.mapHttpError(response.status));
+      }
+      const text = await response.text();
+      const data = text ? JSON.parse(text) as T : (undefined as unknown as T);
+      return ok(data);
+    } catch (e) {
+      return fail({ code: 'NETWORK_ERROR', message: (e as Error).message });
+    }
+  }
+
+  public async delete<T>(endpoint: string): Promise<Result<T>> {
+    try {
+      const response = await this.client.fetch(
+        `${this.baseUrl}${endpoint}`,
+        AadHttpClient.configurations.v1,
+        {
+          method: 'DELETE',
+        }
+      );
+      if (!response.ok) {
+        return fail(this.mapHttpError(response.status));
+      }
+      const text = await response.text();
+      const data = text ? JSON.parse(text) as T : (undefined as unknown as T);
+      return ok(data);
+    } catch (e) {
+      return fail({ code: 'NETWORK_ERROR', message: (e as Error).message });
+    }
+  }
+
   private mapHttpError(status: number): AppError {
     switch (status) {
       case 401: return { code: 'UNAUTHORIZED', message: 'Authentication required' };
