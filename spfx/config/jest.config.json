@@ -1,0 +1,8 @@
+{
+  "extends": "@microsoft/spfx-web-build-rig/profiles/default/config/jest.config.json",
+  "automock": false,
+  "moduleNameMapper": {
+    "(.*)/services/__mocks__/mockData": "<rootDir>/lib-commonjs/shared/services/__mocks__/mockData.js",
+    "(.*)/services/__mocks__$": "<rootDir>/lib-commonjs/shared/services/__mocks__/index.js"
+  }
+}

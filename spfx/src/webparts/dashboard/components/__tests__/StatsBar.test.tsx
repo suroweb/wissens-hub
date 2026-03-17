@@ -1,42 +1,89 @@
-// React import will be needed when rendering components
-// import * as React from 'react';
+jest.mock('@pnp/sp', () => ({ spfi: jest.fn(), SPFx: jest.fn() }));
+jest.mock('@pnp/queryable', () => ({ Caching: jest.fn() }));
+jest.mock('@pnp/sp/webs', () => ({}));
+jest.mock('@pnp/sp/lists', () => ({}));
+jest.mock('@pnp/sp/items', () => ({}));
+jest.mock('@pnp/sp/site-users/web', () => ({}));
+jest.mock('@pnp/sp/site-groups/web', () => ({}));
+jest.mock('@pnp/sp/search', () => ({}));
+jest.mock('@microsoft/sp-http', () => ({}));
 
-// Component import will be available after Plan 02
-// import { StatsBar } from '../StatsBar';
+jest.mock('DashboardWebPartStrings', () => ({
+  Unread: 'Ungelesen',
+  Favorites: 'Favoriten',
+  OpenForReview: 'Offen',
+}), { virtual: true });
+
+jest.mock('SharedStrings', () => ({}), { virtual: true });
+
+import * as React from 'react';
+import { screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { renderWithContext } from '../../../../shared/test-utils';
+import { StatsBar, IStatsBarProps } from '../StatsBar';
 
 describe('StatsBar (DASH-05, DASH-10)', () => {
-  it('should render unread count with Ungelesen label', () => {
-    // TODO: implement after Plan 02 creates StatsBar
-    expect(true).toBe(true);
+  const mockStatClick = jest.fn();
+
+  const defaultProps: IStatsBarProps = {
+    unreadCount: 5,
+    favoritesCount: 3,
+    pendingReviewsCount: 2,
+    activeStatFilter: '',
+    onStatClick: mockStatClick,
+  };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
 
-  it('should render favorites count with Favoriten label', () => {
-    // TODO: implement after Plan 02 creates StatsBar
-    expect(true).toBe(true);
+  it('renders unread count', () => {
+    renderWithContext(React.createElement(StatsBar, defaultProps));
+    expect(screen.getByText('5')).toBeInTheDocument();
+    expect(screen.getByText('Ungelesen')).toBeInTheDocument();
   });
 
-  it('should render Offen stat only inside RoleGate for reviewer role', () => {
-    // TODO: implement after Plan 02 creates StatsBar with RoleGate
-    expect(true).toBe(true);
+  it('renders favorites count', () => {
+    renderWithContext(React.createElement(StatsBar, defaultProps));
+    expect(screen.getByText('3')).toBeInTheDocument();
+    expect(screen.getByText('Favoriten')).toBeInTheDocument();
   });
 
-  it('should NOT render Offen stat for reader or editor roles', () => {
-    // TODO: implement after Plan 02 creates StatsBar with RoleGate
-    expect(true).toBe(true);
+  it('renders pending review count for reviewer role', () => {
+    // Default renderWithContext uses admin role which is >= reviewer
+    renderWithContext(React.createElement(StatsBar, defaultProps));
+    expect(screen.getByText('2')).toBeInTheDocument();
+    expect(screen.getByText('Offen')).toBeInTheDocument();
   });
 
-  it('should highlight active stat filter with visual indicator', () => {
-    // TODO: implement after Plan 02 creates StatsBar
-    expect(true).toBe(true);
+  it('hides pending reviews for reader role', () => {
+    renderWithContext(React.createElement(StatsBar, defaultProps), { role: 'reader' });
+    // Unread and favorites should still show
+    expect(screen.getByText('Ungelesen')).toBeInTheDocument();
+    expect(screen.getByText('Favoriten')).toBeInTheDocument();
+    // Offen should be hidden by RoleGate
+    expect(screen.queryByText('Offen')).toBeNull();
   });
 
-  it('should toggle stat filter on click (activate/deactivate)', () => {
-    // TODO: implement after Plan 02 creates StatsBar
-    expect(true).toBe(true);
+  it('has aria-pressed attribute for accessibility', () => {
+    renderWithContext(React.createElement(StatsBar, defaultProps));
+    const unreadButton = screen.getByText('Ungelesen').closest('button');
+    expect(unreadButton).toHaveAttribute('aria-pressed', 'false');
   });
 
-  it('should have aria-pressed attribute for accessibility', () => {
-    // TODO: implement after Plan 02 creates StatsBar
-    expect(true).toBe(true);
+  it('shows active state when stat filter is active', () => {
+    const activeProps = { ...defaultProps, activeStatFilter: 'unread' as const };
+    renderWithContext(React.createElement(StatsBar, activeProps));
+    const unreadButton = screen.getByText('Ungelesen').closest('button');
+    expect(unreadButton).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  it('calls onStatClick when stat button is clicked', () => {
+    renderWithContext(React.createElement(StatsBar, defaultProps));
+    const unreadButton = screen.getByText('Ungelesen').closest('button');
+    if (unreadButton) {
+      fireEvent.click(unreadButton);
+    }
+    expect(mockStatClick).toHaveBeenCalled();
   });
 });
