@@ -2,27 +2,44 @@ import * as React from 'react';
 import styles from './AdminPanel.module.scss';
 import type { IAdminPanelProps } from './IAdminPanelProps';
 import { Icon } from '@fluentui/react/lib/Icon';
+import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
+import { RoleGate } from '../../../shared/components/RoleGate';
 import { useWissensHub } from '../../../shared/context';
+import { UebersichtTab } from './UebersichtTab';
+import { KategorienTab } from './KategorienTab';
+import { ZielgruppenTab } from './ZielgruppenTab';
+import { BerichteTab } from './BerichteTab';
 
 const AdminPanel: React.FunctionComponent<IAdminPanelProps> = (props) => {
-  const { description, hasTeamsContext } = props;
-  const { role, currentUser, isLoading } = useWissensHub();
+  const { hasTeamsContext } = props;
+  const { isLoading } = useWissensHub();
 
-  if (isLoading) return null;
+  if (isLoading) return React.createElement('div', { 'data-automationid': 'admin-panel-loading' });
 
-  return (
-    <section className={`${styles.adminPanel} ${hasTeamsContext ? styles.teams : ''}`}>
-      <div className={styles.header}>
-        <Icon iconName="Settings" className={styles.icon} />
-        <h2>Admin Panel</h2>
-      </div>
-      <p>{description}</p>
-      <div className={styles.userInfo}>
-        <Icon iconName="Contact" />
-        <span>{currentUser.displayName} ({role})</span>
-      </div>
-    </section>
+  const sectionContent = React.createElement('section', {
+    className: styles.adminPanel + (hasTeamsContext ? ' ' + styles.teams : ''),
+  },
+    React.createElement('div', { className: styles.header },
+      React.createElement(Icon, { iconName: 'Settings', className: styles.icon }),
+      React.createElement('h2', undefined, 'Administration'),
+    ),
+    React.createElement(Pivot, { defaultSelectedKey: 'uebersicht' },
+      React.createElement(PivotItem, { headerText: 'Ubersicht', itemKey: 'uebersicht', itemIcon: 'ViewDashboard' },
+        React.createElement(UebersichtTab, undefined),
+      ),
+      React.createElement(PivotItem, { headerText: 'Kategorien', itemKey: 'kategorien', itemIcon: 'Tag' },
+        React.createElement(KategorienTab, undefined),
+      ),
+      React.createElement(PivotItem, { headerText: 'Zielgruppen', itemKey: 'zielgruppen', itemIcon: 'Group' },
+        React.createElement(ZielgruppenTab, undefined),
+      ),
+      React.createElement(PivotItem, { headerText: 'Berichte', itemKey: 'berichte', itemIcon: 'ReportDocument' },
+        React.createElement(BerichteTab, undefined),
+      ),
+    ),
   );
+
+  return React.createElement(RoleGate, { minimumRole: 'admin', children: sectionContent });
 };
 
 export default AdminPanel;
