@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from '@fluentui/react/lib/Dialog';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
+import * as strings from 'FreigabecenterWebPartStrings';
+import * as sharedStrings from 'SharedStrings';
 
 export interface IRejectDialogProps {
   isOpen: boolean;
@@ -29,7 +31,7 @@ export const RejectDialog: React.FC<IRejectDialogProps> = ({
 
   const dialogContentProps = React.useMemo(() => ({
     type: DialogType.normal,
-    title: 'Artikel ablehnen',
+    title: strings.RejectDialogTitle,
     subText: articleTitle,
   }), [articleTitle]);
 
@@ -51,7 +53,7 @@ export const RejectDialog: React.FC<IRejectDialogProps> = ({
       minWidth={400}
     >
       <TextField
-        label="Begründung"
+        label={strings.ReasonLabel}
         multiline
         rows={3}
         required
@@ -60,11 +62,11 @@ export const RejectDialog: React.FC<IRejectDialogProps> = ({
       />
       <DialogFooter>
         <PrimaryButton
-          text="Ablehnen"
+          text={strings.Reject}
           onClick={handleSubmit}
           disabled={!comment.trim() || isSubmitting}
         />
-        <DefaultButton text="Abbrechen" onClick={handleDismiss} />
+        <DefaultButton text={sharedStrings.Cancel} onClick={handleDismiss} />
       </DialogFooter>
     </Dialog>
   );

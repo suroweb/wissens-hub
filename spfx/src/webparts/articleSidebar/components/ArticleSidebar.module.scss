@@ -4,6 +4,8 @@
   padding: 16px;
   color: "[theme:bodyText, default: #323130]";
   color: var(--bodyText);
+  overflow-x: hidden;
+  word-break: break-word;
   &.teams {
     font-family: $ms-font-family-fallbacks;
   }

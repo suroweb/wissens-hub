@@ -38,6 +38,10 @@ declare interface ISharedStrings {
   ErrorOccurred: string;
   Reload: string;
 
+  // Misc
+  NotAssigned: string;
+  OpenArticle: string;
+
   // Filter strings
   SearchPlaceholder: string;
   AllFilter: string;

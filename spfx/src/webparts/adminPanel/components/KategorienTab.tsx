@@ -10,6 +10,8 @@ import { useCategoriesQuery } from '../../../shared/hooks/queries';
 import { useSaveCategoryCommand, useDeleteCategoryCommand } from '../../../shared/hooks/commands';
 import { ICategory } from '../../../shared/interfaces/IAdminService';
 import styles from './AdminPanel.module.scss';
+import * as strings from 'AdminPanelWebPartStrings';
+import * as sharedStrings from 'SharedStrings';
 
 interface IEditableCategory extends ICategory {
   isNew?: boolean;
@@ -60,7 +62,7 @@ export const KategorienTab: React.FunctionComponent = () => {
       setEditingId(undefined);
       categoriesQuery.refetch();
     } else {
-      setErrorMessage('Fehler beim Speichern der Kategorie.');
+      setErrorMessage(strings.ErrorSavingCategory);
     }
   }, [editingId, editName, editDescription, saveCommand, categoriesQuery]);
 
@@ -74,7 +76,7 @@ export const KategorienTab: React.FunctionComponent = () => {
     if (success) {
       categoriesQuery.refetch();
     } else {
-      setErrorMessage('Fehler beim Aktualisieren des Status.');
+      setErrorMessage(strings.ErrorUpdatingCategoryStatus);
     }
   }, [saveCommand, categoriesQuery]);
 
@@ -88,7 +90,7 @@ export const KategorienTab: React.FunctionComponent = () => {
       setNewDescription('');
       categoriesQuery.refetch();
     } else {
-      setErrorMessage('Fehler beim Erstellen der Kategorie.');
+      setErrorMessage(strings.ErrorCreatingCategory);
     }
   }, [newName, newDescription, saveCommand, categoriesQuery]);
 
@@ -97,7 +99,7 @@ export const KategorienTab: React.FunctionComponent = () => {
     for (let i = 0; i < selectedIds.length; i++) {
       const success = await deleteCommand.execute(selectedIds[i]);
       if (!success) {
-        setErrorMessage('Fehler beim Loeschen einer Kategorie.');
+        setErrorMessage(strings.ErrorDeletingCategory);
       }
     }
     setSelectedIds([]);
@@ -107,13 +109,13 @@ export const KategorienTab: React.FunctionComponent = () => {
   const commandBarItems: ICommandBarItemProps[] = [
     {
       key: 'add',
-      text: 'Hinzufugen',
+      text: sharedStrings.Add,
       iconProps: { iconName: 'Add' },
       onClick: () => setAddingNew(true),
     },
     {
       key: 'delete',
-      text: 'Loschen',
+      text: sharedStrings.Delete,
       iconProps: { iconName: 'Delete' },
       disabled: selectedIds.length === 0,
       onClick: () => { handleDeleteSelected().catch(() => { /* handled */ }); },
@@ -123,7 +125,7 @@ export const KategorienTab: React.FunctionComponent = () => {
   const columns: IColumn[] = [
     {
       key: 'name',
-      name: 'Name',
+      name: sharedStrings.Name,
       fieldName: 'name',
       minWidth: 150,
       maxWidth: 250,
@@ -133,7 +135,7 @@ export const KategorienTab: React.FunctionComponent = () => {
           return React.createElement(TextField, {
             value: newName,
             onChange: (_: React.FormEvent<HTMLElement>, val?: string) => setNewName(val || ''),
-            placeholder: 'Kategorie-Name',
+            placeholder: strings.CategoryNamePlaceholder,
           });
         }
         if (editingId === item.id) {
@@ -150,7 +152,7 @@ export const KategorienTab: React.FunctionComponent = () => {
     },
     {
       key: 'description',
-      name: 'Beschreibung',
+      name: sharedStrings.Description,
       fieldName: 'description',
       minWidth: 200,
       maxWidth: 350,
@@ -160,7 +162,7 @@ export const KategorienTab: React.FunctionComponent = () => {
           return React.createElement(TextField, {
             value: newDescription,
             onChange: (_: React.FormEvent<HTMLElement>, val?: string) => setNewDescription(val || ''),
-            placeholder: 'Beschreibung',
+            placeholder: strings.DescriptionPlaceholder,
           });
         }
         if (editingId === item.id) {
@@ -174,7 +176,7 @@ export const KategorienTab: React.FunctionComponent = () => {
     },
     {
       key: 'isActive',
-      name: 'Aktiv',
+      name: sharedStrings.Active,
       minWidth: 60,
       maxWidth: 80,
       onRender: (item: IEditableCategory) => {
@@ -189,7 +191,7 @@ export const KategorienTab: React.FunctionComponent = () => {
     },
     {
       key: 'actions',
-      name: 'Aktionen',
+      name: sharedStrings.Actions,
       minWidth: 80,
       maxWidth: 100,
       onRender: (item: IEditableCategory) => {
@@ -197,12 +199,12 @@ export const KategorienTab: React.FunctionComponent = () => {
           return React.createElement('div', { style: { display: 'flex', gap: '4px' } },
             React.createElement(IconButton, {
               iconProps: { iconName: 'Save' },
-              title: 'Speichern',
+              title: sharedStrings.Save,
               onClick: () => { handleAddNew().catch(() => { /* handled */ }); },
             }),
             React.createElement(IconButton, {
               iconProps: { iconName: 'Cancel' },
-              title: 'Abbrechen',
+              title: sharedStrings.Cancel,
               onClick: () => { setAddingNew(false); setNewName(''); setNewDescription(''); },
             }),
           );
@@ -211,19 +213,19 @@ export const KategorienTab: React.FunctionComponent = () => {
           return React.createElement('div', { style: { display: 'flex', gap: '4px' } },
             React.createElement(IconButton, {
               iconProps: { iconName: 'Save' },
-              title: 'Speichern',
+              title: sharedStrings.Save,
               onClick: () => { handleSaveEdit().catch(() => { /* handled */ }); },
             }),
             React.createElement(IconButton, {
               iconProps: { iconName: 'Cancel' },
-              title: 'Abbrechen',
+              title: sharedStrings.Cancel,
               onClick: handleCancelEdit,
             }),
           );
         }
         return React.createElement(IconButton, {
           iconProps: { iconName: 'Edit' },
-          title: 'Bearbeiten',
+          title: sharedStrings.Edit,
           onClick: () => handleStartEdit(item),
         });
       },
@@ -253,7 +255,7 @@ export const KategorienTab: React.FunctionComponent = () => {
   if (categoriesQuery.state.status === 'error') {
     return React.createElement('div', { className: styles.tabContent },
       React.createElement(MessageBar, { messageBarType: MessageBarType.error },
-        'Fehler beim Laden der Kategorien.',
+        strings.ErrorLoadingCategories,
       ),
     );
   }

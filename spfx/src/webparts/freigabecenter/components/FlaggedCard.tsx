@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { IFlag } from '../../../shared/models/domain/IFlag';
 import styles from './Freigabecenter.module.scss';
+import * as strings from 'FreigabecenterWebPartStrings';
+import * as sharedStrings from 'SharedStrings';
 
 export interface IFlaggedCardProps {
   flag: IFlag;
@@ -31,7 +33,7 @@ export const FlaggedCard: React.FunctionComponent<IFlaggedCardProps> = ({
       </div>
 
       <div className={styles.cardMeta}>
-        Gemeldet von: {flag.userDisplayName} am {formatDate(flag.flaggedDate)}
+        {strings.FlaggedBy.replace('{0}', flag.userDisplayName).replace('{1}', formatDate(flag.flaggedDate))}
       </div>
 
       <div className={styles.flagReason}>
@@ -45,7 +47,7 @@ export const FlaggedCard: React.FunctionComponent<IFlaggedCardProps> = ({
         className={styles.articleLink}
       >
         <Icon iconName="OpenInNewWindow" />
-        Artikel öffnen
+        {sharedStrings.OpenArticle}
       </a>
     </div>
   );

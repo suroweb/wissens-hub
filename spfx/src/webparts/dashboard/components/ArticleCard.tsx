@@ -46,8 +46,9 @@ export const ArticleCard: React.FunctionComponent<IArticleCardProps> = ({
   return (
     <div
       className={cardClassName}
-      role="button"
+      role="article"
       tabIndex={0}
+      aria-label={article.title}
       onClick={() => onClick(article.url)}
       onKeyDown={handleKeyDown}
     >

@@ -16,6 +16,7 @@ import { FlaggedTab } from './FlaggedTab';
 import { StaleTab } from './StaleTab';
 import { ApproveDialog } from './ApproveDialog';
 import { RejectDialog } from './RejectDialog';
+import * as strings from 'FreigabecenterWebPartStrings';
 
 const STALE_THRESHOLD_DAYS = 90;
 
@@ -90,7 +91,7 @@ const Freigabecenter: React.FunctionComponent<IFreigabecenterProps> = (props) =>
     }
     names.sort();
 
-    const options: IDropdownOption[] = [{ key: 'all', text: 'Alle Prüfer' }];
+    const options: IDropdownOption[] = [{ key: 'all', text: strings.AllReviewers }];
     for (let i = 0; i < names.length; i++) {
       options.push({ key: names[i], text: names[i] });
     }
@@ -245,10 +246,10 @@ const Freigabecenter: React.FunctionComponent<IFreigabecenterProps> = (props) =>
 
   if (isDataLoading) {
     return (
-      <section className={`${styles.freigabecenter} ${hasTeamsContext ? styles.teams : ''}`}>
+      <section className={`${styles.freigabecenter} ${hasTeamsContext ? styles.teams : ''}`} aria-label="Freigabecenter">
         <div className={styles.header}>
           <Icon iconName="Approve" className={styles.icon} />
-          <h2>Freigabecenter</h2>
+          <h2>{strings.FreigabecenterTitle}</h2>
         </div>
         <div className={styles.shimmerContainer}>
           <Shimmer className={styles.shimmerRow} />
@@ -261,27 +262,27 @@ const Freigabecenter: React.FunctionComponent<IFreigabecenterProps> = (props) =>
 
   if (hasError) {
     return (
-      <section className={`${styles.freigabecenter} ${hasTeamsContext ? styles.teams : ''}`}>
+      <section className={`${styles.freigabecenter} ${hasTeamsContext ? styles.teams : ''}`} aria-label="Freigabecenter">
         <div className={styles.header}>
           <Icon iconName="Approve" className={styles.icon} />
-          <h2>Freigabecenter</h2>
+          <h2>{strings.FreigabecenterTitle}</h2>
         </div>
         <MessageBar messageBarType={MessageBarType.error}>
-          Fehler beim Laden der Daten.
+          {strings.ErrorLoadingFreigabecenter}
         </MessageBar>
       </section>
     );
   }
 
   return (
-    <section className={`${styles.freigabecenter} ${hasTeamsContext ? styles.teams : ''}`}>
+    <section className={`${styles.freigabecenter} ${hasTeamsContext ? styles.teams : ''}`} aria-label="Freigabecenter">
       <div className={styles.header}>
         <Icon iconName="Approve" className={styles.icon} />
-        <h2>Freigabecenter</h2>
+        <h2>{strings.FreigabecenterTitle}</h2>
       </div>
 
       <Dropdown
-        label="Prüfer"
+        label={strings.ReviewerLabel}
         options={reviewerOptions}
         selectedKey={selectedReviewer}
         onChange={(_, option) => setSelectedReviewer(option ? option.key as string : 'all')}
@@ -289,17 +290,17 @@ const Freigabecenter: React.FunctionComponent<IFreigabecenterProps> = (props) =>
       />
 
       <Pivot>
-        <PivotItem headerText={'Ausstehend (' + pendingCount + ')'} itemIcon="Clock">
+        <PivotItem headerText={strings.TabPending + ' (' + pendingCount + ')'} itemIcon="Clock">
           <PendingTab
             articles={visiblePending}
             onApprove={(pageId: number) => setApproveTarget(pageId)}
             onReject={(pageId: number) => setRejectTarget(pageId)}
           />
         </PivotItem>
-        <PivotItem headerText={'Gemeldet (' + flaggedCount + ')'} itemIcon="Warning">
+        <PivotItem headerText={strings.TabFlagged + ' (' + flaggedCount + ')'} itemIcon="Warning">
           <FlaggedTab flags={filteredFlagged} articles={allArticles} />
         </PivotItem>
-        <PivotItem headerText={'Veraltet (' + staleCount + ')'} itemIcon="Clock">
+        <PivotItem headerText={strings.TabStale + ' (' + staleCount + ')'} itemIcon="Clock">
           <StaleTab articles={filteredStale} />
         </PivotItem>
       </Pivot>

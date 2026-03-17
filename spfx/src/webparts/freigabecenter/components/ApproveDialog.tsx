@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from '@fluentui/react/lib/Dialog';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
+import * as strings from 'FreigabecenterWebPartStrings';
+import * as sharedStrings from 'SharedStrings';
 
 export interface IApproveDialogProps {
   isOpen: boolean;
@@ -29,7 +31,7 @@ export const ApproveDialog: React.FC<IApproveDialogProps> = ({
 
   const dialogContentProps = React.useMemo(() => ({
     type: DialogType.normal,
-    title: 'Artikel genehmigen',
+    title: strings.ApproveDialogTitle,
     subText: articleTitle,
   }), [articleTitle]);
 
@@ -51,7 +53,7 @@ export const ApproveDialog: React.FC<IApproveDialogProps> = ({
       minWidth={400}
     >
       <TextField
-        label="Kommentar"
+        label={strings.CommentLabel}
         multiline
         rows={3}
         value={comment}
@@ -59,11 +61,11 @@ export const ApproveDialog: React.FC<IApproveDialogProps> = ({
       />
       <DialogFooter>
         <PrimaryButton
-          text="Genehmigen"
+          text={strings.Approve}
           onClick={handleSubmit}
           disabled={isSubmitting}
         />
-        <DefaultButton text="Abbrechen" onClick={handleDismiss} />
+        <DefaultButton text={sharedStrings.Cancel} onClick={handleDismiss} />
       </DialogFooter>
     </Dialog>
   );

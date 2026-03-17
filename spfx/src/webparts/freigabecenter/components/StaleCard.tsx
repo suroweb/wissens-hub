@@ -3,6 +3,8 @@ import { Icon } from '@fluentui/react/lib/Icon';
 import { IArticlePage } from '../../../shared/models/domain/IArticlePage';
 import { getCategoryColor } from '../../dashboard/components/utils/getCategoryColor';
 import styles from './Freigabecenter.module.scss';
+import * as strings from 'FreigabecenterWebPartStrings';
+import * as sharedStrings from 'SharedStrings';
 
 export interface IStaleCardProps {
   article: IArticlePage;
@@ -45,7 +47,7 @@ export const StaleCard: React.FunctionComponent<IStaleCardProps> = ({
       <h3 className={styles.cardTitle}>{article.title}</h3>
 
       <div className={styles.cardMeta}>
-        Zuletzt geändert: {formatDate(article.modifiedDate)} ({daysSinceModified} Tage)
+        {strings.LastModified.replace('{0}', formatDate(article.modifiedDate)).replace('{1}', '' + daysSinceModified)}
       </div>
 
       <a
@@ -55,7 +57,7 @@ export const StaleCard: React.FunctionComponent<IStaleCardProps> = ({
         className={styles.articleLink}
       >
         <Icon iconName="OpenInNewWindow" />
-        Artikel öffnen
+        {sharedStrings.OpenArticle}
       </a>
     </div>
   );

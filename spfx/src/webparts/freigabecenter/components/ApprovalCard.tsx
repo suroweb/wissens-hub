@@ -4,6 +4,8 @@ import { IArticlePage } from '../../../shared/models/domain/IArticlePage';
 import { getCategoryColor } from '../../dashboard/components/utils/getCategoryColor';
 import { formatRelativeDate } from '../../dashboard/components/utils/formatRelativeDate';
 import styles from './Freigabecenter.module.scss';
+import * as strings from 'FreigabecenterWebPartStrings';
+import * as sharedStrings from 'SharedStrings';
 
 export interface IApprovalCardProps {
   article: IArticlePage;
@@ -40,7 +42,7 @@ export const ApprovalCard: React.FunctionComponent<IApprovalCardProps> = ({
       </div>
 
       <div className={styles.reviewerInfo}>
-        Prüfer: {article.reviewerName || 'Nicht zugewiesen'}
+        {strings.ReviewerPrefix}{article.reviewerName || sharedStrings.NotAssigned}
       </div>
 
       {article.targetGroups.length > 0 && (
@@ -51,14 +53,16 @@ export const ApprovalCard: React.FunctionComponent<IApprovalCardProps> = ({
 
       <div className={styles.actionsRow}>
         <PrimaryButton
-          text="Genehmigen"
+          text={strings.Approve}
           iconProps={{ iconName: 'CheckMark' }}
           onClick={handleApprove}
+          ariaLabel={strings.Approve + ': ' + article.title}
         />
         <DefaultButton
-          text="Ablehnen"
+          text={strings.Reject}
           iconProps={{ iconName: 'Cancel' }}
           onClick={handleReject}
+          ariaLabel={strings.Reject + ': ' + article.title}
         />
       </div>
     </div>

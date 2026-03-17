@@ -9,6 +9,7 @@ import { UebersichtTab } from './UebersichtTab';
 import { KategorienTab } from './KategorienTab';
 import { ZielgruppenTab } from './ZielgruppenTab';
 import { BerichteTab } from './BerichteTab';
+import * as strings from 'AdminPanelWebPartStrings';
 
 const AdminPanel: React.FunctionComponent<IAdminPanelProps> = (props) => {
   const { hasTeamsContext } = props;
@@ -21,19 +22,19 @@ const AdminPanel: React.FunctionComponent<IAdminPanelProps> = (props) => {
   },
     React.createElement('div', { className: styles.header },
       React.createElement(Icon, { iconName: 'Settings', className: styles.icon }),
-      React.createElement('h2', undefined, 'Administration'),
+      React.createElement('h2', undefined, strings.AdminPanelTitle),
     ),
     React.createElement(Pivot, { defaultSelectedKey: 'uebersicht' },
-      React.createElement(PivotItem, { headerText: 'Ubersicht', itemKey: 'uebersicht', itemIcon: 'ViewDashboard' },
+      React.createElement(PivotItem, { headerText: strings.TabOverview, itemKey: 'uebersicht', itemIcon: 'ViewDashboard' },
         React.createElement(UebersichtTab, undefined),
       ),
-      React.createElement(PivotItem, { headerText: 'Kategorien', itemKey: 'kategorien', itemIcon: 'Tag' },
+      React.createElement(PivotItem, { headerText: strings.TabCategories, itemKey: 'kategorien', itemIcon: 'Tag' },
         React.createElement(KategorienTab, undefined),
       ),
-      React.createElement(PivotItem, { headerText: 'Zielgruppen', itemKey: 'zielgruppen', itemIcon: 'Group' },
+      React.createElement(PivotItem, { headerText: strings.TabTargetGroups, itemKey: 'zielgruppen', itemIcon: 'Group' },
         React.createElement(ZielgruppenTab, undefined),
       ),
-      React.createElement(PivotItem, { headerText: 'Berichte', itemKey: 'berichte', itemIcon: 'ReportDocument' },
+      React.createElement(PivotItem, { headerText: strings.TabReports, itemKey: 'berichte', itemIcon: 'ReportDocument' },
         React.createElement(BerichteTab, undefined),
       ),
     ),

@@ -169,13 +169,14 @@
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(3, 1fr);
-}
 
-.shimmerCard {
-  padding: 16px;
-  border: 1px solid "[theme:neutralLight, default: #edebe9]";
-  border: 1px solid var(--neutralLight, #edebe9);
-  border-radius: 4px;
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 // Layout sections (for later plans to use)
