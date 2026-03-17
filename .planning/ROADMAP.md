@@ -208,15 +208,16 @@ Plans:
   1. Jest unit tests cover frontend services, hooks, and key components — tests pass in Heft pipeline
   2. .NET integration tests verify all API endpoints against SQL Server 2022 in Docker
   3. Playwright E2E tests execute critical user flows (browse dashboard, mark as read, approve article, admin config)
-**Plans**: 6 plans
+**Plans**: 7 plans
 
 Plans:
 - [ ] 11-00-PLAN.md — Wave 0: test infrastructure (renderWithContext helper, integration test fixture, E2E scaffold, npm scripts)
 - [ ] 11-01-PLAN.md — Jest tests Part A: shared services, shared components, Dashboard, UnreadBadge (10 files)
-- [ ] 11-02-PLAN.md — Jest tests Part B: ArticleSidebar, Freigabecenter, AdminPanel (18 files)
-- [ ] 11-03-PLAN.md — .NET integration tests for all 10 API endpoints via MediatR against real SQL Server
-- [ ] 11-04-PLAN.md — Playwright E2E tests: 4 critical user flows (dashboard, mark-as-read, approve, admin)
-- [ ] 11-05-PLAN.md — Verification checkpoint: run all test suites, confirm zero stubs, user approval
+- [ ] 11-02-PLAN.md — Jest tests Part B: ArticleSidebar (7 files)
+- [ ] 11-03-PLAN.md — Jest tests Part C: Freigabecenter + AdminPanel (11 files)
+- [ ] 11-04-PLAN.md — .NET integration tests for all 10 API endpoints via MediatR against real SQL Server
+- [ ] 11-05-PLAN.md — Playwright E2E tests: 4 critical user flows (dashboard, mark-as-read, approve, admin)
+- [ ] 11-06-PLAN.md — Verification checkpoint: run all test suites, confirm zero stubs, user approval
 
 ### Phase 12: DevOps & Deployment
 **Goal**: The entire solution can be deployed to production via a single merge to main, with all Azure infrastructure provisioned as code
@@ -253,5 +254,5 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 8. Unread Badge Application Customizer | 2/2 | Complete | 2026-03-17 |
 | 9. Admin Panel & Reporting | 0/4 | Not started | - |
 | 10. Caching, Telemetry, UX Polish & i18n | 7/7 | Complete    | 2026-03-17 |
-| 11. Testing | 0/6 | Not started | - |
+| 11. Testing | 0/7 | Not started | - |
 | 12. DevOps & Deployment | 0/3 | Not started | - |
