@@ -99,7 +99,7 @@
 ### Reminders
 
 - [x] **RMND-01**: Dashboard shows badges for unread mandatory articles
-- [ ] **RMND-02**: Email notifications sent for overdue mandatory articles (configurable intervals)
+- [x] **RMND-02**: Email notifications sent for overdue mandatory articles (configurable intervals)
 
 ### Azure Functions API
 
@@ -270,7 +270,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | APPR-02 | Phase 7 | Complete |
 | APPR-03 | Phase 7 | Complete |
 | RMND-01 | Phase 5 | Complete |
-| RMND-02 | Phase 9 | Pending |
+| RMND-02 | Phase 9 | Complete |
 | API-01 | Phase 4 | Complete |
 | API-02 | Phase 4 | Complete |
 | API-03 | Phase 4 | Complete |
