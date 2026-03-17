@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 11-04-PLAN.md
-last_updated: "2026-03-17T18:52:04.575Z"
+stopped_at: Completed 11-03-PLAN.md
+last_updated: "2026-03-17T18:55:36.567Z"
 last_activity: 2026-03-17 -- Completed 11-04-PLAN.md (36 endpoint integration tests covering all 10 API endpoints against SQL Server)
 progress:
   total_phases: 12
   completed_phases: 10
   total_plans: 42
-  completed_plans: 38
+  completed_plans: 39
   percent: 90
 ---
 
@@ -85,6 +85,7 @@ Progress: [█████████░] 90%
 | Phase 11 P00 | 5min | 2 tasks | 14 files |
 | Phase 11 P05 | 5min | 2 tasks | 6 files |
 | Phase 11 P04 | 12min | 2 tasks | 8 files |
+| Phase 11 P03 | 16min | 2 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -190,6 +191,8 @@ Recent decisions affecting current work:
 - [Phase 11-05]: Bilingual locator strategy (DE/EN) for locale-agnostic E2E test resilience
 - [Phase 11-05]: Mock data assertions (Passwort-Richtlinie, Datensicherung-Konzept, IT-Sicherheit) tied to MOCK_ARTICLES
 - [Phase 11]: IntegrationTestCollection with [Collection("Integration")] replaces IClassFixture to share single fixture across all test classes
+- [Phase 11]: Mocked query/command hooks at module level for Freigabecenter and AdminPanel tests instead of using renderWithContext
+- [Phase 11]: Added jest.mock('@pnp/sp/site-groups/web') for ESM side-effect import isolation in ZielgruppenTab test
 
 ### Pending Todos
 
@@ -204,6 +207,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T18:52:04.572Z
-Stopped at: Completed 11-04-PLAN.md
+Last session: 2026-03-17T18:55:36.563Z
+Stopped at: Completed 11-03-PLAN.md
 Resume file: None
