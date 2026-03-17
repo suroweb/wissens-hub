@@ -5,10 +5,12 @@ namespace WissensHub.Tests.Infrastructure;
 
 public class DatabaseSchemaTests
 {
+    // Uses SqlServer provider with a dummy connection string for model metadata inspection.
+    // No actual database connection is established -- only the EF model is built.
     private WissensHubDbContext CreateContext()
     {
         var options = new DbContextOptionsBuilder<WissensHubDbContext>()
-            .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+            .UseSqlServer("Server=.;Database=Dummy;Trusted_Connection=True")
             .Options;
         return new WissensHubDbContext(options);
     }
