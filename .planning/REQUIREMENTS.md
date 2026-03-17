@@ -127,14 +127,14 @@
 
 - [x] **CACH-01**: PnPjs session cache for SharePoint page queries (5 min TTL)
 - [x] **CACH-02**: In-memory API cache with TTL for Azure Functions responses
-- [ ] **CACH-03**: Stale-while-revalidate pattern in query hooks
-- [ ] **CACH-04**: Cache invalidation on write commands (mark-as-read invalidates articles/unread caches)
+- [x] **CACH-03**: Stale-while-revalidate pattern in query hooks
+- [x] **CACH-04**: Cache invalidation on write commands (mark-as-read invalidates articles/unread caches)
 
 ### Telemetry & Error Handling
 
 - [x] **TELE-01**: Application Insights single instance for frontend + backend
 - [x] **TELE-02**: Cost-safe configuration — disableFetchTracking, disableAjaxTracking enabled
-- [ ] **TELE-03**: Custom events tracked: article_read, article_flagged, article_favorited, article_approved, article_rejected, dashboard_loaded, search_executed, error_api_call, error_sharepoint
+- [x] **TELE-03**: Custom events tracked: article_read, article_flagged, article_favorited, article_approved, article_rejected, dashboard_loaded, search_executed, error_api_call, error_sharepoint
 - [x] **TELE-04**: ConsoleTelemetryService for local dev, AppInsightsTelemetryService for production
 - [x] **TELE-05**: React Error Boundary wrapping each web part root
 - [x] **TELE-06**: Toast notifications via Fluent UI MessageBar for user-facing messages
@@ -289,11 +289,11 @@ Deferred to future release. Tracked but not in current roadmap.
 | BACK-06 | Phase 4 | Complete |
 | CACH-01 | Phase 10 | Complete |
 | CACH-02 | Phase 10 | Complete |
-| CACH-03 | Phase 10 | Pending |
-| CACH-04 | Phase 10 | Pending |
+| CACH-03 | Phase 10 | Complete |
+| CACH-04 | Phase 10 | Complete |
 | TELE-01 | Phase 10 | Complete |
 | TELE-02 | Phase 10 | Complete |
-| TELE-03 | Phase 10 | Pending |
+| TELE-03 | Phase 10 | Complete |
 | TELE-04 | Phase 10 | Complete |
 | TELE-05 | Phase 10 | Complete |
 | TELE-06 | Phase 10 | Complete |
