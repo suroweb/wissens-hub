@@ -125,7 +125,7 @@
 
 ### Caching
 
-- [ ] **CACH-01**: PnPjs session cache for SharePoint page queries (5 min TTL)
+- [x] **CACH-01**: PnPjs session cache for SharePoint page queries (5 min TTL)
 - [x] **CACH-02**: In-memory API cache with TTL for Azure Functions responses
 - [ ] **CACH-03**: Stale-while-revalidate pattern in query hooks
 - [ ] **CACH-04**: Cache invalidation on write commands (mark-as-read invalidates articles/unread caches)
@@ -287,7 +287,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | BACK-04 | Phase 4 | Complete |
 | BACK-05 | Phase 4 | Complete |
 | BACK-06 | Phase 4 | Complete |
-| CACH-01 | Phase 10 | Pending |
+| CACH-01 | Phase 10 | Complete |
 | CACH-02 | Phase 10 | Complete |
 | CACH-03 | Phase 10 | Pending |
 | CACH-04 | Phase 10 | Pending |
