@@ -155,10 +155,11 @@ Plans:
   1. Notification icon with unread count appears in the header on every page within the hub site
   2. Clicking the notification icon opens a flyout panel listing unread article summaries
   3. Clicking an article in the flyout navigates directly to that article page
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 08-01: Application Customizer with header placeholder, unread badge, and flyout panel
+- [ ] 08-01-PLAN.md — Application Customizer with header placeholder rendering, bell icon with badge, flyout panel with unread article list, shared utils extraction, CustomEvent wiring
+- [ ] 08-02-PLAN.md — Workbench verification checkpoint for all 3 requirements
 
 ### Phase 9: Admin Panel & Reporting
 **Goal**: Administrators can configure the system (categories, target groups, reminders) and generate compliance reports without developer intervention
@@ -242,7 +243,7 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 5. Dashboard Web Part | 4/4 | Complete   | 2026-03-16 |
 | 6. Article Sidebar & Read Confirmations | 3/3 | Complete | 2026-03-16 |
 | 7. Approval Workflow & Freigabecenter | 3/3 | Complete   | 2026-03-17 |
-| 8. Unread Badge Application Customizer | 0/1 | Not started | - |
+| 8. Unread Badge Application Customizer | 0/2 | Not started | - |
 | 9. Admin Panel & Reporting | 0/2 | Not started | - |
 | 10. Caching, Telemetry, UX Polish & i18n | 0/5 | Not started | - |
 | 11. Testing | 0/3 | Not started | - |
