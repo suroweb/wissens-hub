@@ -141,11 +141,11 @@
 
 ### UX Quality
 
-- [ ] **UX-01**: Optimistic UI updates for mark-as-read and favorite toggle
-- [ ] **UX-02**: Loading skeletons with Fluent UI Shimmer (not spinners)
-- [ ] **UX-03**: Debounced search input
-- [ ] **UX-04**: Responsive design for full-width, 2/3, and 1/3 column zones
-- [ ] **UX-05**: Accessibility — ARIA labels, keyboard navigation, focus management
+- [x] **UX-01**: Optimistic UI updates for mark-as-read and favorite toggle
+- [x] **UX-02**: Loading skeletons with Fluent UI Shimmer (not spinners)
+- [x] **UX-03**: Debounced search input
+- [x] **UX-04**: Responsive design for full-width, 2/3, and 1/3 column zones
+- [x] **UX-05**: Accessibility — ARIA labels, keyboard navigation, focus management
 
 ### Internationalization
 
@@ -297,11 +297,11 @@ Deferred to future release. Tracked but not in current roadmap.
 | TELE-04 | Phase 10 | Complete |
 | TELE-05 | Phase 10 | Complete |
 | TELE-06 | Phase 10 | Complete |
-| UX-01 | Phase 10 | Pending |
-| UX-02 | Phase 10 | Pending |
-| UX-03 | Phase 10 | Pending |
-| UX-04 | Phase 10 | Pending |
-| UX-05 | Phase 10 | Pending |
+| UX-01 | Phase 10 | Complete |
+| UX-02 | Phase 10 | Complete |
+| UX-03 | Phase 10 | Complete |
+| UX-04 | Phase 10 | Complete |
+| UX-05 | Phase 10 | Complete |
 | I18N-01 | Phase 10 | Complete |
 | I18N-02 | Phase 10 | Complete |
 | I18N-03 | Phase 10 | Complete |
