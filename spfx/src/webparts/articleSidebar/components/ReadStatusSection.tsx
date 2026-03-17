@@ -58,6 +58,12 @@ export const ReadStatusSection: React.FC<IReadStatusSectionProps> = ({
       setLocalReadDate(previousDate); // revert
     } else {
       onReadStatusChange();
+      // Dispatch cross-component event for Application Customizer unread badge
+      document.dispatchEvent(
+        new CustomEvent('wissenshub:article-read', {
+          detail: { pageId: pageId }
+        })
+      );
     }
   }, [pageId, markAsRead, localReadDate, onReadStatusChange]);
 
