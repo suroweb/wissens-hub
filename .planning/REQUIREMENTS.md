@@ -149,9 +149,9 @@
 
 ### Internationalization
 
-- [ ] **I18N-01**: i18n framework with German as default language
-- [ ] **I18N-02**: English as secondary language
-- [ ] **I18N-03**: All UI labels, messages, and tooltips localized
+- [x] **I18N-01**: i18n framework with German as default language
+- [x] **I18N-02**: English as secondary language
+- [x] **I18N-03**: All UI labels, messages, and tooltips localized
 
 ### Testing
 
@@ -302,9 +302,9 @@ Deferred to future release. Tracked but not in current roadmap.
 | UX-03 | Phase 10 | Pending |
 | UX-04 | Phase 10 | Pending |
 | UX-05 | Phase 10 | Pending |
-| I18N-01 | Phase 10 | Pending |
-| I18N-02 | Phase 10 | Pending |
-| I18N-03 | Phase 10 | Pending |
+| I18N-01 | Phase 10 | Complete |
+| I18N-02 | Phase 10 | Complete |
+| I18N-03 | Phase 10 | Complete |
 | TEST-01 | Phase 11 | Pending |
 | TEST-02 | Phase 11 | Pending |
 | TEST-03 | Phase 11 | Pending |
