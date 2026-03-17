@@ -10,6 +10,9 @@ public class CategoryRepository(WissensHubDbContext db) : ICategoryRepository
     public async Task<Category?> GetByIdAsync(int id, CancellationToken ct)
         => await db.Categories.FindAsync([id], ct);
 
+    public Task<List<Category>> GetAllAsync(CancellationToken ct)
+        => db.Categories.OrderBy(c => c.Name).ToListAsync(ct);
+
     public Task<List<Category>> GetAllActiveAsync(CancellationToken ct)
         => db.Categories.Where(c => c.IsActive).OrderBy(c => c.Name).ToListAsync(ct);
 

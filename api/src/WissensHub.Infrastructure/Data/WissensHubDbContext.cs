@@ -17,6 +17,7 @@ public class WissensHubDbContext : DbContext, IUnitOfWork
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<TargetGroup> TargetGroups => Set<TargetGroup>();
     public DbSet<ArticleTargetGroup> ArticleTargetGroups => Set<ArticleTargetGroup>();
+    public DbSet<SystemConfiguration> SystemConfigurations => Set<SystemConfiguration>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
