@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { RoleGate } from '../../../shared/components/RoleGate';
 import styles from './Dashboard.module.scss';
+import * as strings from 'DashboardWebPartStrings';
 
 export type StatFilter = 'unread' | 'favorites' | 'pending' | '';
 
@@ -27,7 +28,7 @@ export const StatsBar: React.FunctionComponent<IStatsBarProps> = (props) => {
       >
         <Icon iconName="Mail" className={styles.statIcon} />
         <span className={styles.statCount}>{unreadCount}</span>
-        <span className={styles.statLabel}>Ungelesen</span>
+        <span className={styles.statLabel}>{strings.Unread}</span>
       </button>
 
       <button
@@ -39,7 +40,7 @@ export const StatsBar: React.FunctionComponent<IStatsBarProps> = (props) => {
       >
         <Icon iconName="FavoriteStar" className={styles.statIcon} />
         <span className={styles.statCount}>{favoritesCount}</span>
-        <span className={styles.statLabel}>Favoriten</span>
+        <span className={styles.statLabel}>{strings.Favorites}</span>
       </button>
 
       <RoleGate minimumRole="reviewer">
@@ -52,7 +53,7 @@ export const StatsBar: React.FunctionComponent<IStatsBarProps> = (props) => {
         >
           <Icon iconName="ClipboardList" className={styles.statIcon} />
           <span className={styles.statCount}>{pendingReviewsCount}</span>
-          <span className={styles.statLabel}>Offen</span>
+          <span className={styles.statLabel}>{strings.OpenForReview}</span>
         </button>
       </RoleGate>
     </div>

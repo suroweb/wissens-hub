@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Icon } from '@fluentui/react/lib/Icon';
 import styles from './Dashboard.module.scss';
+import * as strings from 'DashboardWebPartStrings';
 
 export interface IEmptyStateProps {
   type: 'no-results' | 'no-filter-match' | 'empty-hub';
@@ -19,15 +20,15 @@ export const EmptyState: React.FunctionComponent<IEmptyStateProps> = ({
   switch (type) {
     case 'no-results':
       iconName = 'SearchIssue';
-      message = `Keine Ergebnisse für '${searchQuery || ''}'`;
+      message = strings.NoResultsFor.replace('{0}', searchQuery || '');
       break;
     case 'no-filter-match':
       iconName = 'Filter';
-      message = 'Keine Artikel für diese Filter';
+      message = strings.NoFilterMatch;
       break;
     case 'empty-hub':
       iconName = 'Page';
-      message = 'Noch keine Artikel vorhanden';
+      message = strings.EmptyHub;
       break;
   }
 
@@ -41,7 +42,7 @@ export const EmptyState: React.FunctionComponent<IEmptyStateProps> = ({
           onClick={onClearFilters}
           type="button"
         >
-          Filter zurücksetzen
+          {strings.ClearFilters}
         </button>
       )}
     </div>

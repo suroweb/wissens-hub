@@ -5,6 +5,7 @@ import { RoleGate } from '../../../shared/components';
 import { useSubmitForReviewCommand, useArchiveArticleCommand, useRestoreArticleCommand } from '../../../shared/hooks/commands';
 import { ArticleStatus } from '../../../shared/models/domain/types';
 import styles from './ArticleSidebar.module.scss';
+import * as strings from 'ArticleSidebarWebPartStrings';
 
 export interface IApprovalActionsProps {
   pageId: number;
@@ -34,7 +35,7 @@ export const ApprovalActions: React.FC<IApprovalActionsProps> = ({
   const handleSubmitForReview = React.useCallback(async (): Promise<void> => {
     const success = await submitForReview.execute(pageId);
     if (success) {
-      setSuccessMessage('Zur Prüfung eingereicht');
+      setSuccessMessage(strings.SubmittedForReview);
       onStatusChange();
     }
   }, [pageId, submitForReview, onStatusChange]);
@@ -42,7 +43,7 @@ export const ApprovalActions: React.FC<IApprovalActionsProps> = ({
   const handleArchive = React.useCallback(async (): Promise<void> => {
     const success = await archiveArticle.execute(pageId);
     if (success) {
-      setSuccessMessage('Artikel archiviert');
+      setSuccessMessage(strings.ArticleArchived);
       onStatusChange();
     }
   }, [pageId, archiveArticle, onStatusChange]);
@@ -50,7 +51,7 @@ export const ApprovalActions: React.FC<IApprovalActionsProps> = ({
   const handleRestore = React.useCallback(async (): Promise<void> => {
     const success = await restoreArticle.execute(pageId);
     if (success) {
-      setSuccessMessage('Artikel wiederhergestellt');
+      setSuccessMessage(strings.ArticleRestored);
       onStatusChange();
     }
   }, [pageId, restoreArticle, onStatusChange]);
@@ -61,7 +62,7 @@ export const ApprovalActions: React.FC<IApprovalActionsProps> = ({
     articleStatus === 'Draft' && React.createElement(
       RoleGate,
       { minimumRole: 'editor', children: React.createElement(PrimaryButton, {
-        text: 'Zur Prüfung einreichen',
+        text: strings.SubmitForReview,
         iconProps: { iconName: 'Send' },
         onClick: handleSubmitForReview,
         disabled: submitForReview.state.status === 'executing',
@@ -70,7 +71,7 @@ export const ApprovalActions: React.FC<IApprovalActionsProps> = ({
     articleStatus === 'Published' && React.createElement(
       RoleGate,
       { minimumRole: 'reviewer', children: React.createElement(DefaultButton, {
-        text: 'Archivieren',
+        text: strings.Archive,
         iconProps: { iconName: 'Archive' },
         onClick: handleArchive,
         disabled: archiveArticle.state.status === 'executing',
@@ -79,7 +80,7 @@ export const ApprovalActions: React.FC<IApprovalActionsProps> = ({
     articleStatus === 'Archived' && React.createElement(
       RoleGate,
       { minimumRole: 'reviewer', children: React.createElement(DefaultButton, {
-        text: 'Wiederherstellen',
+        text: strings.Restore,
         iconProps: { iconName: 'Undo' },
         onClick: handleRestore,
         disabled: restoreArticle.state.status === 'executing',

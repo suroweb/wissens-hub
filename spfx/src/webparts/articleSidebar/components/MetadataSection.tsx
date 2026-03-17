@@ -4,6 +4,8 @@ import { DefaultButton } from '@fluentui/react/lib/Button';
 import { IArticlePage } from '../../../shared/models/domain/IArticlePage';
 import { RoleGate } from '../../../shared/components/RoleGate';
 import styles from './ArticleSidebar.module.scss';
+import * as strings from 'ArticleSidebarWebPartStrings';
+import * as sharedStrings from 'SharedStrings';
 
 export interface IMetadataSectionProps {
   article: IArticlePage;
@@ -29,12 +31,12 @@ export const MetadataSection: React.FC<IMetadataSectionProps> = ({
   const editUrl = siteUrl + '/_layouts/15/listform.aspx?PageType=6&ListId=' + encodeURIComponent(listId) + '&ID=' + article.id;
 
   const fields = [
-    { icon: 'Contact', label: 'Autor', value: article.author.displayName },
-    { icon: 'Tag', label: 'Kategorie', value: article.category },
-    { icon: 'Clock', label: 'Zuletzt aktualisiert', value: formatGermanDate(article.modifiedDate) },
-    { icon: 'History', label: 'Version', value: contentVersion + '.0' },
-    { icon: 'StatusCircleCheckmark', label: 'Status', value: article.status },
-    { icon: 'People', label: 'Zielgruppen', value: article.targetGroups.join(', ') },
+    { icon: 'Contact', label: sharedStrings.Author, value: article.author.displayName },
+    { icon: 'Tag', label: sharedStrings.Category, value: article.category },
+    { icon: 'Clock', label: sharedStrings.LastUpdated, value: formatGermanDate(article.modifiedDate) },
+    { icon: 'History', label: sharedStrings.Version, value: contentVersion + '.0' },
+    { icon: 'StatusCircleCheckmark', label: sharedStrings.Status, value: article.status },
+    { icon: 'People', label: sharedStrings.TargetGroups, value: article.targetGroups.join(', ') },
   ];
 
   return (
@@ -49,7 +51,7 @@ export const MetadataSection: React.FC<IMetadataSectionProps> = ({
       <RoleGate minimumRole="editor">
         <div className={styles.editButton}>
           <DefaultButton
-            text="Metadaten bearbeiten"
+            text={strings.EditMetadata}
             iconProps={{ iconName: 'Edit' }}
             onClick={() => window.open(editUrl, '_blank')}
           />

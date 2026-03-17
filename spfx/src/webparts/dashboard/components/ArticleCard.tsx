@@ -4,6 +4,7 @@ import { IArticlePage } from '../../../shared/models/domain/IArticlePage';
 import { getCategoryColor } from './utils/getCategoryColor';
 import { formatRelativeDate } from './utils/formatRelativeDate';
 import styles from './Dashboard.module.scss';
+import * as sharedStrings from 'SharedStrings';
 
 export interface IArticleCardProps {
   article: IArticlePage;
@@ -70,13 +71,13 @@ export const ArticleCard: React.FunctionComponent<IArticleCardProps> = ({
         <button
           className={`${styles.favoriteButton}${isFavorite ? ` ${styles.favorited}` : ''}`}
           onClick={handleFavoriteClick}
-          aria-label={isFavorite ? 'Favorit entfernen' : 'Als Favorit markieren'}
+          aria-label={isFavorite ? sharedStrings.RemoveFavorite : sharedStrings.AddFavorite}
           type="button"
         >
           <Icon iconName={isFavorite ? 'FavoriteStarFill' : 'FavoriteStar'} />
         </button>
         {article.isMandatory && (
-          <span className={styles.mandatoryBadge}>Pflichtartikel</span>
+          <span className={styles.mandatoryBadge}>{sharedStrings.MandatoryArticle}</span>
         )}
       </div>
     </div>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from './ArticleSidebar.module.scss';
+import * as strings from 'ArticleSidebarWebPartStrings';
 
 interface IHeadingItem {
   id: string;
@@ -78,7 +79,7 @@ export const TableOfContents: React.FC = () => {
 
   return (
     <div className={styles.tocSection}>
-      <div className={styles.tocTitle}>Inhaltsverzeichnis</div>
+      <div className={styles.tocTitle}>{strings.TableOfContents}</div>
       <ul className={styles.tocList}>
         {headings.map((heading) => {
           let itemClass = styles.tocItem;

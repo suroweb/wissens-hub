@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styles from './Dashboard.module.scss';
 import type { IDashboardProps } from './IDashboardProps';
-import { Shimmer, ShimmerElementType } from '@fluentui/react/lib/Shimmer';
 import { useWissensHub } from '../../../shared/context';
 import { useArticlesQuery } from '../../../shared/hooks/queries/useArticlesQuery';
 import { useFavoritesQuery } from '../../../shared/hooks/queries/useFavoritesQuery';
@@ -13,8 +12,10 @@ import { ArticleListView } from './ArticleListView';
 import { EmptyState } from './EmptyState';
 import { StatsBar, StatFilter } from './StatsBar';
 import { FilterBar } from './FilterBar';
+import { ShimmerCard } from '../../../shared/components/ShimmerCard';
 import { getSP } from '../../../shared/context/pnpSetup';
 import '@pnp/sp/search';
+import * as strings from 'DashboardWebPartStrings';
 
 /**
  * Local hook to resolve read status for a set of article IDs.
@@ -51,12 +52,8 @@ function getGridColumns(width: number): number {
 
 const ShimmerGrid: React.FC = () => (
   <div className={styles.shimmerGrid}>
-    {[1, 2, 3].map(i => (
-      <div key={i} className={styles.shimmerCard}>
-        <Shimmer shimmerElements={[{ type: ShimmerElementType.line, width: '60%', height: 16 }]} />
-        <Shimmer shimmerElements={[{ type: ShimmerElementType.line, width: '90%', height: 20 }]} />
-        <Shimmer shimmerElements={[{ type: ShimmerElementType.line, width: '40%', height: 14 }]} />
-      </div>
+    {[1, 2, 3, 4, 5, 6].map(i => (
+      <ShimmerCard key={i} />
     ))}
   </div>
 );
@@ -321,7 +318,7 @@ const Dashboard: React.FunctionComponent<IDashboardProps> = (props) => {
   }
 
   return (
-    <section className={`${styles.dashboard} ${hasTeamsContext ? styles.teams : ''}`}>
+    <section className={`${styles.dashboard} ${hasTeamsContext ? styles.teams : ''}`} role="main" aria-label="WissensHub Dashboard">
       <div className={styles.dashboardContent}>
         {/* Stats bar -- Offen stat gated by RoleGate inside StatsBar component */}
         <StatsBar
@@ -355,7 +352,7 @@ const Dashboard: React.FunctionComponent<IDashboardProps> = (props) => {
 
         {/* Error state */}
         {articlesQuery.state.status === 'error' && (
-          <div>Fehler beim Laden der Artikel</div>
+          <div>{strings.ErrorLoadingArticles}</div>
         )}
 
         {/* Empty state */}

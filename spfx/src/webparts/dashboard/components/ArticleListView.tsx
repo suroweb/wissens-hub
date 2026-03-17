@@ -5,6 +5,8 @@ import { IArticlePage } from '../../../shared/models/domain/IArticlePage';
 import { getCategoryColor } from './utils/getCategoryColor';
 import { formatRelativeDate } from './utils/formatRelativeDate';
 import styles from './Dashboard.module.scss';
+import * as strings from 'DashboardWebPartStrings';
+import * as sharedStrings from 'SharedStrings';
 
 export interface IArticleListViewProps {
   articles: IArticlePage[];
@@ -51,7 +53,7 @@ function buildColumns(
               e.stopPropagation();
               onFavoriteToggle(item.id);
             }}
-            aria-label={isFav ? 'Favorit entfernen' : 'Als Favorit markieren'}
+            aria-label={isFav ? sharedStrings.RemoveFavorite : sharedStrings.AddFavorite}
             type="button"
           >
             <Icon iconName={isFav ? 'FavoriteStarFill' : 'FavoriteStar'} />
@@ -61,7 +63,7 @@ function buildColumns(
     },
     {
       key: 'title',
-      name: 'Titel',
+      name: strings.ColumnTitle,
       fieldName: 'title',
       minWidth: 200,
       isResizable: true,
@@ -78,7 +80,7 @@ function buildColumns(
     },
     {
       key: 'category',
-      name: 'Kategorie',
+      name: strings.ColumnCategory,
       fieldName: 'category',
       minWidth: 120,
       isResizable: true,
@@ -95,7 +97,7 @@ function buildColumns(
     },
     {
       key: 'author',
-      name: 'Autor',
+      name: strings.ColumnAuthor,
       fieldName: 'author',
       minWidth: 120,
       isResizable: true,
@@ -107,7 +109,7 @@ function buildColumns(
     },
     {
       key: 'modified',
-      name: 'Geändert',
+      name: strings.ColumnModified,
       fieldName: 'modifiedDate',
       minWidth: 100,
       isResizable: true,
@@ -124,7 +126,7 @@ function buildColumns(
       maxWidth: 100,
       onRender: (item: IArticlePage) => {
         if (item.isMandatory) {
-          return <span className={styles.mandatoryBadge}>Pflichtartikel</span>;
+          return <span className={styles.mandatoryBadge}>{sharedStrings.MandatoryArticle}</span>;
         }
         return undefined;
       },

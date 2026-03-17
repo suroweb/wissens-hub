@@ -5,6 +5,8 @@ import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
 import { useMarkAsReadCommand, useToggleFavoriteCommand } from '../../../shared/hooks/commands';
 import { IReadConfirmation } from '../../../shared/models/domain/IReadConfirmation';
 import styles from './ArticleSidebar.module.scss';
+import * as strings from 'ArticleSidebarWebPartStrings';
+import * as sharedStrings from 'SharedStrings';
 
 export interface IReadStatusSectionProps {
   pageId: number;
@@ -78,20 +80,20 @@ export const ReadStatusSection: React.FC<IReadStatusSectionProps> = ({
   }, [pageId, toggleFavorite, localFavorited]);
 
   return (
-    <div className={styles.readStatusSection}>
+    <div className={styles.readStatusSection} aria-live="polite">
       {/* Pflichtartikel badge */}
       {isMandatory && isEffectivelyUnread && (
         <MessageBar messageBarType={MessageBarType.severeWarning} className={styles.pflichtartikelBadge}>
-          Pflichtartikel - Lesebestatigung erforderlich
+          {strings.MandatoryReadRequired}
         </MessageBar>
       )}
 
       {/* Version reset warning banner */}
       {needsReconfirmation && (
         <MessageBar messageBarType={MessageBarType.warning} className={styles.resetWarning}>
-          Dieser Artikel wurde aktualisiert. Bitte erneut bestatigen.
+          {strings.ArticleUpdatedReconfirm}
           <span className={styles.strikethrough}>
-            Zuvor gelesen am {formatGermanDate(readConfirmation!.readDate)}
+            {strings.PreviouslyReadOn.replace('{0}', formatGermanDate(readConfirmation!.readDate))}
           </span>
         </MessageBar>
       )}
@@ -99,7 +101,7 @@ export const ReadStatusSection: React.FC<IReadStatusSectionProps> = ({
       {/* Mark-as-read / read status display */}
       {isEffectivelyUnread ? (
         <PrimaryButton
-          text={needsReconfirmation ? 'Erneut bestatigen' : 'Als gelesen markieren'}
+          text={needsReconfirmation ? strings.ReconfirmReading : sharedStrings.MarkAsRead}
           iconProps={{ iconName: 'CheckMark' }}
           onClick={handleMarkAsRead}
           disabled={markAsRead.state.status === 'executing'}
@@ -108,7 +110,7 @@ export const ReadStatusSection: React.FC<IReadStatusSectionProps> = ({
       ) : (
         <div className={styles.readConfirmed}>
           <Icon iconName="CheckMark" className={styles.readCheckIcon} />
-          <span>Gelesen am {formatGermanDate(localReadDate!)}</span>
+          <span>{strings.ReadOn.replace('{0}', formatGermanDate(localReadDate!))}</span>
         </div>
       )}
 
@@ -117,14 +119,14 @@ export const ReadStatusSection: React.FC<IReadStatusSectionProps> = ({
         {/* Flag button */}
         {userFlagDate ? (
           <DefaultButton
-            text={'Gemeldet am ' + formatGermanDate(userFlagDate)}
+            text={strings.ReportedOn.replace('{0}', formatGermanDate(userFlagDate))}
             iconProps={{ iconName: 'Flag' }}
             disabled={true}
             className={styles.actionButton}
           />
         ) : (
           <DefaultButton
-            text="Als veraltet melden"
+            text={strings.ReportAsOutdated}
             iconProps={{ iconName: 'Flag' }}
             onClick={onFlagClick}
             className={styles.actionButton}
@@ -134,7 +136,7 @@ export const ReadStatusSection: React.FC<IReadStatusSectionProps> = ({
         {/* Favorite star */}
         <IconButton
           iconProps={{ iconName: localFavorited ? 'FavoriteStarFill' : 'FavoriteStar' }}
-          title={localFavorited ? 'Favorit entfernen' : 'Als Favorit markieren'}
+          title={localFavorited ? sharedStrings.RemoveFavorite : sharedStrings.AddFavorite}
           onClick={handleFavoriteToggle}
           className={localFavorited ? styles.favoritedStar : styles.unfavoritedStar}
         />

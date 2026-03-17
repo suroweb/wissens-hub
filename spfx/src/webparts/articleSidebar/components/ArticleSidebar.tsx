@@ -12,6 +12,7 @@ import { FlagDialog } from './FlagDialog';
 import { ApprovalActions } from './ApprovalActions';
 import { ApprovalHistory } from './ApprovalHistory';
 import { TableOfContents } from './TableOfContents';
+import * as strings from 'ArticleSidebarWebPartStrings';
 
 const shimmerRows: React.ReactElement[] = [];
 for (let i = 0; i < 6; i++) {
@@ -61,7 +62,7 @@ const ArticleSidebar: React.FunctionComponent<IArticleSidebarProps> = ({
     return React.createElement(
       MessageBar,
       { messageBarType: MessageBarType.error },
-      'Fehler beim Laden der Artikeldaten.'
+      strings.ErrorLoadingArticleData
     );
   }
 
@@ -77,7 +78,7 @@ const ArticleSidebar: React.FunctionComponent<IArticleSidebarProps> = ({
 
   return React.createElement(
     'section',
-    { className: sidebarClassName },
+    { className: sidebarClassName, 'aria-label': 'Article Sidebar' },
     article && React.createElement(MetadataSection, {
       article: article,
       contentVersion: contentVersion,
@@ -127,7 +128,7 @@ const ArticleSidebar: React.FunctionComponent<IArticleSidebarProps> = ({
           rel: 'noopener noreferrer',
           className: styles.versionHistoryLink,
         },
-        'Versionsverlauf anzeigen'
+        strings.VersionHistory
       )
     )
   );

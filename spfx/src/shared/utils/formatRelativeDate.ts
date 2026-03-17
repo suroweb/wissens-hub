@@ -1,8 +1,9 @@
 /**
- * German locale relative date formatting.
- * Produces strings like "vor 2 Tagen", "gestern", "vor 3 Stunden".
- * Uses manual German strings since Intl.RelativeTimeFormat is not available in ES5 target.
+ * Localized relative date formatting.
+ * Uses SharedStrings loc module for German/English strings.
+ * Falls back to German strings if SharedStrings is not loaded.
  */
+import * as sharedStrings from 'SharedStrings';
 
 export function formatRelativeDate(date: Date): string {
   const now = Date.now();
@@ -18,38 +19,38 @@ export function formatRelativeDate(date: Date): string {
   // Past dates (diffMs > 0 means date is in the past)
   if (diffMs >= 0) {
     if (months >= 1) {
-      return months === 1 ? 'vor 1 Monat' : `vor ${months} Monaten`;
+      return months === 1 ? sharedStrings.OneMonthAgo : sharedStrings.MonthsAgo.replace('{0}', '' + months);
     }
     if (days >= 2) {
-      return `vor ${days} Tagen`;
+      return sharedStrings.DaysAgo.replace('{0}', '' + days);
     }
     if (days === 1) {
-      return 'gestern';
+      return sharedStrings.Yesterday;
     }
     if (hours >= 1) {
-      return hours === 1 ? 'vor 1 Stunde' : `vor ${hours} Stunden`;
+      return hours === 1 ? sharedStrings.OneHourAgo : sharedStrings.HoursAgo.replace('{0}', '' + hours);
     }
     if (minutes >= 1) {
-      return minutes === 1 ? 'vor 1 Minute' : `vor ${minutes} Minuten`;
+      return minutes === 1 ? sharedStrings.OneMinuteAgo : sharedStrings.MinutesAgo.replace('{0}', '' + minutes);
     }
-    return seconds <= 1 ? 'gerade eben' : `vor ${seconds} Sekunden`;
+    return seconds <= 1 ? sharedStrings.JustNow : sharedStrings.SecondsAgo.replace('{0}', '' + seconds);
   }
 
   // Future dates (rare but handled)
   if (months >= 1) {
-    return months === 1 ? 'in 1 Monat' : `in ${months} Monaten`;
+    return months === 1 ? sharedStrings.InOneMonth : sharedStrings.InMonths.replace('{0}', '' + months);
   }
   if (days >= 2) {
-    return `in ${days} Tagen`;
+    return sharedStrings.InDays.replace('{0}', '' + days);
   }
   if (days === 1) {
-    return 'morgen';
+    return sharedStrings.Tomorrow;
   }
   if (hours >= 1) {
-    return hours === 1 ? 'in 1 Stunde' : `in ${hours} Stunden`;
+    return hours === 1 ? sharedStrings.InOneHour : sharedStrings.InHours.replace('{0}', '' + hours);
   }
   if (minutes >= 1) {
-    return minutes === 1 ? 'in 1 Minute' : `in ${minutes} Minuten`;
+    return minutes === 1 ? sharedStrings.InOneMinute : sharedStrings.InMinutes.replace('{0}', '' + minutes);
   }
-  return seconds <= 1 ? 'gerade eben' : `in ${seconds} Sekunden`;
+  return seconds <= 1 ? sharedStrings.JustNow : sharedStrings.InSeconds.replace('{0}', '' + seconds);
 }

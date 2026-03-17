@@ -3,6 +3,8 @@ import { Dialog, DialogType, DialogFooter } from '@fluentui/react/lib/Dialog';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 import { useFlagArticleCommand } from '../../../shared/hooks/commands';
+import * as strings from 'ArticleSidebarWebPartStrings';
+import * as sharedStrings from 'SharedStrings';
 
 export interface IFlagDialogProps {
   isOpen: boolean;
@@ -10,12 +12,6 @@ export interface IFlagDialogProps {
   onDismiss: () => void;
   onFlagSubmitted: (flagDate: Date) => void;
 }
-
-const dialogContentProps = {
-  type: DialogType.normal,
-  title: 'Als veraltet melden',
-  subText: 'Bitte beschreiben Sie, warum dieser Artikel veraltet ist.',
-};
 
 export const FlagDialog: React.FC<IFlagDialogProps> = ({
   isOpen,
@@ -25,6 +21,12 @@ export const FlagDialog: React.FC<IFlagDialogProps> = ({
 }) => {
   const [reason, setReason] = React.useState<string>('');
   const flagArticle = useFlagArticleCommand();
+
+  const dialogContentProps = {
+    type: DialogType.normal,
+    title: strings.FlagDialogTitle,
+    subText: strings.FlagDialogSubText,
+  };
 
   const handleSubmit = React.useCallback(async () => {
     const success = await flagArticle.execute(pageId, reason);
@@ -47,7 +49,7 @@ export const FlagDialog: React.FC<IFlagDialogProps> = ({
       minWidth={400}
     >
       <TextField
-        label="Grund"
+        label={strings.ReasonLabel}
         multiline
         rows={3}
         required
@@ -56,11 +58,11 @@ export const FlagDialog: React.FC<IFlagDialogProps> = ({
       />
       <DialogFooter>
         <PrimaryButton
-          text="Melden"
+          text={sharedStrings.Submit}
           onClick={handleSubmit}
           disabled={!reason.trim() || flagArticle.state.status === 'executing'}
         />
-        <DefaultButton text="Abbrechen" onClick={handleDismiss} />
+        <DefaultButton text={sharedStrings.Cancel} onClick={handleDismiss} />
       </DialogFooter>
     </Dialog>
   );

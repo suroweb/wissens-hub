@@ -4,7 +4,11 @@ import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { IconButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { RoleGate } from '../../../shared/components/RoleGate';
+import { useWissensHub } from '../../../shared/context';
+import { useDebounce } from '../../../shared/hooks/useDebounce';
 import styles from './Dashboard.module.scss';
+import * as strings from 'DashboardWebPartStrings';
+import * as sharedStrings from 'SharedStrings';
 
 export interface IFilterBarProps {
   searchQuery: string;
@@ -23,20 +27,24 @@ export interface IFilterBarProps {
   siteUrl?: string;
 }
 
-const STATUS_LABELS: Record<string, string> = {
-  'Draft': 'Entwurf',
-  'InReview': 'In Prüfung',
-  'Published': 'Veröffentlicht',
-  'Archived': 'Archiviert',
-};
+function getStatusLabels(): Record<string, string> {
+  return {
+    'Draft': sharedStrings.StatusDraft,
+    'InReview': sharedStrings.StatusInReview,
+    'Published': sharedStrings.StatusPublished,
+    'Archived': sharedStrings.StatusArchived,
+  };
+}
 
-const STATUS_OPTIONS: IDropdownOption[] = [
-  { key: '', text: 'Alle' },
-  { key: 'Draft', text: 'Entwurf' },
-  { key: 'InReview', text: 'In Prüfung' },
-  { key: 'Published', text: 'Veröffentlicht' },
-  { key: 'Archived', text: 'Archiviert' },
-];
+function getStatusOptions(): IDropdownOption[] {
+  return [
+    { key: '', text: sharedStrings.AllFilter },
+    { key: 'Draft', text: sharedStrings.StatusDraft },
+    { key: 'InReview', text: sharedStrings.StatusInReview },
+    { key: 'Published', text: sharedStrings.StatusPublished },
+    { key: 'Archived', text: sharedStrings.StatusArchived },
+  ];
+}
 
 export const FilterBar: React.FunctionComponent<IFilterBarProps> = (props) => {
   const {
@@ -55,13 +63,30 @@ export const FilterBar: React.FunctionComponent<IFilterBarProps> = (props) => {
     onClearAllFilters,
   } = props;
 
+  const { services } = useWissensHub();
+
+  // Track search_executed telemetry event on debounced search
+  const debouncedSearch = useDebounce(searchQuery, 300);
+
+  React.useEffect(() => {
+    if (debouncedSearch.trim().length > 0) {
+      services.telemetry.trackEvent('search_executed', {
+        query: debouncedSearch.trim(),
+        source: 'dashboard'
+      });
+    }
+  }, [debouncedSearch, services.telemetry]);
+
+  const statusLabels = getStatusLabels();
+  const statusOptions = getStatusOptions();
+
   const categoryOptions: IDropdownOption[] = React.useMemo(() => [
-    { key: '', text: 'Alle' },
+    { key: '', text: sharedStrings.AllFilter },
     ...categories.map(c => ({ key: c, text: c })),
   ], [categories]);
 
   const targetGroupOptions: IDropdownOption[] = React.useMemo(() => [
-    { key: '', text: 'Alle' },
+    { key: '', text: sharedStrings.AllFilter },
     ...targetGroups.map(g => ({ key: g, text: g })),
   ], [targetGroups]);
 
@@ -70,21 +95,21 @@ export const FilterBar: React.FunctionComponent<IFilterBarProps> = (props) => {
   const activePills: Array<{ label: string; value: string; onClear: () => void }> = [];
   if (categoryFilter) {
     activePills.push({
-      label: 'Kategorie',
+      label: sharedStrings.Category,
       value: categoryFilter,
       onClear: () => onCategoryChange(''),
     });
   }
   if (statusFilter) {
     activePills.push({
-      label: 'Status',
-      value: STATUS_LABELS[statusFilter] || statusFilter,
+      label: sharedStrings.Status,
+      value: statusLabels[statusFilter] || statusFilter,
       onClear: () => onStatusChange(''),
     });
   }
   if (targetGroupFilter) {
     activePills.push({
-      label: 'Zielgruppe',
+      label: sharedStrings.TargetGroup,
       value: targetGroupFilter,
       onClear: () => onTargetGroupChange(''),
     });
@@ -95,28 +120,28 @@ export const FilterBar: React.FunctionComponent<IFilterBarProps> = (props) => {
       {/* Row 1: Search + Dropdowns + View Toggle */}
       <div className={styles.filterRow}>
         <SearchBox
-          placeholder="Artikel suchen..."
+          placeholder={strings.SearchPlaceholder}
           value={searchQuery}
           onChange={(_ev, newValue) => onSearchChange(newValue || '')}
           onClear={() => onSearchChange('')}
           styles={{ root: { width: 250 } }}
         />
         <Dropdown
-          placeholder="Kategorie"
+          placeholder={strings.CategoryPlaceholder}
           options={categoryOptions}
           selectedKey={categoryFilter}
           onChange={(_ev, option) => onCategoryChange((option?.key as string) || '')}
           styles={{ root: { width: 160 } }}
         />
         <Dropdown
-          placeholder="Status"
-          options={STATUS_OPTIONS}
+          placeholder={strings.StatusPlaceholder}
+          options={statusOptions}
           selectedKey={statusFilter}
           onChange={(_ev, option) => onStatusChange((option?.key as string) || '')}
           styles={{ root: { width: 160 } }}
         />
         <Dropdown
-          placeholder="Zielgruppe"
+          placeholder={strings.TargetGroupPlaceholder}
           options={targetGroupOptions}
           selectedKey={targetGroupFilter}
           onChange={(_ev, option) => onTargetGroupChange((option?.key as string) || '')}
@@ -125,22 +150,22 @@ export const FilterBar: React.FunctionComponent<IFilterBarProps> = (props) => {
         <div className={styles.viewToggle}>
           <IconButton
             iconProps={{ iconName: 'GridViewMedium' }}
-            title="Kartenansicht"
-            ariaLabel="Kartenansicht"
+            title={strings.CardView}
+            ariaLabel={strings.CardView}
             className={`${styles.viewToggleButton} ${viewMode === 'card' ? styles.viewToggleActive : ''}`}
             onClick={() => onViewModeChange('card')}
           />
           <IconButton
             iconProps={{ iconName: 'List' }}
-            title="Listenansicht"
-            ariaLabel="Listenansicht"
+            title={strings.ListView}
+            ariaLabel={strings.ListView}
             className={`${styles.viewToggleButton} ${viewMode === 'list' ? styles.viewToggleActive : ''}`}
             onClick={() => onViewModeChange('list')}
           />
         </div>
         <RoleGate minimumRole="editor">
           <PrimaryButton
-            text="Neuer Artikel"
+            text={strings.NewArticle}
             iconProps={{ iconName: 'Add' }}
             onClick={() => {
               const baseUrl = props.siteUrl || '/sites/wissenshub';
@@ -162,7 +187,7 @@ export const FilterBar: React.FunctionComponent<IFilterBarProps> = (props) => {
                 className={styles.filterPillRemove}
                 onClick={pill.onClear}
                 type="button"
-                aria-label={`${pill.label} Filter entfernen`}
+                aria-label={strings.RemoveFilterLabel.replace('{0}', pill.label)}
               >
                 x
               </button>
@@ -173,7 +198,7 @@ export const FilterBar: React.FunctionComponent<IFilterBarProps> = (props) => {
             onClick={onClearAllFilters}
             type="button"
           >
-            Filter zurücksetzen
+            {strings.ClearFilters}
           </button>
         </div>
       )}
