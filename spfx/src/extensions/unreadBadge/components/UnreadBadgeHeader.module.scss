@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 16px;
+  height: 40px;
+}
+
+.bellButton {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  &:focus {
+    outline: 2px solid "[theme:themePrimary, default: #0078d4]";
+    outline-offset: 1px;
+  }
+}
+
+.bellIcon {
+  font-size: 20px;
+  color: "[theme:neutralPrimary, default: #323130]";
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #D13438;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 600;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  line-height: 1;
+}
