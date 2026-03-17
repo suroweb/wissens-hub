@@ -114,12 +114,21 @@ export const WissensHubProvider: React.FC<IWissensHubProviderProps> = ({
 
     init().catch((e) => {
       console.error('WissensHubProvider initialization failed:', e);
+      // Fallback to mock services so the web part does not stay stuck on null render
+      setContextValue({
+        services: createMockServices(),
+        currentUser: MOCK_CURRENT_USER,
+        role: mockRole ?? 'reader',
+        isLoading: false,
+      });
     });
   }, []);
 
   if (contextValue === undefined) {
-    // eslint-disable-next-line @rushstack/no-new-null
-    return null as unknown as React.ReactElement;
+    // Render an empty container instead of null so SPFx always sees DOM content
+    // during async context initialisation. Returning null can cause SPFx hosted
+    // workbench to surface an "[object Object]" error page.
+    return React.createElement('div', { 'data-automationid': 'wissenshub-loading' });
   }
 
   return React.createElement(

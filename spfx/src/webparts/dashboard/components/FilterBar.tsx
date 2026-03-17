@@ -25,16 +25,16 @@ export interface IFilterBarProps {
 
 const STATUS_LABELS: Record<string, string> = {
   'Draft': 'Entwurf',
-  'InReview': 'In Pruefung',
-  'Published': 'Veroeffentlicht',
+  'InReview': 'In Prüfung',
+  'Published': 'Veröffentlicht',
   'Archived': 'Archiviert',
 };
 
 const STATUS_OPTIONS: IDropdownOption[] = [
   { key: '', text: 'Alle' },
   { key: 'Draft', text: 'Entwurf' },
-  { key: 'InReview', text: 'In Pruefung' },
-  { key: 'Published', text: 'Veroeffentlicht' },
+  { key: 'InReview', text: 'In Prüfung' },
+  { key: 'Published', text: 'Veröffentlicht' },
   { key: 'Archived', text: 'Archiviert' },
 ];
 
@@ -173,7 +173,7 @@ export const FilterBar: React.FunctionComponent<IFilterBarProps> = (props) => {
             onClick={onClearAllFilters}
             type="button"
           >
-            Filter zuruecksetzen
+            Filter zurücksetzen
           </button>
         </div>
       )}

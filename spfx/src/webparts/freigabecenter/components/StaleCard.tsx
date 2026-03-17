@@ -45,7 +45,7 @@ export const StaleCard: React.FunctionComponent<IStaleCardProps> = ({
       <h3 className={styles.cardTitle}>{article.title}</h3>
 
       <div className={styles.cardMeta}>
-        Zuletzt geaendert: {formatDate(article.modifiedDate)} ({daysSinceModified} Tage)
+        Zuletzt geändert: {formatDate(article.modifiedDate)} ({daysSinceModified} Tage)
       </div>
 
       <a
@@ -55,7 +55,7 @@ export const StaleCard: React.FunctionComponent<IStaleCardProps> = ({
         className={styles.articleLink}
       >
         <Icon iconName="OpenInNewWindow" />
-        Artikel oeffnen
+        Artikel öffnen
       </a>
     </div>
   );

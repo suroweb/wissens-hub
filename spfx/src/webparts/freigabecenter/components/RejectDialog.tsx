@@ -51,7 +51,7 @@ export const RejectDialog: React.FC<IRejectDialogProps> = ({
       minWidth={400}
     >
       <TextField
-        label="Begruendung"
+        label="Begründung"
         multiline
         rows={3}
         required

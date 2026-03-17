@@ -30,19 +30,14 @@ export function useArticleStatusQuery(pageId: number): {
       return;
     }
 
-    const articlesResult = await services.pageService.getPublishedArticles();
-    if (!articlesResult.success) {
-      setState({ status: 'error', error: articlesResult.error });
-      return;
-    }
-
-    let article: IArticlePage | undefined;
-    for (let i = 0; i < articlesResult.data.length; i++) {
-      if (articlesResult.data[i].id === pageId) {
-        article = articlesResult.data[i];
-        break;
-      }
-    }
+    // Use getArticleById so the article is returned regardless of its current
+    // status (Draft, InReview, Published, Archived). The previous implementation
+    // used getPublishedArticles() which lost the article after status changes,
+    // causing the sidebar to fall back to a wrong default status.
+    const articleResult = await services.pageService.getArticleById(pageId);
+    const article: IArticlePage | undefined = articleResult.success
+      ? articleResult.data
+      : undefined;
 
     const contentVersion = mockContentVersions[pageId] || 1;
 

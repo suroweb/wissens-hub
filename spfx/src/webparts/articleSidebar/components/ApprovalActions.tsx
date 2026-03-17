@@ -34,7 +34,7 @@ export const ApprovalActions: React.FC<IApprovalActionsProps> = ({
   const handleSubmitForReview = React.useCallback(async (): Promise<void> => {
     const success = await submitForReview.execute(pageId);
     if (success) {
-      setSuccessMessage('Zur Pruefung eingereicht');
+      setSuccessMessage('Zur Prüfung eingereicht');
       onStatusChange();
     }
   }, [pageId, submitForReview, onStatusChange]);
@@ -61,7 +61,7 @@ export const ApprovalActions: React.FC<IApprovalActionsProps> = ({
     articleStatus === 'Draft' && React.createElement(
       RoleGate,
       { minimumRole: 'editor', children: React.createElement(PrimaryButton, {
-        text: 'Zur Pruefung einreichen',
+        text: 'Zur Prüfung einreichen',
         iconProps: { iconName: 'Send' },
         onClick: handleSubmitForReview,
         disabled: submitForReview.state.status === 'executing',

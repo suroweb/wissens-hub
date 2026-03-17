@@ -78,7 +78,7 @@ const Freigabecenter: React.FunctionComponent<IFreigabecenterProps> = (props) =>
     addNames(publishedArticles);
     names.sort();
 
-    const options: IDropdownOption[] = [{ key: 'all', text: 'Alle Pruefer' }];
+    const options: IDropdownOption[] = [{ key: 'all', text: 'Alle Prüfer' }];
     for (let i = 0; i < names.length; i++) {
       options.push({ key: names[i], text: names[i] });
     }
@@ -269,7 +269,7 @@ const Freigabecenter: React.FunctionComponent<IFreigabecenterProps> = (props) =>
       </div>
 
       <Dropdown
-        label="Pruefer"
+        label="Prüfer"
         options={reviewerOptions}
         selectedKey={selectedReviewer}
         onChange={(_, option) => setSelectedReviewer(option ? option.key as string : 'all')}

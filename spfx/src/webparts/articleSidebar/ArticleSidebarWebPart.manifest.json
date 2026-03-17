@@ -22,7 +22,8 @@
     "description": { "default": "ArticleSidebar description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "ArticleSidebar"
+      "description": "ArticleSidebar",
+      "mockRole": "editor"
     }
   }]
 }

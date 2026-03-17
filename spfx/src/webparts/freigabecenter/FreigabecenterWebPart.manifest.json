@@ -22,7 +22,8 @@
     "description": { "default": "Freigabecenter description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "Freigabecenter"
+      "description": "Freigabecenter",
+      "mockRole": "reviewer"
     }
   }]
 }

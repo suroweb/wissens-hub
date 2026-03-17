@@ -45,7 +45,7 @@ export const FlaggedCard: React.FunctionComponent<IFlaggedCardProps> = ({
         className={styles.articleLink}
       >
         <Icon iconName="OpenInNewWindow" />
-        Artikel oeffnen
+        Artikel öffnen
       </a>
     </div>
   );

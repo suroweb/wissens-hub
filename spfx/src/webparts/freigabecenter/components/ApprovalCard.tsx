@@ -40,7 +40,7 @@ export const ApprovalCard: React.FunctionComponent<IApprovalCardProps> = ({
       </div>
 
       <div className={styles.reviewerInfo}>
-        Pruefer: {article.reviewerName || 'Nicht zugewiesen'}
+        Prüfer: {article.reviewerName || 'Nicht zugewiesen'}
       </div>
 
       {article.targetGroups.length > 0 && (

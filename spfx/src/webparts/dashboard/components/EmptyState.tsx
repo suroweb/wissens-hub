@@ -19,11 +19,11 @@ export const EmptyState: React.FunctionComponent<IEmptyStateProps> = ({
   switch (type) {
     case 'no-results':
       iconName = 'SearchIssue';
-      message = `Keine Ergebnisse fuer '${searchQuery || ''}'`;
+      message = `Keine Ergebnisse für '${searchQuery || ''}'`;
       break;
     case 'no-filter-match':
       iconName = 'Filter';
-      message = 'Keine Artikel fuer diese Filter';
+      message = 'Keine Artikel für diese Filter';
       break;
     case 'empty-hub':
       iconName = 'Page';
@@ -41,7 +41,7 @@ export const EmptyState: React.FunctionComponent<IEmptyStateProps> = ({
           onClick={onClearFilters}
           type="button"
         >
-          Filter zuruecksetzen
+          Filter zurücksetzen
         </button>
       )}
     </div>

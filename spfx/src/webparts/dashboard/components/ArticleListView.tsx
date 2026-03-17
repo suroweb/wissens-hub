@@ -107,7 +107,7 @@ function buildColumns(
     },
     {
       key: 'modified',
-      name: 'Geaendert',
+      name: 'Geändert',
       fieldName: 'modifiedDate',
       minWidth: 100,
       isResizable: true,
