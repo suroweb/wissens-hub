@@ -3,6 +3,7 @@ import { Icon } from '@fluentui/react/lib/Icon';
 import { IUnreadArticle } from '../models/IUnreadArticle';
 import { UnreadFlyoutPanel } from './UnreadFlyoutPanel';
 import styles from './UnreadBadgeHeader.module.scss';
+import * as strings from 'UnreadBadgeApplicationCustomizerStrings';
 
 export interface IUnreadBadgeHeaderProps {
   articles: IUnreadArticle[];
@@ -57,7 +58,7 @@ export const UnreadBadgeHeader: React.FC<IUnreadBadgeHeaderProps> = ({
       <button
         className={styles.bellButton}
         onClick={handleBellClick}
-        aria-label={'Ungelesene Artikel: ' + displayCount}
+        aria-label={strings.UnreadArticlesAriaLabel.replace('{0}', displayCount)}
         type="button"
       >
         <Icon iconName="Ringer" className={styles.bellIcon} />

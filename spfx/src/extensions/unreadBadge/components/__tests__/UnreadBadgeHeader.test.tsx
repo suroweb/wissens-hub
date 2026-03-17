@@ -1,3 +1,18 @@
+// Mock loc modules
+jest.mock('UnreadBadgeApplicationCustomizerStrings', () => ({
+  Title: 'UnreadBadgeApplicationCustomizer',
+  UnreadArticlesAriaLabel: 'Ungelesene Artikel: {0}',
+  UnreadArticlesHeader: '{0} ungelesene Artikel',
+  LoadingUnreadArticles: 'Lade ungelesene Artikel...',
+  AllArticlesRead: 'Alle Artikel gelesen!',
+  ShowAll: 'Alle {0} anzeigen',
+  ClosePanel: 'Schliessen',
+}), { virtual: true });
+
+jest.mock('SharedStrings', () => ({
+  MandatoryArticle: 'Pflichtartikel',
+}), { virtual: true });
+
 // Mock the UnreadFlyoutPanel to isolate header tests
 jest.mock('../UnreadFlyoutPanel', () => ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -38,9 +38,14 @@ declare interface ISharedStrings {
   ErrorOccurred: string;
   Reload: string;
 
-  // Misc
+  // Common terms
   NotAssigned: string;
   OpenArticle: string;
+  Add: string;
+  Name: string;
+  Description: string;
+  Active: string;
+  Actions: string;
 
   // Filter strings
   SearchPlaceholder: string;

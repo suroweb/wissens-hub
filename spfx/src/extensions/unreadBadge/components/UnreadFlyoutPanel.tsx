@@ -7,6 +7,8 @@ import { getCategoryColor } from '../../../shared/utils/getCategoryColor';
 import { formatRelativeDate } from '../../../shared/utils/formatRelativeDate';
 import { IUnreadArticle } from '../models/IUnreadArticle';
 import styles from './UnreadFlyoutPanel.module.scss';
+import * as strings from 'UnreadBadgeApplicationCustomizerStrings';
+import * as sharedStrings from 'SharedStrings';
 
 export interface IUnreadFlyoutPanelProps {
   isOpen: boolean;
@@ -54,7 +56,7 @@ export const UnreadFlyoutPanel: React.FC<IUnreadFlyoutPanelProps> = ({
     if (isLoading) {
       return (
         <div className={styles.loadingContainer}>
-          <Spinner size={SpinnerSize.medium} label="Lade ungelesene Artikel..." />
+          <Spinner size={SpinnerSize.medium} label={strings.LoadingUnreadArticles} />
         </div>
       );
     }
@@ -71,7 +73,7 @@ export const UnreadFlyoutPanel: React.FC<IUnreadFlyoutPanelProps> = ({
       return (
         <div className={styles.emptyState}>
           <Icon iconName="CheckMark" className={styles.emptyIcon} />
-          <span className={styles.emptyText}>Alle Artikel gelesen!</span>
+          <span className={styles.emptyText}>{strings.AllArticlesRead}</span>
         </div>
       );
     }
@@ -97,7 +99,7 @@ export const UnreadFlyoutPanel: React.FC<IUnreadFlyoutPanelProps> = ({
             <div className={styles.articleMeta}>
               {formatRelativeDate(article.updatedAt)}
               {article.isMandatory && (
-                <span className={styles.mandatoryBadge}>Pflichtartikel</span>
+                <span className={styles.mandatoryBadge}>{sharedStrings.MandatoryArticle}</span>
               )}
             </div>
           </div>
@@ -107,7 +109,7 @@ export const UnreadFlyoutPanel: React.FC<IUnreadFlyoutPanelProps> = ({
             href={siteUrl + '/SitePages/Home.aspx'}
             className={styles.showAllLink}
           >
-            {'Alle ' + totalCount + ' anzeigen'}
+            {strings.ShowAll.replace('{0}', '' + totalCount)}
           </a>
         )}
       </div>
@@ -119,9 +121,9 @@ export const UnreadFlyoutPanel: React.FC<IUnreadFlyoutPanelProps> = ({
       isOpen={isOpen}
       onDismiss={onDismiss}
       type={PanelType.smallFixedFar}
-      headerText={totalCount + ' ungelesene Artikel'}
+      headerText={strings.UnreadArticlesHeader.replace('{0}', '' + totalCount)}
       isLightDismiss={true}
-      closeButtonAriaLabel="Schliessen"
+      closeButtonAriaLabel={strings.ClosePanel}
     >
       {renderContent()}
     </Panel>

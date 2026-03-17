@@ -39,9 +39,14 @@ define([], function() {
     "ErrorOccurred": "Something went wrong.",
     "Reload": "Reload",
 
-    // Misc
+    // Common terms
     "NotAssigned": "Not assigned",
     "OpenArticle": "Open article",
+    "Add": "Add",
+    "Name": "Name",
+    "Description": "Description",
+    "Active": "Active",
+    "Actions": "Actions",
 
     // Filter strings
     "SearchPlaceholder": "Search articles...",

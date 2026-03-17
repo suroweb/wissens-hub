@@ -39,6 +39,15 @@ define([], function() {
     "ErrorOccurred": "Etwas ist schiefgelaufen.",
     "Reload": "Neu laden",
 
+    // Common terms
+    "NotAssigned": "Nicht zugewiesen",
+    "OpenArticle": "Artikel offnen",
+    "Add": "Hinzufugen",
+    "Name": "Name",
+    "Description": "Beschreibung",
+    "Active": "Aktiv",
+    "Actions": "Aktionen",
+
     // Filter strings
     "SearchPlaceholder": "Artikel suchen...",
     "AllFilter": "Alle",
