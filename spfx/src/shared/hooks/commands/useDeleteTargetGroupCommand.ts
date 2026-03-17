@@ -14,9 +14,15 @@ export function useDeleteTargetGroupCommand(): {
     const result = await services.adminService.deleteTargetGroup(id);
     if (result.success) {
       setState({ status: 'success' });
+      services.telemetry.trackEvent('targetgroup_deleted', {});
+      services.cache.invalidate('targetgroups:');
       return true;
     } else {
       setState({ status: 'error', error: result.error });
+      services.telemetry.trackEvent('error_api_call', {
+        endpoint: 'deleteTargetGroup',
+        errorMessage: result.error.message
+      });
       return false;
     }
   }, [services]);

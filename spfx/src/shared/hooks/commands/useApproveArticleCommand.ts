@@ -14,9 +14,18 @@ export function useApproveArticleCommand(): {
     const result = await services.approvalService.approveArticle(pageId, comment);
     if (result.success) {
       setState({ status: 'success' });
+      services.telemetry.trackEvent('article_approved', { pageId: String(pageId) });
+      services.cache.invalidate('pending:');
+      services.cache.invalidate('articles:');
+      services.cache.invalidate('dashstats:');
+      services.cache.invalidate('articlestatus:');
       return true;
     } else {
       setState({ status: 'error', error: result.error });
+      services.telemetry.trackEvent('error_api_call', {
+        endpoint: 'approveArticle',
+        errorMessage: result.error.message
+      });
       return false;
     }
   }, [services]);

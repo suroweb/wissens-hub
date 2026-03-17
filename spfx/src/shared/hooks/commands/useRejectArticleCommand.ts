@@ -14,9 +14,18 @@ export function useRejectArticleCommand(): {
     const result = await services.approvalService.rejectArticle(pageId, comment);
     if (result.success) {
       setState({ status: 'success' });
+      services.telemetry.trackEvent('article_rejected', { pageId: String(pageId) });
+      services.cache.invalidate('pending:');
+      services.cache.invalidate('articles:');
+      services.cache.invalidate('dashstats:');
+      services.cache.invalidate('articlestatus:');
       return true;
     } else {
       setState({ status: 'error', error: result.error });
+      services.telemetry.trackEvent('error_api_call', {
+        endpoint: 'rejectArticle',
+        errorMessage: result.error.message
+      });
       return false;
     }
   }, [services]);

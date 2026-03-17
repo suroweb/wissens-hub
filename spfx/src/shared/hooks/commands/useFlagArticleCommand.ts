@@ -14,9 +14,17 @@ export function useFlagArticleCommand(): {
     const result = await services.flagService.flagArticle(pageId, reason);
     if (result.success) {
       setState({ status: 'success' });
+      services.telemetry.trackEvent('article_flagged', { pageId: String(pageId) });
+      services.cache.invalidate('flagged:');
+      services.cache.invalidate('articles:');
+      services.cache.invalidate('articlestatus:');
       return true;
     } else {
       setState({ status: 'error', error: result.error });
+      services.telemetry.trackEvent('error_api_call', {
+        endpoint: 'flagArticle',
+        errorMessage: result.error.message
+      });
       return false;
     }
   }, [services]);

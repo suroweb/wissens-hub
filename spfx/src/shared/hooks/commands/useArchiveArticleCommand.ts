@@ -14,9 +14,16 @@ export function useArchiveArticleCommand(): {
     const result = await services.approvalService.archiveArticle(pageId);
     if (result.success) {
       setState({ status: 'success' });
+      services.telemetry.trackEvent('article_archived', { pageId: String(pageId) });
+      services.cache.invalidate('articles:');
+      services.cache.invalidate('articlestatus:');
       return true;
     } else {
       setState({ status: 'error', error: result.error });
+      services.telemetry.trackEvent('error_api_call', {
+        endpoint: 'archiveArticle',
+        errorMessage: result.error.message
+      });
       return false;
     }
   }, [services]);

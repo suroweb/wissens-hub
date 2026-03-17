@@ -21,9 +21,15 @@ export function useSaveTargetGroupCommand(): {
       : await services.adminService.createTargetGroup(name, sharePointGroupName);
     if (result.success) {
       setState({ status: 'success' });
+      services.telemetry.trackEvent('targetgroup_saved', {});
+      services.cache.invalidate('targetgroups:');
       return true;
     } else {
       setState({ status: 'error', error: result.error });
+      services.telemetry.trackEvent('error_api_call', {
+        endpoint: 'saveTargetGroup',
+        errorMessage: result.error.message
+      });
       return false;
     }
   }, [services]);

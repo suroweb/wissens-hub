@@ -14,9 +14,19 @@ export function useMarkAsReadCommand(): {
     const result = await services.readConfirmationService.markAsRead(pageId);
     if (result.success) {
       setState({ status: 'success' });
+      services.telemetry.trackEvent('article_read', { pageId: String(pageId) });
+      services.cache.invalidate('articles:');
+      services.cache.invalidate('unread:');
+      services.cache.invalidate('readstats:');
+      services.cache.invalidate('dashstats:');
+      services.cache.invalidate('articlestatus:');
       return true;
     } else {
       setState({ status: 'error', error: result.error });
+      services.telemetry.trackEvent('error_api_call', {
+        endpoint: 'markAsRead',
+        errorMessage: result.error.message
+      });
       return false;
     }
   }, [services]);

@@ -17,9 +17,16 @@ export function useToggleFavoriteCommand(): {
     if (result.success) {
       setState({ status: 'success' });
       setIsFavorited(result.data.isFavorited);
+      services.telemetry.trackEvent('article_favorited', { pageId: String(pageId) });
+      services.cache.invalidate('favorites:');
+      services.cache.invalidate('dashstats:');
       return true;
     } else {
       setState({ status: 'error', error: result.error });
+      services.telemetry.trackEvent('error_api_call', {
+        endpoint: 'toggleFavorite',
+        errorMessage: result.error.message
+      });
       return false;
     }
   }, [services]);

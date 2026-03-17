@@ -14,9 +14,15 @@ export function useDeleteCategoryCommand(): {
     const result = await services.adminService.deleteCategory(id);
     if (result.success) {
       setState({ status: 'success' });
+      services.telemetry.trackEvent('category_deleted', {});
+      services.cache.invalidate('categories:');
       return true;
     } else {
       setState({ status: 'error', error: result.error });
+      services.telemetry.trackEvent('error_api_call', {
+        endpoint: 'deleteCategory',
+        errorMessage: result.error.message
+      });
       return false;
     }
   }, [services]);

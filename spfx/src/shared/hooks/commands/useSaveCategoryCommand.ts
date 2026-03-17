@@ -21,9 +21,15 @@ export function useSaveCategoryCommand(): {
       : await services.adminService.createCategory(name, description);
     if (result.success) {
       setState({ status: 'success' });
+      services.telemetry.trackEvent('category_saved', {});
+      services.cache.invalidate('categories:');
       return true;
     } else {
       setState({ status: 'error', error: result.error });
+      services.telemetry.trackEvent('error_api_call', {
+        endpoint: 'saveCategory',
+        errorMessage: result.error.message
+      });
       return false;
     }
   }, [services]);
