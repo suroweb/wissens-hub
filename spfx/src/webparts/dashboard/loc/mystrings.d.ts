@@ -1,4 +1,5 @@
 declare interface IDashboardWebPartStrings {
+  // Scaffold strings
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
@@ -11,6 +12,36 @@ declare interface IDashboardWebPartStrings {
   AppOfficeEnvironment: string;
   AppOutlookEnvironment: string;
   UnknownEnvironment: string;
+
+  // StatsBar
+  Unread: string;
+  Favorites: string;
+  OpenForReview: string;
+
+  // FilterBar
+  CategoryPlaceholder: string;
+  StatusPlaceholder: string;
+  TargetGroupPlaceholder: string;
+  CardView: string;
+  ListView: string;
+  NewArticle: string;
+  RemoveFilterLabel: string;
+  SearchPlaceholder: string;
+  ClearFilters: string;
+
+  // EmptyState
+  NoResultsFor: string;
+  NoFilterMatch: string;
+  EmptyHub: string;
+
+  // ArticleListView columns
+  ColumnTitle: string;
+  ColumnCategory: string;
+  ColumnAuthor: string;
+  ColumnModified: string;
+
+  // Dashboard error
+  ErrorLoadingArticles: string;
 }
 
 declare module 'DashboardWebPartStrings' {

@@ -1,5 +1,6 @@
 define([], function() {
   return {
+    // Scaffold strings (existing)
     "PropertyPaneDescription": "Description",
     "BasicGroupName": "Group Name",
     "DescriptionFieldLabel": "Description Field",
@@ -11,6 +12,36 @@ define([], function() {
     "AppTeamsTabEnvironment": "The app is running in Microsoft Teams",
     "AppOfficeEnvironment": "The app is running in office.com",
     "AppOutlookEnvironment": "The app is running in Outlook",
-    "UnknownEnvironment": "The app is running in an unknown environment"
+    "UnknownEnvironment": "The app is running in an unknown environment",
+
+    // StatsBar
+    "Unread": "Unread",
+    "Favorites": "Favorites",
+    "OpenForReview": "Pending",
+
+    // FilterBar
+    "CategoryPlaceholder": "Category",
+    "StatusPlaceholder": "Status",
+    "TargetGroupPlaceholder": "Target Group",
+    "CardView": "Card view",
+    "ListView": "List view",
+    "NewArticle": "New Article",
+    "RemoveFilterLabel": "Remove {0} filter",
+    "SearchPlaceholder": "Search articles...",
+    "ClearFilters": "Clear filters",
+
+    // EmptyState
+    "NoResultsFor": "No results for '{0}'",
+    "NoFilterMatch": "No articles match these filters",
+    "EmptyHub": "No articles yet",
+
+    // ArticleListView columns
+    "ColumnTitle": "Title",
+    "ColumnCategory": "Category",
+    "ColumnAuthor": "Author",
+    "ColumnModified": "Modified",
+
+    // Dashboard error
+    "ErrorLoadingArticles": "Error loading articles"
   }
 });

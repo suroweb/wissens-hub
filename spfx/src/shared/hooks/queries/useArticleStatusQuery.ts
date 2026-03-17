@@ -3,6 +3,7 @@ import { QueryState } from '../../models/AsyncState';
 import { IArticlePage } from '../../models/domain/IArticlePage';
 import { IReadConfirmation } from '../../models/domain/IReadConfirmation';
 import { useWissensHub } from '../../context';
+import { CACHE_TTLS } from '../../services/CacheService';
 
 export interface IArticleStatus {
   article: IArticlePage | undefined;
@@ -19,14 +20,30 @@ export function useArticleStatusQuery(pageId: number): {
   refetch: () => void;
 } {
   const { services } = useWissensHub();
-  const [state, setState] = React.useState<QueryState<IArticleStatus>>({ status: 'idle' });
+  const cacheKey = 'articlestatus:' + pageId;
+  const hasDataRef = React.useRef(false);
+
+  const [state, setState] = React.useState<QueryState<IArticleStatus>>(() => {
+    const cached = services.cache.get<IArticleStatus>(cacheKey);
+    if (cached) {
+      // eslint-disable-next-line require-atomic-updates
+    hasDataRef.current = true;
+      return { status: 'success', data: cached };
+    }
+    return { status: 'idle' };
+  });
 
   const fetch = React.useCallback(async (): Promise<void> => {
-    setState({ status: 'loading' });
+    const hadData = hasDataRef.current;
+    if (!hadData) {
+      setState({ status: 'loading' });
+    }
 
     const readStatusResult = await services.readConfirmationService.getReadStatus(pageId);
     if (!readStatusResult.success) {
-      setState({ status: 'error', error: readStatusResult.error });
+      if (!hadData) {
+        setState({ status: 'error', error: readStatusResult.error });
+      }
       return;
     }
 
@@ -41,14 +58,16 @@ export function useArticleStatusQuery(pageId: number): {
 
     const contentVersion = mockContentVersions[pageId] || 1;
 
-    setState({
-      status: 'success',
-      data: {
-        article: article,
-        readConfirmation: readStatusResult.data,
-        contentVersion: contentVersion,
-      },
-    });
+    const data: IArticleStatus = {
+      article: article,
+      readConfirmation: readStatusResult.data,
+      contentVersion: contentVersion,
+    };
+
+    services.cache.set(cacheKey, data, CACHE_TTLS.READ_STATS);
+    // eslint-disable-next-line require-atomic-updates
+    hasDataRef.current = true;
+    setState({ status: 'success', data: data });
   }, [services, pageId]);
 
   React.useEffect(() => {

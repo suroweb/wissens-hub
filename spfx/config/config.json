@@ -45,6 +45,7 @@
   },
   "externals": {},
   "localizedResources": {
+    "SharedStrings": "lib/shared/loc/{locale}.js",
     "DashboardWebPartStrings": "lib/webparts/dashboard/loc/{locale}.js",
     "ArticleSidebarWebPartStrings": "lib/webparts/articleSidebar/loc/{locale}.js",
     "FreigabecenterWebPartStrings": "lib/webparts/freigabecenter/loc/{locale}.js",

@@ -2,22 +2,41 @@ import * as React from 'react';
 import { QueryState } from '../../models/AsyncState';
 import { DashboardStatsDto } from '../../models/dto/DashboardStatsDto';
 import { useWissensHub } from '../../context';
+import { CACHE_TTLS } from '../../services/CacheService';
 
 export function useUnreadCountQuery(): {
   state: QueryState<DashboardStatsDto>;
   refetch: () => void;
 } {
   const { services } = useWissensHub();
-  const [state, setState] = React.useState<QueryState<DashboardStatsDto>>({ status: 'idle' });
+  const cacheKey = 'unread:count';
+  const hasDataRef = React.useRef(false);
+
+  const [state, setState] = React.useState<QueryState<DashboardStatsDto>>(() => {
+    const cached = services.cache.get<DashboardStatsDto>(cacheKey);
+    if (cached) {
+      // eslint-disable-next-line require-atomic-updates
+      hasDataRef.current = true;
+      return { status: 'success', data: cached };
+    }
+    return { status: 'idle' };
+  });
 
   const fetch = React.useCallback(async (): Promise<void> => {
-    setState({ status: 'loading' });
+    const hadData = hasDataRef.current;
+    if (!hadData) {
+      setState({ status: 'loading' });
+    }
     const result = await services.apiClient.get<DashboardStatsDto>('/api/dashboard/stats');
     if (result.success) {
+      services.cache.set(cacheKey, result.data, CACHE_TTLS.UNREAD_COUNT);
+      // eslint-disable-next-line require-atomic-updates
+      hasDataRef.current = true; // eslint-disable-line require-atomic-updates
       setState({ status: 'success', data: result.data });
-    } else {
+    } else if (!hadData) {
       setState({ status: 'error', error: result.error });
     }
+    // If fetch fails but we have stale data, silently keep showing it
   }, [services]);
 
   React.useEffect(() => {
