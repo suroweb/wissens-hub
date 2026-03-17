@@ -50,6 +50,8 @@ builder.Services.AddScoped<IFlagRepository, FlagRepository>();
 builder.Services.AddScoped<IApprovalRepository, ApprovalRepository>();
 builder.Services.AddScoped<IArticleMetadataRepository, ArticleMetadataRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ITargetGroupRepository, TargetGroupRepository>();
+builder.Services.AddScoped<ISystemConfigurationRepository, SystemConfigurationRepository>();
 builder.Services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<WissensHubDbContext>());
 
 // User identity

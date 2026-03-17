@@ -5,7 +5,8 @@ public record AdminReportDto(
     int TotalArticles,
     int PublishedCount,
     int DraftCount,
-    int InReviewCount);
+    int InReviewCount,
+    int FlaggedCount);
 
 public record ArticleReportDto(
     int PageId,

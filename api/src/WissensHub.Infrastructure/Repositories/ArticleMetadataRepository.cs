@@ -29,6 +29,15 @@ public class ArticleMetadataRepository(WissensHubDbContext db) : IArticleMetadat
             .OrderByDescending(a => a.UpdatedAt)
             .ToListAsync(ct);
 
+    public Task<List<ArticleMetadata>> GetAllForAdminReportAsync(CancellationToken ct)
+        => db.ArticleMetadata
+            .Include(a => a.Category)
+            .Include(a => a.ReadConfirmations)
+            .Include(a => a.ArticleTargetGroups)
+            .Include(a => a.ArticleFlags)
+            .OrderByDescending(a => a.UpdatedAt)
+            .ToListAsync(ct);
+
     public Task<int> GetPendingReviewCountAsync(CancellationToken ct)
         => db.ArticleMetadata.CountAsync(a => a.Status == "InReview", ct);
 
