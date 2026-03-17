@@ -21,7 +21,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 7: Approval Workflow & Freigabecenter** - Status transitions, approve/reject actions, approval history, Freigabecenter web part with freshness alerts (completed 2026-03-17)
 - [x] **Phase 8: Unread Badge Application Customizer** - Header notification icon, flyout panel with unread summaries, cross-web-part event bus (completed 2026-03-17)
 - [ ] **Phase 9: Admin Panel & Reporting** - Category/target group configuration, reminder intervals, read confirmation reports with CSV/Excel export
-- [ ] **Phase 10: Caching, Telemetry, UX Polish & i18n** - Multi-layer caching, Application Insights, error boundaries, toasts, optimistic UI, shimmer, responsive, accessibility, internationalization
+- [x] **Phase 10: Caching, Telemetry, UX Polish & i18n** - Multi-layer caching, Application Insights, error boundaries, toasts, optimistic UI, shimmer, responsive, accessibility, internationalization (completed 2026-03-17)
 - [ ] **Phase 11: Testing** - Jest unit tests, .NET integration tests, Playwright E2E tests
 - [ ] **Phase 12: DevOps & Deployment** - Azure Bicep IaC, GitHub Actions CI/CD, SPFx deployment, migration pipeline, OIDC, README documentation
 
@@ -192,13 +192,13 @@ Plans:
 **Plans**: 7 plans
 
 Plans:
-- [ ] 10-00-PLAN.md — Wave 0: test stub files for CacheService, TelemetryService, ErrorBoundary, ToastProvider
-- [ ] 10-01-PLAN.md — CacheService, TelemetryService, ErrorBoundary, ToastProvider, PnPjs caching, ServiceContainer extension, error_sharepoint event
-- [ ] 10-02-PLAN.md — Stale-while-revalidate in all query hooks, telemetry + cache invalidation in all command hooks, dashboard_loaded event
-- [ ] 10-03-PLAN.md — ErrorBoundary/ToastProvider wiring in all web parts, shimmer skeletons, responsive CSS, accessibility, search_executed event
-- [ ] 10-04-PLAN.md — i18n Part A: shared loc module, Dashboard + ArticleSidebar string extraction
-- [ ] 10-05-PLAN.md — i18n Part B: Freigabecenter + AdminPanel + UnreadBadge string extraction
-- [ ] 10-06-PLAN.md — Workbench verification checkpoint for all 18 requirements + 9 custom event verification
+- [x] 10-00-PLAN.md — Wave 0: test stub files for CacheService, TelemetryService, ErrorBoundary, ToastProvider
+- [x] 10-01-PLAN.md — CacheService, TelemetryService, ErrorBoundary, ToastProvider, PnPjs caching, ServiceContainer extension, error_sharepoint event
+- [x] 10-02-PLAN.md — Stale-while-revalidate in all query hooks, telemetry + cache invalidation in all command hooks, dashboard_loaded event
+- [x] 10-03-PLAN.md — ErrorBoundary/ToastProvider wiring in all web parts, shimmer skeletons, responsive CSS, accessibility, search_executed event
+- [x] 10-04-PLAN.md — i18n Part A: shared loc module, Dashboard + ArticleSidebar string extraction
+- [x] 10-05-PLAN.md — i18n Part B: Freigabecenter + AdminPanel + UnreadBadge string extraction
+- [x] 10-06-PLAN.md — Workbench verification checkpoint for all 18 requirements + 9 custom event verification
 
 ### Phase 11: Testing
 **Goal**: The application has comprehensive automated test coverage across all layers — frontend unit, backend integration, and end-to-end user flows
@@ -249,6 +249,6 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 7. Approval Workflow & Freigabecenter | 3/3 | Complete   | 2026-03-17 |
 | 8. Unread Badge Application Customizer | 2/2 | Complete | 2026-03-17 |
 | 9. Admin Panel & Reporting | 0/4 | Not started | - |
-| 10. Caching, Telemetry, UX Polish & i18n | 6/7 | In Progress|  |
+| 10. Caching, Telemetry, UX Polish & i18n | 7/7 | Complete | 2026-03-17 |
 | 11. Testing | 0/3 | Not started | - |
 | 12. DevOps & Deployment | 0/3 | Not started | - |
