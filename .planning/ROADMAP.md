@@ -189,14 +189,16 @@ Plans:
   3. Every web part is wrapped in an Error Boundary that shows a recovery UI instead of crashing the page
   4. All UI labels, messages, and tooltips are available in both German (default) and English
   5. Mark-as-read and favorite toggle respond instantly via optimistic UI, with rollback on failure
-**Plans**: 5 plans
+**Plans**: 7 plans
 
 Plans:
-- [ ] 10-01-PLAN.md — CacheService, TelemetryService, ErrorBoundary, ToastProvider, PnPjs caching, ServiceContainer extension
-- [ ] 10-02-PLAN.md — Stale-while-revalidate in all 13 query hooks, telemetry + cache invalidation in all 13 command hooks
-- [ ] 10-03-PLAN.md — ErrorBoundary/ToastProvider wiring in all web parts, shimmer skeletons, responsive CSS, accessibility
-- [ ] 10-04-PLAN.md — Internationalization: shared + per-web-part loc modules, German/English strings, config.json registration
-- [ ] 10-05-PLAN.md — Workbench verification checkpoint for all 18 requirements
+- [ ] 10-00-PLAN.md — Wave 0: test stub files for CacheService, TelemetryService, ErrorBoundary, ToastProvider
+- [ ] 10-01-PLAN.md — CacheService, TelemetryService, ErrorBoundary, ToastProvider, PnPjs caching, ServiceContainer extension, error_sharepoint event
+- [ ] 10-02-PLAN.md — Stale-while-revalidate in all query hooks, telemetry + cache invalidation in all command hooks, dashboard_loaded event
+- [ ] 10-03-PLAN.md — ErrorBoundary/ToastProvider wiring in all web parts, shimmer skeletons, responsive CSS, accessibility, search_executed event
+- [ ] 10-04-PLAN.md — i18n Part A: shared loc module, Dashboard + ArticleSidebar string extraction
+- [ ] 10-05-PLAN.md — i18n Part B: Freigabecenter + AdminPanel + UnreadBadge string extraction
+- [ ] 10-06-PLAN.md — Workbench verification checkpoint for all 18 requirements + 9 custom event verification
 
 ### Phase 11: Testing
 **Goal**: The application has comprehensive automated test coverage across all layers — frontend unit, backend integration, and end-to-end user flows
@@ -247,6 +249,6 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 7. Approval Workflow & Freigabecenter | 3/3 | Complete   | 2026-03-17 |
 | 8. Unread Badge Application Customizer | 2/2 | Complete | 2026-03-17 |
 | 9. Admin Panel & Reporting | 0/4 | Not started | - |
-| 10. Caching, Telemetry, UX Polish & i18n | 0/5 | Not started | - |
+| 10. Caching, Telemetry, UX Polish & i18n | 0/7 | Not started | - |
 | 11. Testing | 0/3 | Not started | - |
 | 12. DevOps & Deployment | 0/3 | Not started | - |
