@@ -189,14 +189,14 @@ Plans:
   3. Every web part is wrapped in an Error Boundary that shows a recovery UI instead of crashing the page
   4. All UI labels, messages, and tooltips are available in both German (default) and English
   5. Mark-as-read and favorite toggle respond instantly via optimistic UI, with rollback on failure
-**Plans**: TBD
+**Plans**: 5 plans
 
 Plans:
-- [ ] 10-01: Multi-layer caching (PnPjs session, in-memory TTL, stale-while-revalidate, cache invalidation)
-- [ ] 10-02: Application Insights integration (cost-safe config, custom events, console fallback for dev)
-- [ ] 10-03: Error boundaries, toast notifications, optimistic UI, shimmer loading states
-- [ ] 10-04: Responsive design, accessibility (ARIA, keyboard, focus), debounced search
-- [ ] 10-05: Internationalization framework (German default, English secondary, all strings localized)
+- [ ] 10-01-PLAN.md — CacheService, TelemetryService, ErrorBoundary, ToastProvider, PnPjs caching, ServiceContainer extension
+- [ ] 10-02-PLAN.md — Stale-while-revalidate in all 13 query hooks, telemetry + cache invalidation in all 13 command hooks
+- [ ] 10-03-PLAN.md — ErrorBoundary/ToastProvider wiring in all web parts, shimmer skeletons, responsive CSS, accessibility
+- [ ] 10-04-PLAN.md — Internationalization: shared + per-web-part loc modules, German/English strings, config.json registration
+- [ ] 10-05-PLAN.md — Workbench verification checkpoint for all 18 requirements
 
 ### Phase 11: Testing
 **Goal**: The application has comprehensive automated test coverage across all layers — frontend unit, backend integration, and end-to-end user flows
@@ -233,7 +233,7 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12
 Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 2 can also proceed in parallel with 3-4 once Phase 1 is done.
 
 | Phase | Plans Complete | Status | Completed |
