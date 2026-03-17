@@ -19,7 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 5: Dashboard Web Part** - Article browsing with card/list views, search, filters, stats bar, unread badges, role-specific sections (completed 2026-03-16)
 - [x] **Phase 6: Article Sidebar & Read Confirmations** - Article metadata display, mark-as-read, flag, favorite, TOC, read confirmation tracking and reset (completed 2026-03-16)
 - [x] **Phase 7: Approval Workflow & Freigabecenter** - Status transitions, approve/reject actions, approval history, Freigabecenter web part with freshness alerts (completed 2026-03-17)
-- [ ] **Phase 8: Unread Badge Application Customizer** - Header notification icon, flyout panel with unread summaries, cross-web-part event bus
+- [x] **Phase 8: Unread Badge Application Customizer** - Header notification icon, flyout panel with unread summaries, cross-web-part event bus (completed 2026-03-17)
 - [ ] **Phase 9: Admin Panel & Reporting** - Category/target group configuration, reminder intervals, read confirmation reports with CSV/Excel export
 - [ ] **Phase 10: Caching, Telemetry, UX Polish & i18n** - Multi-layer caching, Application Insights, error boundaries, toasts, optimistic UI, shimmer, responsive, accessibility, internationalization
 - [ ] **Phase 11: Testing** - Jest unit tests, .NET integration tests, Playwright E2E tests
@@ -158,8 +158,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 08-01-PLAN.md — Application Customizer with header placeholder rendering, bell icon with badge, flyout panel with unread article list, shared utils extraction, CustomEvent wiring
-- [ ] 08-02-PLAN.md — Workbench verification checkpoint for all 3 requirements
+- [x] 08-01-PLAN.md — Application Customizer with header placeholder rendering, bell icon with badge, flyout panel with unread article list, shared utils extraction, CustomEvent wiring
+- [x] 08-02-PLAN.md — Workbench verification checkpoint for all 3 requirements
 
 ### Phase 9: Admin Panel & Reporting
 **Goal**: Administrators can configure the system (categories, target groups, reminders) and generate compliance reports without developer intervention
@@ -243,7 +243,7 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 5. Dashboard Web Part | 4/4 | Complete   | 2026-03-16 |
 | 6. Article Sidebar & Read Confirmations | 3/3 | Complete | 2026-03-16 |
 | 7. Approval Workflow & Freigabecenter | 3/3 | Complete   | 2026-03-17 |
-| 8. Unread Badge Application Customizer | 0/2 | Not started | - |
+| 8. Unread Badge Application Customizer | 2/2 | Complete | 2026-03-17 |
 | 9. Admin Panel & Reporting | 0/2 | Not started | - |
 | 10. Caching, Telemetry, UX Polish & i18n | 0/5 | Not started | - |
 | 11. Testing | 0/3 | Not started | - |
