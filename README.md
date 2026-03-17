@@ -145,7 +145,7 @@ flowchart TB
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/AYMNArchive/wissens-hub.git
+   git clone https://github.com/suroweb/wissens-hub.git
    cd wissens-hub
    ```
 
