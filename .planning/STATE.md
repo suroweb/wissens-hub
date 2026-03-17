@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 11-03-PLAN.md
-last_updated: "2026-03-17T18:55:36.567Z"
+stopped_at: Completed 11-01-PLAN.md
+last_updated: "2026-03-17T19:24:22.828Z"
 last_activity: 2026-03-17 -- Completed 11-04-PLAN.md (36 endpoint integration tests covering all 10 API endpoints against SQL Server)
 progress:
   total_phases: 12
   completed_phases: 10
   total_plans: 42
-  completed_plans: 39
+  completed_plans: 40
   percent: 90
 ---
 
@@ -86,6 +86,7 @@ Progress: [█████████░] 90%
 | Phase 11 P05 | 5min | 2 tasks | 6 files |
 | Phase 11 P04 | 12min | 2 tasks | 8 files |
 | Phase 11 P03 | 16min | 2 tasks | 11 files |
+| Phase 11 P01 | 44min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -193,6 +194,9 @@ Recent decisions affecting current work:
 - [Phase 11]: IntegrationTestCollection with [Collection("Integration")] replaces IClassFixture to share single fixture across all test classes
 - [Phase 11]: Mocked query/command hooks at module level for Freigabecenter and AdminPanel tests instead of using renderWithContext
 - [Phase 11]: Added jest.mock('@pnp/sp/site-groups/web') for ESM side-effect import isolation in ZielgruppenTab test
+- [Phase 11]: Added jest.config.json with moduleNameMapper to resolve __mocks__ directory path conflict when using renderWithContext
+- [Phase 11]: PnP mock block (9 jest.mock calls) required in all test files that use renderWithContext due to WissensHubContext import chain
+- [Phase 11]: SharedStrings mock must include all 19 relative date string keys when testing components that use formatRelativeDate
 
 ### Pending Todos
 
@@ -207,6 +211,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T18:55:36.563Z
-Stopped at: Completed 11-03-PLAN.md
+Last session: 2026-03-17T19:24:22.824Z
+Stopped at: Completed 11-01-PLAN.md
 Resume file: None
