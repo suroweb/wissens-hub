@@ -57,7 +57,7 @@ completed: 2026-03-15
 
 # Phase 2 Plan 2: Auth Pipeline Summary
 
-**Entra ID app registration module, JWT middleware for Azure Functions, and AadHttpClient smoke test in Dashboard — verified provisioning on real contoso tenant**
+**Entra ID app registration module, JWT middleware for Azure Functions, and AadHttpClient smoke test in Dashboard — verified provisioning on real tenant**
 
 ## Performance
 
@@ -71,7 +71,7 @@ completed: 2026-03-15
 - Entra ID app registration module with exposed access_as_user scope and SharePoint pre-authorization
 - JWT authentication middleware for Azure Functions using Microsoft.Identity.Web
 - AadHttpClient smoke test wired in Dashboard web part
-- Full provisioning suite verified on real SharePoint tenant (contoso)
+- Full provisioning suite verified on real SharePoint tenant
 - Fixed German locale issues discovered during real-tenant testing
 
 ## Task Commits
