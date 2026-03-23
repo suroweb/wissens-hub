@@ -2,16 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Phase 12 context gathered
-last_updated: "2026-03-23T23:09:16.109Z"
-last_activity: 2026-03-22 -- Completed 11-06-PLAN.md (verified 161 frontend + 49 backend + 4 E2E test suites passing)
+status: Phase complete — ready for verification
+stopped_at: Completed 12-02-PLAN.md
+last_updated: "2026-03-23T23:38:08.831Z"
 progress:
   total_phases: 12
   completed_phases: 11
-  total_plans: 42
+  total_plans: 45
   completed_plans: 42
-  percent: 100
 ---
 
 # Project State
@@ -21,16 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-14)
 
 **Core value:** Employees can find, read, and confirm mandatory knowledge articles through a central hub with role-based workflows
-**Current focus:** Phase 11 complete -- ready for Phase 12 (DevOps & Deployment)
+**Current focus:** Phase 12 — devops-deployment
 
 ## Current Position
 
-Phase: 11 of 12 (Testing)
-Plan: 7 of 7 in current phase
-Status: Phase 11 complete, ready for Phase 12
-Last activity: 2026-03-22 -- Completed 11-06-PLAN.md (verified 161 frontend + 49 backend + 4 E2E test suites passing)
-
-Progress: [██████████] 100%
+Phase: 12 (devops-deployment) — EXECUTING
+Plan: 3 of 3
 
 ## Performance Metrics
 
@@ -91,6 +85,8 @@ Progress: [██████████] 100%
 | Phase 11 P01 | 44min | 2 tasks | 10 files |
 | Phase 11 P02 | 46min | 1 tasks | 7 files |
 | Phase 11 P06 | 3min | 2 tasks | 0 files |
+| Phase 12 P01 | 2min | 2 tasks | 8 files |
+| Phase 12 P02 | 2min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -204,6 +200,9 @@ Recent decisions affecting current work:
 - [Phase 11]: Mock @pnp/sp + pnpSetup at module level to prevent ESM parse errors in Jest CJS mode for tests using renderWithContext
 - [Phase 11]: Use Fluent UI CSS class selectors for MessageBar assertions in jsdom (innerText spans render empty)
 - [Phase 11-06]: All 3 testing requirements verified passing with user approval -- 161 frontend, 49 backend, 4 E2E specs
+- [Phase 12]: Circular dep between Function App and Key Vault resolved via deterministic KV name string interpolation
+- [Phase 12]: OIDC federated identity for both Azure and M365 in CI/CD (no stored client secrets)
+- [Phase 12]: CD job dependency chain: build -> deploy-infra -> deploy-migrations -> deploy-functions, with deploy-spfx parallel
 
 ### Pending Todos
 
@@ -218,6 +217,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-23T23:09:16.103Z
-Stopped at: Phase 12 context gathered
-Resume file: .planning/phases/12-devops-deployment/12-CONTEXT.md
+Last session: 2026-03-23T23:37:32.053Z
+Stopped at: Completed 12-02-PLAN.md
+Resume file: None
