@@ -12,40 +12,42 @@ Employees can find, read, and confirm mandatory knowledge articles through a cen
 
 ### Validated
 
-(None yet — ship to validate)
+All v1.0 requirements validated across 12 phases:
+
+- [x] SPFx 1.22.2 solution with 4 web parts (Dashboard, Article Sidebar, Freigabecenter, Admin Panel) and 1 Application Customizer (Unread Badge Header) — Phase 1
+- [x] Role-based access (Reader, Editor, Reviewer, Admin) via SharePoint Groups with runtime group membership checks — Phase 3
+- [x] Two-layer data architecture: SharePoint Site Pages for content, Azure SQL for tracking/management — Phase 1
+- [x] Azure Functions C# API (.NET 10, EF Core 10, MediatR CQRS) between SPFx and Azure SQL — Phase 4
+- [x] Clean Architecture on both frontend (interfaces, services, hooks, components) and backend (Functions, Application, Domain, Infrastructure) — Phases 3-4
+- [x] Read confirmations — users mark articles as read, reviewers/admins see who read what — Phase 6
+- [x] Approval workflow — Draft → InReview → Published → Archived with approve/reject actions — Phase 7
+- [x] Flagging — users flag outdated articles, reviewers see flagged articles in Freigabecenter — Phase 7
+- [x] Favorites — users star/unstar articles, stored in Azure SQL — Phase 6
+- [x] Dashboard with unread badges, filters, search, card/list view toggle — Phase 5
+- [x] Article Sidebar with metadata display, mark-as-read, flag, favorite, table of contents — Phase 6
+- [x] Unread Badge Application Customizer in header across the hub — Phase 8
+- [x] Admin Panel — configure categories and target groups, exportable read confirmation reports — Phase 9
+- [x] Admin-configurable article categories (not hardcoded) — Phase 9
+- [x] Target groups mapped to SharePoint groups — admin selects which groups — Phase 9
+- [x] Multi-layer caching: PnPjs session cache, in-memory API cache with TTL, stale-while-revalidate in hooks — Phase 10
+- [x] Application Insights telemetry (single instance for frontend + backend) with cost-safe configuration (no auto-dependency tracking) — Phase 10
+- [x] Error handling: Result<T> pattern, React Error Boundaries, toast notifications — Phase 10
+- [x] Internationalization (i18n) — German default, English available — Phase 10
+- [x] Optimistic UI updates for mark-as-read, favorite toggle — Phase 10
+- [x] Responsive design for full-width, 2/3, and 1/3 column zones — Phase 10
+- [x] Accessibility — ARIA labels, keyboard navigation, focus management — Phase 10
+- [x] Loading skeletons with Fluent UI Shimmer — Phase 10
+- [x] Debounced search — Phase 10
+- [x] Full test coverage: Jest unit tests (frontend), .NET integration tests (API), E2E tests (Playwright) — Phase 11
+- [x] Docker Compose with Azure SQL Edge for local development — Phase 1
+- [x] PnP PowerShell provisioning script (site, groups, columns, pages, navigation, sample data) — Phase 2
+- [x] Azure Bicep infrastructure as code (Functions App, SQL Server, App Insights, Key Vault) — Phase 12
+- [x] CI/CD with GitHub Actions (CI on PR, CD on merge to main) — Phase 12
+- [x] README.md with architecture diagram, setup guide, API documentation — Phase 12
 
 ### Active
 
-- [ ] SPFx 1.22.2 solution with 4 web parts (Dashboard, Article Sidebar, Freigabecenter, Admin Panel) and 1 Application Customizer (Unread Badge Header)
-- [ ] Role-based access (Reader, Editor, Reviewer, Admin) via SharePoint Groups with runtime group membership checks
-- [ ] Two-layer data architecture: SharePoint Site Pages for content, Azure SQL for tracking/management
-- [ ] Azure Functions C# API (.NET 10, EF Core 10, MediatR CQRS) between SPFx and Azure SQL
-- [ ] Clean Architecture on both frontend (interfaces, services, hooks, components) and backend (Functions, Application, Domain, Infrastructure)
-- [ ] Read confirmations — users mark articles as read, reviewers/admins see who read what
-- [ ] Approval workflow — Draft → InReview → Published → Archived with approve/reject actions
-- [ ] Flagging — users flag outdated articles, reviewers see flagged articles in Freigabecenter
-- [ ] Favorites — users star/unstar articles, stored in Azure SQL
-- [ ] Dashboard with unread badges, filters, search, card/list view toggle
-- [ ] Article Sidebar with metadata display, mark-as-read, flag, favorite, table of contents
-- [ ] Unread Badge Application Customizer in header across the hub
-- [ ] Admin Panel — configure categories and target groups, exportable read confirmation reports
-- [ ] Admin-configurable article categories (not hardcoded)
-- [ ] Target groups mapped to SharePoint groups — admin selects which groups
-- [ ] Multi-layer caching: PnPjs session cache, in-memory API cache with TTL, stale-while-revalidate in hooks
-- [ ] Application Insights telemetry (single instance for frontend + backend) with cost-safe configuration (no auto-dependency tracking)
-- [ ] Error handling: Result<T> pattern, React Error Boundaries, toast notifications
-- [ ] Internationalization (i18n) — German default, English available
-- [ ] Optimistic UI updates for mark-as-read, favorite toggle
-- [ ] Responsive design for full-width, 2/3, and 1/3 column zones
-- [ ] Accessibility — ARIA labels, keyboard navigation, focus management
-- [ ] Loading skeletons with Fluent UI Shimmer
-- [ ] Debounced search
-- [ ] Full test coverage: Jest unit tests (frontend), .NET integration tests (API), E2E tests (Playwright)
-- [ ] Docker Compose with Azure SQL Edge for local development
-- [ ] PnP PowerShell provisioning script (site, groups, columns, pages, navigation, sample data)
-- [ ] Azure Bicep infrastructure as code (Functions App, SQL Server, App Insights, Key Vault)
-- [ ] CI/CD with GitHub Actions (CI on PR, CD on merge to main)
-- [ ] README.md with architecture diagram, setup guide, API documentation
+(None — all v1.0 requirements validated)
 
 ### Out of Scope
 
@@ -91,4 +93,4 @@ Employees can find, read, and confirm mandatory knowledge articles through a cen
 | Reminders via dashboard badges + email | Dashboard badges for in-app visibility, email notifications for overdue mandatory articles | — Pending |
 
 ---
-*Last updated: 2026-03-14 after initialization*
+*Last updated: 2026-03-24 after Phase 12 completion (all v1.0 phases complete)*
