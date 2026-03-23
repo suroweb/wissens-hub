@@ -23,7 +23,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 9: Admin Panel & Reporting** - Category/target group configuration, reminder intervals, read confirmation reports with CSV/Excel export
 - [x] **Phase 10: Caching, Telemetry, UX Polish & i18n** - Multi-layer caching, Application Insights, error boundaries, toasts, optimistic UI, shimmer, responsive, accessibility, internationalization (completed 2026-03-17)
 - [x] **Phase 11: Testing** - Jest unit tests, .NET integration tests, Playwright E2E tests (completed 2026-03-22)
-- [ ] **Phase 12: DevOps & Deployment** - Azure Bicep IaC, GitHub Actions CI/CD, SPFx deployment, migration pipeline, OIDC, README documentation
+- [x] **Phase 12: DevOps & Deployment** - Azure Bicep IaC, GitHub Actions CI/CD, SPFx deployment, migration pipeline, OIDC, README documentation (completed 2026-03-23)
 
 ## Phase Details
 
@@ -255,4 +255,4 @@ Note: Phases 3 and 4 can be executed in parallel after Phase 1 completes. Phase 
 | 9. Admin Panel & Reporting | 0/4 | Not started | - |
 | 10. Caching, Telemetry, UX Polish & i18n | 7/7 | Complete    | 2026-03-17 |
 | 11. Testing | 7/7 | Complete    | 2026-03-22 |
-| 12. DevOps & Deployment | 0/3 | Planned    |  |
+| 12. DevOps & Deployment | 0/3 | Complete    | 2026-03-23 |
