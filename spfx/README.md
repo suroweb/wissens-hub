@@ -1,77 +1,96 @@
-# wissens-hub
+# WissensHub SPFx Solution
 
-## Summary
+SharePoint Framework 1.22.2 solution providing 4 web parts and 1 application customizer for the WissensHub knowledge management hub.
 
-Short summary on functionality and used technologies.
+## Web Parts
 
-[picture of the solution in action, if possible]
+| Web Part | Description | Internal Name |
+|----------|-------------|---------------|
+| **Dashboard** | Article browsing with card/list views, search, filters, stats bar | `DashboardWebPart` |
+| **Article Sidebar** | Article metadata, read confirmation, flag, favorite, TOC | `ArticleSidebarWebPart` |
+| **Freigabecenter** | Reviewer hub for pending approvals, flagged content, freshness alerts | `FreigabecenterWebPart` |
+| **Admin Panel** | Category/target group config, read reports, CSV/Excel export | `AdminPanelWebPart` |
 
-## Used SharePoint Framework Version
+## Application Customizer
 
-![version](https://img.shields.io/badge/version-1.22.2-green.svg)
+| Extension | Description | Internal Name |
+|-----------|-------------|---------------|
+| **Unread Badge** | Site-wide header notification with unread count and flyout panel | `UnreadBadgeApplicationCustomizer` |
 
-## Applies to
+## Shared Architecture
 
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+All components share a common architecture under `src/shared/`:
 
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+- **WissensHubContext** -- React context providing user info, role, and service container
+- **Service Layer** -- Dependency-inverted interfaces with production and mock implementations
+- **CQRS Hooks** -- Separate query (read) and command (write) hooks
+- **Caching** -- PnPjs session cache + stale-while-revalidate in hooks
+- **Telemetry** -- Application Insights with 9 custom events
+- **Error Boundary** -- Per-web-part error isolation with recovery UI
+- **i18n** -- German (default) and English localization
 
-## Prerequisites
+## Local Development
 
-> Any special pre-requisites?
+### Prerequisites
 
-## Solution
+- Node.js 22 LTS
+- SPFx development environment ([setup guide](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment))
 
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
+### Install and serve
 
-## Version history
+```bash
+npm install
+npm start
+```
 
-| Version | Date             | Comments        |
-| ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
+This serves the solution to the SharePoint workbench at:
+```
+https://<your-tenant>.sharepoint.com/_layouts/15/workbench.aspx
+```
 
-## Disclaimer
+### Build for production
 
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+```bash
+npx heft test --clean --production
+npx heft package-solution --production
+```
 
----
+The `.sppkg` package is output to `sharepoint/solution/wissens-hub.sppkg`.
 
-## Minimal Path to Awesome
+### Run tests
 
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - `npm install -g @rushstack/heft`
-  - `npm install`
-  - `heft start`
+```bash
+npx heft test --clean
+```
 
-> Include any additional steps as needed.
+161 Jest tests covering services, hooks, and components.
 
-Other build commands can be listed using `heft --help`.
+## Property Pane Options
 
-## Features
+All web parts support a **Mock Mode** toggle in the property pane for workbench development. When enabled, the web part uses mock data instead of live SharePoint/API connections.
 
-Description of the extension that expands upon high-level summary above.
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `useMockData` | boolean | `true` | Toggle between mock and production data |
 
-This extension illustrates the following concepts:
+## Deployment
 
-- topic 1
-- topic 2
-- topic 3
+Deploy to the tenant-wide app catalog:
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
+```bash
+# Using CLI for Microsoft 365
+m365 spo app add --filePath sharepoint/solution/wissens-hub.sppkg --appCatalogUrl <catalog-url> --overwrite
+m365 spo app deploy --name wissens-hub.sppkg --appCatalogUrl <catalog-url>
+```
 
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+Or via the CD pipeline (automatic on merge to main).
 
-## References
+## API Permission
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
-- [Heft Documentation](https://heft.rushstack.io/)
+This solution requires API permission consent for the WissensHub API (configured in `config/package-solution.json`):
+
+| Resource | Scope |
+|----------|-------|
+| WissensHub API | `access_as_user` |
+
+After deploying the `.sppkg`, grant the API permission in the SharePoint Admin Center under **API access**.
