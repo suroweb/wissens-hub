@@ -168,7 +168,7 @@
 - [x] **DEVP-05**: SPFx deployment via CLI for Microsoft 365
 - [x] **DEVP-06**: EF Core migration execution in CD pipeline
 - [x] **DEVP-07**: Federated identity (OIDC) for Azure and M365 — no stored secrets
-- [ ] **DEVP-08**: README.md with architecture diagram, setup guide (local + production), API documentation
+- [x] **DEVP-08**: README.md with architecture diagram, setup guide (local + production), API documentation
 
 ## v2 Requirements
 
@@ -315,7 +315,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | DEVP-05 | Phase 12 | Complete |
 | DEVP-06 | Phase 12 | Complete |
 | DEVP-07 | Phase 12 | Complete |
-| DEVP-08 | Phase 12 | Pending |
+| DEVP-08 | Phase 12 | Complete |
 
 **Coverage:**
 - v1 requirements: 108 total
