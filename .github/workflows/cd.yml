@@ -1,0 +1,183 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- SPFx Build ---
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: spfx/package-lock.json
+
+      - name: Install SPFx dependencies
+        working-directory: spfx
+        run: npm ci
+
+      - name: Build and test SPFx (production)
+        working-directory: spfx
+        run: |
+          npx heft test --clean --production
+          npx heft package-solution --production
+
+      - name: Upload SPFx package
+        uses: actions/upload-artifact@v4
+        with:
+          name: spfx-package
+          path: spfx/sharepoint/solution/wissens-hub.sppkg
+
+      # --- API Build ---
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore API dependencies
+        working-directory: api
+        run: dotnet restore
+
+      - name: Build API
+        working-directory: api
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Test API
+        working-directory: api
+        run: dotnet test tests/WissensHub.Tests --no-build --configuration Release -e AZURE_FUNCTIONS_ENVIRONMENT=Development
+
+      - name: Publish API
+        working-directory: api
+        run: dotnet publish src/WissensHub.Functions --configuration Release --output ./publish
+
+      - name: Upload API publish output
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-publish
+          path: api/publish/
+
+      # --- Migration Bundle ---
+      - name: Build migration bundle
+        run: |
+          dotnet tool install --global dotnet-ef
+          cd api && dotnet ef migrations bundle \
+            --project src/WissensHub.Infrastructure \
+            --startup-project src/WissensHub.Functions \
+            --output ../efbundle \
+            --self-contained
+
+      - name: Upload migration bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: migration-bundle
+          path: efbundle
+
+  deploy-infra:
+    name: Deploy Infrastructure
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure Login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Deploy Bicep
+        run: |
+          az deployment group create \
+            --resource-group ${{ vars.AZURE_RESOURCE_GROUP }} \
+            --template-file infra/main.bicep \
+            --parameters infra/parameters/prod.bicepparam \
+            --parameters sqlAdminPassword=${{ secrets.SQL_ADMIN_PASSWORD }}
+
+  deploy-migrations:
+    name: Run Database Migrations
+    needs: [build, deploy-infra]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download migration bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: migration-bundle
+
+      - name: Azure Login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Run EF Core migrations
+        run: |
+          chmod +x ./efbundle
+          ./efbundle --connection "${{ secrets.SQL_CONNECTION_STRING }}"
+
+  deploy-functions:
+    name: Deploy Azure Functions
+    needs: deploy-migrations
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download API publish output
+        uses: actions/download-artifact@v4
+        with:
+          name: api-publish
+          path: ./publish
+
+      - name: Azure Login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Deploy to Azure Functions
+        uses: Azure/functions-action@v1
+        with:
+          app-name: ${{ vars.AZURE_FUNCTION_APP_NAME }}
+          package: ./publish
+
+  deploy-spfx:
+    name: Deploy SPFx Package
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download SPFx package
+        uses: actions/download-artifact@v4
+        with:
+          name: spfx-package
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install CLI for Microsoft 365
+        run: npm install @pnp/cli-microsoft365@latest -g
+
+      - name: Login to M365 (Federated Identity)
+        run: |
+          m365 login --authType federated \
+            --clientId ${{ vars.M365_CLIENT_ID }} \
+            --tenantId ${{ vars.AZURE_TENANT_ID }}
+
+      - name: Deploy to tenant app catalog
+        run: |
+          m365 spo app add \
+            --filePath ./wissens-hub.sppkg \
+            --appCatalogUrl ${{ vars.SPO_APP_CATALOG_URL }} \
+            --overwrite
+          m365 spo app deploy \
+            --name wissens-hub.sppkg \
+            --appCatalogUrl ${{ vars.SPO_APP_CATALOG_URL }}
