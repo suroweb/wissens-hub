@@ -162,12 +162,12 @@
 ### DevOps & Deployment
 
 - [x] **DEVP-01**: PnP PowerShell provisioning script (site, groups, columns, pages, navigation, sample data)
-- [ ] **DEVP-02**: Azure Bicep modules (Functions App, SQL Server, App Insights, Key Vault, Storage Account)
-- [ ] **DEVP-03**: GitHub Actions CI pipeline (build + test on PR)
-- [ ] **DEVP-04**: GitHub Actions CD pipeline (build + test + deploy on merge to main)
-- [ ] **DEVP-05**: SPFx deployment via CLI for Microsoft 365
-- [ ] **DEVP-06**: EF Core migration execution in CD pipeline
-- [ ] **DEVP-07**: Federated identity (OIDC) for Azure and M365 — no stored secrets
+- [x] **DEVP-02**: Azure Bicep modules (Functions App, SQL Server, App Insights, Key Vault, Storage Account)
+- [x] **DEVP-03**: GitHub Actions CI pipeline (build + test on PR)
+- [x] **DEVP-04**: GitHub Actions CD pipeline (build + test + deploy on merge to main)
+- [x] **DEVP-05**: SPFx deployment via CLI for Microsoft 365
+- [x] **DEVP-06**: EF Core migration execution in CD pipeline
+- [x] **DEVP-07**: Federated identity (OIDC) for Azure and M365 — no stored secrets
 - [ ] **DEVP-08**: README.md with architecture diagram, setup guide (local + production), API documentation
 
 ## v2 Requirements
@@ -309,12 +309,12 @@ Deferred to future release. Tracked but not in current roadmap.
 | TEST-02 | Phase 11 | Complete |
 | TEST-03 | Phase 11 | Complete |
 | DEVP-01 | Phase 2 | Complete |
-| DEVP-02 | Phase 12 | Pending |
-| DEVP-03 | Phase 12 | Pending |
-| DEVP-04 | Phase 12 | Pending |
-| DEVP-05 | Phase 12 | Pending |
-| DEVP-06 | Phase 12 | Pending |
-| DEVP-07 | Phase 12 | Pending |
+| DEVP-02 | Phase 12 | Complete |
+| DEVP-03 | Phase 12 | Complete |
+| DEVP-04 | Phase 12 | Complete |
+| DEVP-05 | Phase 12 | Complete |
+| DEVP-06 | Phase 12 | Complete |
+| DEVP-07 | Phase 12 | Complete |
 | DEVP-08 | Phase 12 | Pending |
 
 **Coverage:**
