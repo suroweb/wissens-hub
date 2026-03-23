@@ -2,7 +2,7 @@
 
 **Internal Knowledge Management Hub for Microsoft 365**
 
-> :construction: **Work in Progress** — Active development. Phase 12 remaining.
+>A full-stack SharePoint Framework solution with Azure Functions API, Azure SQL tracking, and GitHub Actions CI/CD.
 
 ![SPFx 1.22.2](https://img.shields.io/badge/SPFx-1.22.2-green)
 ![React 17](https://img.shields.io/badge/React-17-blue)
@@ -124,13 +124,13 @@ flowchart TB
 | 9. Admin Panel | Categories, target groups, reports, CSV/Excel export | :white_check_mark: Complete |
 | 10. Caching & Telemetry | SWR caching, App Insights, error boundaries, i18n | :white_check_mark: Complete |
 | 11. Testing | Jest unit, .NET integration, Playwright E2E | :white_check_mark: Complete |
-| 12. DevOps & Deployment | Azure Bicep, GitHub Actions CI/CD, OIDC | :hourglass: Planned |
+| 12. DevOps & Deployment | Azure Bicep, GitHub Actions CI/CD, OIDC | :white_check_mark: Complete |
 
 ## Screenshots
 
 > Screenshots will be added as development progresses.
 
-## Getting Started
+## Local Development
 
 ### Prerequisites
 
@@ -223,6 +223,85 @@ cd scripts
 | `PUT` | `/api/config/reminder-interval` | Update reminder interval |
 | `GET` | `/api/health` | Health check |
 
+### Example Requests
+
+```bash
+# Get dashboard statistics
+curl -H "Authorization: Bearer <token>" \
+  https://wh-prod-func.azurewebsites.net/api/dashboard/stats
+
+# Mark an article as read
+curl -X POST -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" \
+  https://wh-prod-func.azurewebsites.net/api/articles/42/read
+
+# Get unread articles for current user
+curl -H "Authorization: Bearer <token>" \
+  https://wh-prod-func.azurewebsites.net/api/articles/unread
+```
+
+## Production Deployment
+
+### Prerequisites
+
+- Azure subscription with a resource group
+- GitHub repository with Actions enabled
+- Microsoft 365 tenant with SharePoint app catalog
+- Two Entra ID app registrations (Azure deployment + M365 CI/CD) with OIDC federated credentials
+
+### Infrastructure Provisioning
+
+Azure resources are defined as Bicep modules under `infra/`. Deploy manually for first-time setup:
+
+```bash
+az login
+az deployment group create \
+  --resource-group <your-resource-group> \
+  --template-file infra/main.bicep \
+  --parameters infra/parameters/prod.bicepparam \
+  --parameters sqlAdminPassword=<your-secure-password>
+```
+
+This provisions: Azure Functions (Linux Consumption), Azure SQL (Basic tier), Application Insights, Key Vault, and Storage Account. All resources are prefixed with `wh-prod-`.
+
+### CI/CD Pipeline
+
+Two GitHub Actions workflows automate quality and deployment:
+
+| Workflow | Trigger | What it does |
+|----------|---------|--------------|
+| CI (`ci.yml`) | Pull request to main | Builds + tests SPFx and API. Failures block merge. |
+| CD (`cd.yml`) | Push to main | Builds, tests, deploys infrastructure (Bicep), runs database migrations (EF Core bundle), deploys Azure Functions, deploys SPFx to tenant app catalog. |
+
+Authentication uses OIDC federated identity -- no client secrets stored in the repository.
+
+### GitHub Configuration
+
+**Variables** (Settings > Secrets and variables > Actions > Variables):
+
+| Variable | Value |
+|----------|-------|
+| `AZURE_CLIENT_ID` | Azure deployment app registration client ID |
+| `AZURE_TENANT_ID` | Entra ID tenant ID |
+| `AZURE_SUBSCRIPTION_ID` | Azure subscription ID |
+| `AZURE_RESOURCE_GROUP` | Target resource group name |
+| `AZURE_FUNCTION_APP_NAME` | `wh-prod-func` |
+| `M365_CLIENT_ID` | M365 CI/CD app registration client ID |
+| `SPO_APP_CATALOG_URL` | SharePoint app catalog URL |
+
+**Secrets** (Settings > Secrets and variables > Actions > Secrets):
+
+| Secret | Value |
+|--------|-------|
+| `SQL_ADMIN_PASSWORD` | Azure SQL admin password |
+| `SQL_CONNECTION_STRING` | Full ADO.NET connection string for Azure SQL |
+
+### OIDC Federated Identity Setup
+
+Two Entra ID app registrations are needed -- one for Azure resource deployment, one for M365/SharePoint operations. Each requires a federated credential configured for the `main` branch subject claim (`repo:<owner>/<repo>:ref:refs/heads/main`).
+
+For detailed setup instructions, see the [GitHub OIDC documentation for Azure](https://docs.github.com/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-azure).
+
 ## Project Structure
 
 ```
@@ -249,9 +328,26 @@ wissens-hub/
 │       ├── WissensHub.Application/# MediatR handlers, validators, DTOs
 │       ├── WissensHub.Domain/     # Entities, interfaces
 │       └── WissensHub.Infrastructure/ # EF Core, repository implementations
+├── infra/                         # Azure Bicep infrastructure as code
+│   ├── main.bicep                 # Orchestrator module
+│   ├── modules/                   # Resource modules (SQL, Functions, etc.)
+│   └── parameters/                # Environment parameter files
+├── .github/workflows/             # GitHub Actions CI/CD
+│   ├── ci.yml                     # PR validation (build + test)
+│   └── cd.yml                     # Deploy on merge to main
+├── e2e/                           # Playwright E2E tests
 ├── docker/                        # Docker Compose (SQL Server 2022)
 └── scripts/                       # PnP PowerShell provisioning
 ```
+
+## Testing
+
+| Suite | Command | Coverage |
+|-------|---------|----------|
+| Frontend unit tests | `npm run test:frontend` | 161 tests (services, hooks, components) |
+| Backend integration tests | `npm run test:backend` | 49 tests (API endpoints against SQL Server) |
+| E2E tests | `npm run test:e2e` | 4 Playwright specs (dashboard, read, approve, admin) |
+| All tests | `npm run test:all` | Frontend + backend |
 
 ## License
 
