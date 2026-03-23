@@ -27,8 +27,13 @@ export async function loadWorkbench(page: Page, webPartName: string): Promise<vo
   await addWebPartBtn.waitFor({ state: 'visible', timeout: 10_000 });
   await addWebPartBtn.click();
 
-  // Wait for toolbox panel to open, then click the specified web part
+  // Wait for toolbox panel to open, then search for the specified web part
   await page.waitForTimeout(1_000);
+  const toolboxSearch = page.locator('input[placeholder*="Suchen"], input[placeholder*="Search"]').first();
+  if (await toolboxSearch.isVisible({ timeout: 3_000 }).catch(() => false)) {
+    await toolboxSearch.fill(webPartName);
+    await page.waitForTimeout(500);
+  }
   const webPartEntry = page.locator(`button:has-text("${webPartName}")`).first();
   await webPartEntry.waitFor({ state: 'visible', timeout: 10_000 });
   await webPartEntry.click();

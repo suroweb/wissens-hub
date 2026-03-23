@@ -58,9 +58,9 @@ adminTest.describe.serial('Admin Config Flow', () => {
 
     // Mock categories: "IT-Sicherheit", "Datenschutz", "Onboarding", "Arbeitsprozesse", "Compliance"
     // DetailsList should render these as rows
-    await expect(workbenchPage.getByText('IT-Sicherheit')).toBeVisible({ timeout: 10_000 });
-    await expect(workbenchPage.getByText('Datenschutz')).toBeVisible({ timeout: 5_000 });
-    await expect(workbenchPage.getByText('Compliance')).toBeVisible({ timeout: 5_000 });
+    await expect(workbenchPage.getByText('IT-Sicherheit', { exact: true })).toBeVisible({ timeout: 10_000 });
+    await expect(workbenchPage.getByText('Datenschutz', { exact: true })).toBeVisible({ timeout: 5_000 });
+    await expect(workbenchPage.getByText('Compliance', { exact: true })).toBeVisible({ timeout: 5_000 });
   });
 
   adminTest('Add category dialog', async ({ workbenchPage }) => {

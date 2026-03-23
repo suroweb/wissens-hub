@@ -9,7 +9,7 @@ import { expect, resetWorkbenchState, createWebPartFixture } from '../fixtures/s
  * Mock data: 10 articles (6 Published, 2 Draft, 1 InReview, 1 Archived)
  */
 
-const dashboardTest = createWebPartFixture('Dashboard');
+const dashboardTest = createWebPartFixture('WissensHub Dashboard');
 
 dashboardTest.describe.serial('Dashboard Flow', () => {
   dashboardTest.beforeEach(async ({ workbenchPage }) => {

@@ -18,8 +18,8 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
     "group": { "default": "Advanced" },
-    "title": { "default": "Dashboard" },
-    "description": { "default": "Dashboard description" },
+    "title": { "default": "WissensHub Dashboard" },
+    "description": { "default": "Knowledge article dashboard with search, filters, and read tracking" },
     "officeFabricIconFontName": "Page",
     "properties": {
       "description": "Dashboard"

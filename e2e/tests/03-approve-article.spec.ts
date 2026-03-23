@@ -88,8 +88,8 @@ freigabeTest.describe.serial('Approve Article Flow', () => {
     await approveBtn.first().click();
 
     // Wait for dialog to appear
-    // ApproveDialog uses Dialog component with title "Artikel genehmigen" / "Approve article"
-    const dialog = workbenchPage.locator('[role="dialog"]');
+    // ApproveDialog uses Fluent UI Dialog which portals content — use .ms-Dialog-main to find the visible one
+    const dialog = workbenchPage.locator('.ms-Dialog-main').filter({ hasText: /genehmigen|Approve/i });
     await expect(dialog.first()).toBeVisible({ timeout: 5_000 });
 
     // Type comment in the comment field
@@ -107,7 +107,7 @@ freigabeTest.describe.serial('Approve Article Flow', () => {
     await workbenchPage.waitForTimeout(1_000);
 
     // Dialog should be closed
-    await expect(dialog).not.toBeVisible({ timeout: 5_000 });
+    await expect(dialog.first()).not.toBeVisible({ timeout: 5_000 });
 
     // The article should be removed from the pending list (optimistic removal)
     await expect(

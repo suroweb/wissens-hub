@@ -54,7 +54,7 @@ public class AdminFunctions(IMediator mediator)
 
     [Function("GetAllCategories")]
     public async Task<IActionResult> GetAllCategories(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "administration/categories")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "config/categories")]
         HttpRequest req)
     {
         try
@@ -67,7 +67,7 @@ public class AdminFunctions(IMediator mediator)
 
     [Function("CreateCategory")]
     public async Task<IActionResult> CreateCategory(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "administration/categories")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "config/categories")]
         HttpRequest req)
     {
         try
@@ -82,7 +82,7 @@ public class AdminFunctions(IMediator mediator)
 
     [Function("UpdateCategory")]
     public async Task<IActionResult> UpdateCategory(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "administration/categories/{id:int}")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "config/categories/{id:int}")]
         HttpRequest req, int id)
     {
         try
@@ -98,7 +98,7 @@ public class AdminFunctions(IMediator mediator)
 
     [Function("DeleteCategory")]
     public async Task<IActionResult> DeleteCategory(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "administration/categories/{id:int}")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "config/categories/{id:int}")]
         HttpRequest req, int id)
     {
         try
@@ -113,7 +113,7 @@ public class AdminFunctions(IMediator mediator)
 
     [Function("GetAllTargetGroups")]
     public async Task<IActionResult> GetAllTargetGroups(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "administration/target-groups")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "config/target-groups")]
         HttpRequest req)
     {
         try
@@ -126,7 +126,7 @@ public class AdminFunctions(IMediator mediator)
 
     [Function("CreateTargetGroup")]
     public async Task<IActionResult> CreateTargetGroup(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "administration/target-groups")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "config/target-groups")]
         HttpRequest req)
     {
         try
@@ -141,7 +141,7 @@ public class AdminFunctions(IMediator mediator)
 
     [Function("UpdateTargetGroup")]
     public async Task<IActionResult> UpdateTargetGroup(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "administration/target-groups/{id:int}")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "config/target-groups/{id:int}")]
         HttpRequest req, int id)
     {
         try
@@ -157,7 +157,7 @@ public class AdminFunctions(IMediator mediator)
 
     [Function("DeleteTargetGroup")]
     public async Task<IActionResult> DeleteTargetGroup(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "administration/target-groups/{id:int}")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "config/target-groups/{id:int}")]
         HttpRequest req, int id)
     {
         try
@@ -172,7 +172,7 @@ public class AdminFunctions(IMediator mediator)
 
     [Function("GetReminderInterval")]
     public async Task<IActionResult> GetReminderInterval(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "administration/reminder-interval")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "config/reminder-interval")]
         HttpRequest req)
     {
         try
@@ -185,7 +185,7 @@ public class AdminFunctions(IMediator mediator)
 
     [Function("UpdateReminderInterval")]
     public async Task<IActionResult> UpdateReminderInterval(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "administration/reminder-interval")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "config/reminder-interval")]
         HttpRequest req)
     {
         try

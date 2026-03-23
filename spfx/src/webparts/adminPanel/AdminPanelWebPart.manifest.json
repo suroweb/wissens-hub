@@ -22,7 +22,8 @@
     "description": { "default": "AdminPanel description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "AdminPanel"
+      "description": "AdminPanel",
+      "mockRole": "admin"
     }
   }]
 }

@@ -32,52 +32,52 @@ export class AdminService implements IAdminService {
   }
 
   public async getCategories(): Promise<Result<ICategory[]>> {
-    const result = await this.apiClient.get<ApiEnvelope<ICategory[]>>('/api/administration/categories');
+    const result = await this.apiClient.get<ApiEnvelope<ICategory[]>>('/api/config/categories');
     return this.unwrap(result);
   }
 
   public async createCategory(name: string, description: string): Promise<Result<ICategory>> {
-    const result = await this.apiClient.post<ApiEnvelope<ICategory>>('/api/administration/categories', { name, description });
+    const result = await this.apiClient.post<ApiEnvelope<ICategory>>('/api/config/categories', { name, description });
     return this.unwrap(result);
   }
 
   public async updateCategory(id: number, name: string, description: string, isActive: boolean): Promise<Result<ICategory>> {
-    const result = await this.apiClient.put<ApiEnvelope<ICategory>>('/api/administration/categories/' + id, { id, name, description, isActive });
+    const result = await this.apiClient.put<ApiEnvelope<ICategory>>('/api/config/categories/' + id, { id, name, description, isActive });
     return this.unwrap(result);
   }
 
   public async deleteCategory(id: number): Promise<Result<boolean>> {
-    const result = await this.apiClient.delete<ApiEnvelope<boolean>>('/api/administration/categories/' + id);
+    const result = await this.apiClient.delete<ApiEnvelope<boolean>>('/api/config/categories/' + id);
     return this.unwrap(result);
   }
 
   public async getTargetGroups(): Promise<Result<ITargetGroupConfig[]>> {
-    const result = await this.apiClient.get<ApiEnvelope<ITargetGroupConfig[]>>('/api/administration/target-groups');
+    const result = await this.apiClient.get<ApiEnvelope<ITargetGroupConfig[]>>('/api/config/target-groups');
     return this.unwrap(result);
   }
 
   public async createTargetGroup(name: string, sharePointGroupName: string): Promise<Result<ITargetGroupConfig>> {
-    const result = await this.apiClient.post<ApiEnvelope<ITargetGroupConfig>>('/api/administration/target-groups', { name, sharePointGroupName });
+    const result = await this.apiClient.post<ApiEnvelope<ITargetGroupConfig>>('/api/config/target-groups', { name, sharePointGroupName });
     return this.unwrap(result);
   }
 
   public async updateTargetGroup(id: number, name: string, isActive: boolean): Promise<Result<ITargetGroupConfig>> {
-    const result = await this.apiClient.put<ApiEnvelope<ITargetGroupConfig>>('/api/administration/target-groups/' + id, { id, name, isActive });
+    const result = await this.apiClient.put<ApiEnvelope<ITargetGroupConfig>>('/api/config/target-groups/' + id, { id, name, isActive });
     return this.unwrap(result);
   }
 
   public async deleteTargetGroup(id: number): Promise<Result<boolean>> {
-    const result = await this.apiClient.delete<ApiEnvelope<boolean>>('/api/administration/target-groups/' + id);
+    const result = await this.apiClient.delete<ApiEnvelope<boolean>>('/api/config/target-groups/' + id);
     return this.unwrap(result);
   }
 
   public async getReminderInterval(): Promise<Result<number>> {
-    const result = await this.apiClient.get<ApiEnvelope<number>>('/api/administration/reminder-interval');
+    const result = await this.apiClient.get<ApiEnvelope<number>>('/api/config/reminder-interval');
     return this.unwrap(result);
   }
 
   public async updateReminderInterval(days: number): Promise<Result<number>> {
-    const result = await this.apiClient.put<ApiEnvelope<number>>('/api/administration/reminder-interval', { days });
+    const result = await this.apiClient.put<ApiEnvelope<number>>('/api/config/reminder-interval', { days });
     return this.unwrap(result);
   }
 

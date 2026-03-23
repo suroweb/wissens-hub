@@ -2,7 +2,7 @@
 
 **Internal Knowledge Management Hub for Microsoft 365**
 
-> :construction: **Work in Progress** — Active development. Phases 11-12 remaining.
+> :construction: **Work in Progress** — Active development. Phase 12 remaining.
 
 ![SPFx 1.22.2](https://img.shields.io/badge/SPFx-1.22.2-green)
 ![React 17](https://img.shields.io/badge/React-17-blue)
@@ -114,16 +114,16 @@ flowchart TB
 | Phase | Description | Status |
 |-------|-------------|--------|
 | 1. Project Scaffolding | SPFx + Azure Functions + Docker + EF Core schema | :white_check_mark: Complete |
-| 2. SharePoint Site & Auth | Provisioning, Entra ID, AadHttpClient | :wrench: In Progress |
-| 3. Frontend Architecture | Context, services, Result pattern, role detection | :wrench: In Progress |
-| 4. Backend Architecture | MediatR CQRS, repositories, API endpoints, JWT auth | :wrench: In Progress |
+| 2. SharePoint Site & Auth | Provisioning, Entra ID, AadHttpClient | :white_check_mark: Complete |
+| 3. Frontend Architecture | Context, services, Result pattern, role detection | :white_check_mark: Complete |
+| 4. Backend Architecture | MediatR CQRS, repositories, API endpoints, JWT auth | :white_check_mark: Complete |
 | 5. Dashboard Web Part | Card/list views, search, filters, stats bar | :white_check_mark: Complete |
 | 6. Article Sidebar | Metadata, read confirmations, flags, favorites, TOC | :white_check_mark: Complete |
 | 7. Freigabecenter | Approval workflow, flagged articles, freshness alerts | :white_check_mark: Complete |
 | 8. Unread Badge | Header notification icon, flyout panel | :white_check_mark: Complete |
-| 9. Admin Panel | Categories, target groups, reports, CSV/Excel export | :wrench: In Progress |
+| 9. Admin Panel | Categories, target groups, reports, CSV/Excel export | :white_check_mark: Complete |
 | 10. Caching & Telemetry | SWR caching, App Insights, error boundaries, i18n | :white_check_mark: Complete |
-| 11. Testing | Jest unit, .NET integration, Playwright E2E | :hourglass: Planned |
+| 11. Testing | Jest unit, .NET integration, Playwright E2E | :white_check_mark: Complete |
 | 12. DevOps & Deployment | Azure Bicep, GitHub Actions CI/CD, OIDC | :hourglass: Planned |
 
 ## Screenshots
@@ -203,11 +203,25 @@ cd scripts
 | `POST` | `/api/articles/{pageId}/read` | Mark article as read |
 | `POST` | `/api/articles/{pageId}/flag` | Flag article as outdated |
 | `GET` | `/api/articles/{pageId}/readstats` | Read confirmation stats (reviewer/admin) |
+| `GET` | `/api/articles/{pageId}/history` | Approval history for article |
+| `GET` | `/api/articles/flagged` | All flagged articles |
 | `POST` | `/api/articles/{pageId}/approve` | Approve or reject article |
 | `GET` | `/api/favorites` | User's favorite articles |
 | `POST` | `/api/favorites/{pageId}` | Toggle favorite |
 | `GET` | `/api/dashboard/stats` | Dashboard statistics |
-| `GET` | `/api/admin/reports` | Read confirmation reports |
+| `GET` | `/api/management/reports` | Read confirmation reports |
+| `GET` | `/api/management/reports/{pageId}` | Detailed read stats per article |
+| `GET` | `/api/config/categories` | All categories |
+| `POST` | `/api/config/categories` | Create category |
+| `PUT` | `/api/config/categories/{id}` | Update category |
+| `DELETE` | `/api/config/categories/{id}` | Delete category |
+| `GET` | `/api/config/target-groups` | All target groups |
+| `POST` | `/api/config/target-groups` | Create target group |
+| `PUT` | `/api/config/target-groups/{id}` | Update target group |
+| `DELETE` | `/api/config/target-groups/{id}` | Delete target group |
+| `GET` | `/api/config/reminder-interval` | Get reminder interval |
+| `PUT` | `/api/config/reminder-interval` | Update reminder interval |
+| `GET` | `/api/health` | Health check |
 
 ## Project Structure
 
