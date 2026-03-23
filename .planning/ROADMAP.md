@@ -232,9 +232,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 12-01: Azure Bicep modules for all infrastructure
-- [ ] 12-02: GitHub Actions CI/CD pipelines with SPFx and Azure Functions deployment
-- [ ] 12-03: OIDC federated identity, migration pipeline, and README documentation
+- [ ] 12-01-PLAN.md — Azure Bicep IaC modules (storage, sql, app-insights, key-vault, function-app) with main orchestrator and parameter files
+- [ ] 12-02-PLAN.md — GitHub Actions CI/CD workflows with OIDC, SPFx deployment, EF Core migration bundle
+- [ ] 12-03-PLAN.md — README documentation (root + SPFx) with production deployment guide and API examples
 
 ## Progress
 
